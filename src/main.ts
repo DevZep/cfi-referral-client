@@ -4,6 +4,7 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
+import './aws' // setup and configure AWS Amplify
 
 Vue.config.productionTip = false
 

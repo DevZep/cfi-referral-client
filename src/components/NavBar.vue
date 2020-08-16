@@ -3,7 +3,7 @@
     <v-toolbar >
       <v-app-bar-nav-icon class="grey--text" @click="drawer = !drawer">
       </v-app-bar-nav-icon>
-      <v-toolbar-title class="grey--text" @click="navigateHome()">
+      <v-toolbar-title class="grey--text" @click="navigate('/')">
         <span class="font-weight-light">CFI</span>
         <span>Referral</span>
       </v-toolbar-title>
@@ -12,7 +12,7 @@
         <span>Signup</span>
         <v-icon>mdi-account-plus</v-icon>
       </v-btn>
-      <v-btn text color="grey">
+      <v-btn text color="grey" @click="navigate('/login')">
         <span>Login</span>
         <v-icon>mdi-login</v-icon>
       </v-btn>
@@ -71,8 +71,8 @@ export default class NavBar extends Vue {
     { title: 'About', icon: 'mdi-help-box', route: '/about' }
   ]
 
-  navigateHome () {
-    if (this.$route.path !== '/') { this.$router.push('/') }
+  navigate (path: string) {
+    if (this.$route.path !== path) { this.$router.push(path) }
   }
 }
 </script>
