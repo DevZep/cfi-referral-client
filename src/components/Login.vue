@@ -9,7 +9,6 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { Auth } from 'aws-amplify'
 
 @Component
 export default class Login extends Vue {
@@ -17,13 +16,12 @@ export default class Login extends Vue {
   password = ''
 
   async login () {
+    const { dispatch } = this.$store
     if (this.username !== '' && this.password !== '') {
-      try {
-        const user = await Auth.signIn(this.username, this.password)
-        console.log('Success! User: ', user)
-      } catch (error) {
-        console.log('error signing in', error)
-      }
+      const username = this.username
+      const password = this.password
+      await dispatch('login', { username, password })
+      if (this.$store.state.isAuthenticated) { this.$router.push('/about') }
     }
   }
 }

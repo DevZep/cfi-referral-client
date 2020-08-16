@@ -8,6 +8,7 @@
         <span>Referral</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
+      <div v-if="!isAuthenticated" >
       <v-btn text color="grey">
         <span>Signup</span>
         <v-icon>mdi-account-plus</v-icon>
@@ -16,7 +17,8 @@
         <span>Login</span>
         <v-icon>mdi-login</v-icon>
       </v-btn>
-      <v-btn v-if="loggedin" text color="grey">
+      </div>
+      <v-btn v-if="isAuthenticated" text color="grey" @click="signOut()">
         <span>Sign Out</span>
         <v-icon>mdi-logout</v-icon>
       </v-btn>
@@ -61,8 +63,13 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { mapState } from 'vuex'
 
-@Component
+@Component({
+  computed: {
+    ...mapState(['user', 'isAuthenticated'])
+  }
+})
 export default class NavBar extends Vue {
   drawer = false
   loggedin = false
@@ -73,6 +80,11 @@ export default class NavBar extends Vue {
 
   navigate (path: string) {
     if (this.$route.path !== path) { this.$router.push(path) }
+  }
+
+  async signOut () {
+    await this.$store.dispatch('signOut')
+    if (!this.$store.state.isAuthenticated) { this.$router.push('/') }
   }
 }
 </script>
