@@ -3,12 +3,20 @@
     <v-toolbar >
       <v-app-bar-nav-icon class="grey--text" @click="drawer = !drawer">
       </v-app-bar-nav-icon>
-      <v-toolbar-title class="grey--text">
+      <v-toolbar-title class="grey--text" @click="$router.push('/')">
         <span class="font-weight-light">CFI</span>
         <span>Referral</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn text color="grey">
+        <span>Signup</span>
+        <v-icon>mdi-account-plus</v-icon>
+      </v-btn>
+      <v-btn text color="grey">
+        <span>Login</span>
+        <v-icon>mdi-login</v-icon>
+      </v-btn>
+      <v-btn v-if="loggedin" text color="grey">
         <span>Sign Out</span>
         <v-icon>mdi-logout</v-icon>
       </v-btn>
@@ -57,6 +65,7 @@ import { Vue, Component } from 'vue-property-decorator'
 @Component
 export default class NavBar extends Vue {
   drawer = false
+  loggedin = false
   items= [
     { title: 'Home', icon: 'mdi-home', route: '/' },
     { title: 'About', icon: 'mdi-help-box', route: '/about' }
