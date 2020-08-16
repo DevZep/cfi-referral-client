@@ -6,14 +6,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isAuthenticated: false,
+    authenticated: false,
     user: null
   },
   mutations: {
     // Synchronous
     setUser (state, user) {
       state.user = user
-      state.isAuthenticated = (state.user !== null)
+      state.authenticated = (state.user !== null)
     }
   },
   actions: {
@@ -37,5 +37,9 @@ export default new Vuex.Store({
     }
   },
   modules: {
+  },
+  getters: {
+    isAuthenticated: state => state.authenticated,
+    getUser: state => state.user
   }
 })

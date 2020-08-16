@@ -3,25 +3,30 @@
     <h3>Login</h3>
     <input type="text" name="username" v-model="username" placeholder="Username" />
     <input type="password" name="password" v-model="password" placeholder="Password" />
-    <v-btn text color="grey" @click="login()">Login</v-btn>
+    <v-btn text color="grey" @click="submitLogin()">Login</v-btn>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { mapActions } from 'vuex'
 
-@Component
+@Component({
+  methods: {
+    ...mapActions(['login'])
+  }
+})
 export default class Login extends Vue {
+  login!: (credentials: {}) => void // from the mapActions above
   username = ''
   password = ''
 
-  async login () {
-    const { dispatch } = this.$store
+  async submitLogin () {
     if (this.username !== '' && this.password !== '') {
       const username = this.username
       const password = this.password
-      await dispatch('login', { username, password })
-      if (this.$store.state.isAuthenticated) { this.$router.push('/about') }
+      await this.login({ username, password })
+      if (this.$store.state.authenticated) { this.$router.push('/about') }
     }
   }
 }

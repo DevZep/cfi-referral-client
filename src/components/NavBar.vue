@@ -8,7 +8,7 @@
         <span>Referral</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <div v-if="!isAuthenticated" >
+      <div v-if="!authenticated" >
       <v-btn text color="grey">
         <span>Signup</span>
         <v-icon>mdi-account-plus</v-icon>
@@ -18,7 +18,7 @@
         <v-icon>mdi-login</v-icon>
       </v-btn>
       </div>
-      <v-btn v-if="isAuthenticated" text color="grey" @click="signOut()">
+      <v-btn v-if="authenticated" text color="grey" @click="submitSignOut()">
         <span>Sign Out</span>
         <v-icon>mdi-logout</v-icon>
       </v-btn>
@@ -63,16 +63,19 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 @Component({
   computed: {
-    ...mapState(['user', 'isAuthenticated'])
+    ...mapState(['authenticated'])
+  },
+  methods: {
+    ...mapActions(['signOut'])
   }
 })
 export default class NavBar extends Vue {
+  signOut!: () => void; // method from mapActions
   drawer = false
-  loggedin = false
   items= [
     { title: 'Home', icon: 'mdi-home', route: '/' },
     { title: 'About', icon: 'mdi-help-box', route: '/about' }
@@ -82,9 +85,9 @@ export default class NavBar extends Vue {
     if (this.$route.path !== path) { this.$router.push(path) }
   }
 
-  async signOut () {
-    await this.$store.dispatch('signOut')
-    if (!this.$store.state.isAuthenticated) { this.$router.push('/') }
+  async submitSignOut () {
+    await this.signOut()
+    if (!this.$store.state.authenticated) { this.$router.push('/') }
   }
 }
 </script>
