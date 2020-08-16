@@ -1,3 +1,11 @@
 module.exports = {
-  lintOnSave: false
+  lintOnSave: false,
+  transpileDependencies: [
+    'vuetify'
+  ],
+  configureWebpack: {
+    devServer: {
+      open: true
+    }
+  }
 }
