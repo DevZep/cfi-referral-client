@@ -3,7 +3,7 @@
     <v-toolbar >
       <v-app-bar-nav-icon class="grey--text" @click="drawer = !drawer">
       </v-app-bar-nav-icon>
-      <v-toolbar-title class="grey--text" @click="$router.push('/')">
+      <v-toolbar-title class="grey--text" @click="navigateHome()">
         <span class="font-weight-light">CFI</span>
         <span>Referral</span>
       </v-toolbar-title>
@@ -70,5 +70,9 @@ export default class NavBar extends Vue {
     { title: 'Home', icon: 'mdi-home', route: '/' },
     { title: 'About', icon: 'mdi-help-box', route: '/about' }
   ]
+
+  navigateHome () {
+    if (this.$route.path !== '/') { this.$router.push('/') }
+  }
 }
 </script>
