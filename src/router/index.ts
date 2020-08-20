@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
-import Login from '../views/Login.vue'
+import NotFound from '../views/NotFound.vue'
 import store from '../store'
 
 const ifNotAuthenticated = (to: any, from: any, next: any) => {
@@ -34,19 +34,12 @@ const routes: Array<RouteConfig> = [
   {
     path: '/about',
     name: 'About',
-    component: About,
-    beforeEnter: ifAuthenticated
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login,
-    beforeEnter: ifNotAuthenticated
+    component: About
   },
   {
     // catch all 404 - define at the very end
     path: '*',
-    component: () => import('../views/NotFound.vue')
+    component: NotFound
   }
 ]
 

@@ -29,7 +29,7 @@ export default class Login extends Vue {
     if (this.username !== '' && this.password !== '') {
       const { username, password } = this
       await this.login({ username, password })
-      if (this.isAuthenticated) { this.$router.push('/') }
+      if (this.isAuthenticated && this.$route.path !== '/') { this.$router.push('/') }
     }
   }
 }

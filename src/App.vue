@@ -1,10 +1,13 @@
 <template>
   <v-app class="grey lighten-4">
     <NavBar />
-    <br/>
-    <v-content>
-      <router-view></router-view>
-    </v-content>
+    <div class="main-container">
+      <CenterContainer>
+        <v-content>
+          <router-view></router-view>
+        </v-content>
+      </CenterContainer>
+    </div>
   </v-app>
 </template>
 
@@ -18,7 +21,9 @@ import NavBar from '@/components/NavBar.vue'
     NavBar
   },
   computed: {
-    ...mapGetters(['isAuthenticated']),
+    ...mapGetters(['isAuthenticated'])
+  },
+  methods: {
     ...mapActions(['currentSession'])
   }
 })
@@ -33,3 +38,22 @@ export default class App extends Vue {
   }
 }
 </script>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  color: #2e426b;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+</style>
+
+<style scoped>
+.main-container {
+  min-height: calc(100vh - 70px);
+}
+</style>

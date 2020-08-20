@@ -13,7 +13,7 @@
         <span>Signup</span>
         <v-icon>mdi-account-plus</v-icon>
       </v-btn>
-      <v-btn text color="grey" @click="navigate('/login')">
+      <v-btn text color="grey" @click="navigate('/')">
         <span>Login</span>
         <v-icon>mdi-login</v-icon>
       </v-btn>
@@ -74,6 +74,7 @@ import { mapActions, mapGetters } from 'vuex'
   }
 })
 export default class NavBar extends Vue {
+  isAuthenticated!: boolean
   signOut!: () => void; // method from mapActions
   drawer = false
   items= [
@@ -87,7 +88,7 @@ export default class NavBar extends Vue {
 
   async submitSignOut () {
     await this.signOut()
-    if (!this.$store.state.authenticated) { this.$router.push('/') }
+    if (!this.isAuthenticated) { this.navigate('/') }
   }
 }
 </script>

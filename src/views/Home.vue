@@ -7,7 +7,7 @@
       <i>Volunteer Referral App</i>
     </div>
     <div class="center">
-      <div v-if="loading()">
+      <div v-if="authStatus === 'loading'">
         <Loading />
       </div>
       <div v-if="!isAuthenticated && authStatus !== 'loading'">
