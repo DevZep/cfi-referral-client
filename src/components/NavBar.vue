@@ -9,7 +9,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <div v-if="!isAuthenticated" >
-      <v-btn text color="grey">
+      <v-btn text color="grey" @click="navigate('/signUp')">
         <span>Signup</span>
         <v-icon>mdi-account-plus</v-icon>
       </v-btn>

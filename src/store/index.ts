@@ -8,12 +8,17 @@ export default new Vuex.Store({
   state: {
     user: null,
     token: localStorage.getItem('user-token') || null,
-    status: ''
+    status: '',
+    newUserEmail: '',
+    statusMessage: ''
   },
   mutations: {
     // Synchronous
     setUser (state, user) {
       state.user = user
+    },
+    setNewUserEmail (state, newUserEmail) {
+      state.newUserEmail = newUserEmail
     },
     authRequest (state) {
       state.status = 'loading'
@@ -30,14 +35,17 @@ export default new Vuex.Store({
       state.status = ''
       state.user = null
       state.token = null
+    },
+    setStatusMessage (state, message) {
+      state.statusMessage = message
     }
   },
   actions: {
     // Asynchronous
-    async login ({ commit }, { username, password }) {
+    async login ({ commit }, { email, password }) {
       commit('authRequest')
       try {
-        const user = await Auth.signIn(username, password)
+        const user = await Auth.signIn(email, password)
         const token = user.signInUserSession.accessToken.jwtToken
         commit('setUser', user.attributes)
         commit('authSuccess', token)
@@ -68,6 +76,36 @@ export default new Vuex.Store({
         // AWS Session error so signOut!
         dispatch('signOut')
       }
+    },
+    async signUp ({ commit, dispatch }, { email, password }) {
+      try {
+        commit('setNewUserEmail', email)
+        const newUser = await Auth.signUp(email, password)
+      } catch (e) {
+        if (e.code === 'UsernameExistsException') {
+          commit('setStatusMessage', 'This email already exists. Sending another code now.')
+          dispatch('resendCode')
+        }
+      }
+    },
+    async resendCode ({ state }) {
+      try {
+        await Auth.resendSignUp(state.newUserEmail)
+      } catch (e) {
+        console.log('Error in resendCode: ', e)
+      }
+    },
+    async confirmCode ({ commit, state }, code) {
+      try {
+        const resp = await Auth.confirmSignUp(state.newUserEmail, code)
+        commit('setStatusMessage', 'Perfect! Your code was correct. Now you can login!')
+      } catch (e) {
+        if (e.code === 'NotAuthorizedException') {
+          commit('setStatusMessage', 'You are probably already confirmed. Try logging in!')
+        }
+        commit('setStatusMessage', e.message)
+        console.log('Error in confirmCode: ', e)
+      }
     }
   },
   modules: {
@@ -75,6 +113,8 @@ export default new Vuex.Store({
   getters: {
     getUser: state => state.user,
     isAuthenticated: state => !!state.token,
-    authStatus: state => state.status
+    authStatus: state => state.status,
+    isNewUser: state => state.newUserEmail,
+    statusMessage: state => state.statusMessage
   }
 })

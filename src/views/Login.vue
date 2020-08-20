@@ -1,7 +1,7 @@
 <template>
   <div id="login">
     <h3>Login</h3>
-    <input type="text" name="username" v-model="username" placeholder="Username" />
+    <input type="text" name="email" v-model="email" placeholder="Email" />
     <input type="password" name="password" v-model="password" placeholder="Password" />
     <v-btn text color="grey" @click="submitLogin()">Login</v-btn>
   </div>
@@ -22,13 +22,13 @@ import { mapActions, mapGetters } from 'vuex'
 export default class Login extends Vue {
   login!: (credentials: {}) => void // from the mapActions above
   isAuthenticated!: boolean // from the mapGetters above
-  username = ''
+  email = ''
   password = ''
 
   async submitLogin () {
-    if (this.username !== '' && this.password !== '') {
-      const { username, password } = this
-      await this.login({ username, password })
+    if (this.email !== '' && this.password !== '') {
+      const { email, password } = this
+      await this.login({ email, password })
       if (this.isAuthenticated && this.$route.path !== '/') { this.$router.push('/') }
     }
   }
