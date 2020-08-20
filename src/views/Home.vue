@@ -30,8 +30,8 @@ import Login from './Login.vue'
     Login
   },
   computed: {
-    ...mapGetters({ user: 'getUser' }),
-    ...mapGetters(['isAuthenticated', 'authStatus'])
+    ...mapGetters('Auth', { user: 'getUser' }),
+    ...mapGetters('Auth', ['isAuthenticated', 'authStatus'])
   }
 })
 export default class Home extends Vue {

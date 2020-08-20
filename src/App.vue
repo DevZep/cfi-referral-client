@@ -21,10 +21,10 @@ import NavBar from '@/components/NavBar.vue'
     NavBar
   },
   computed: {
-    ...mapGetters(['isAuthenticated'])
+    ...mapGetters('Auth', ['isAuthenticated'])
   },
   methods: {
-    ...mapActions(['currentSession'])
+    ...mapActions('Auth', ['currentSession'])
   }
 })
 export default class App extends Vue {

@@ -8,7 +8,7 @@ import NotFound from '@/views/NotFound.vue'
 import store from '../store'
 
 const ifNotAuthenticated = (to: any, from: any, next: any) => {
-  if (!store.getters.isAuthenticated) {
+  if (!store.getters['Auth/isAuthenticated']) {
     next()
     return
   }
@@ -16,7 +16,7 @@ const ifNotAuthenticated = (to: any, from: any, next: any) => {
 }
 
 const ifAuthenticated = (to: any, from: any, next: any) => {
-  if (store.getters.isAuthenticated) {
+  if (store.getters['Auth/isAuthenticated']) {
     // if user is authenticated then proceed
     next()
     return
@@ -26,7 +26,7 @@ const ifAuthenticated = (to: any, from: any, next: any) => {
 }
 
 const ifNewUser = (to: any, from: any, next: any) => {
-  if (store.getters.isNewUser) {
+  if (store.getters['Accounts/isNewUser']) {
     // if this is a new user then proceed
     next()
     return

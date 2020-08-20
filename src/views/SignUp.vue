@@ -14,10 +14,10 @@ import { mapActions, mapGetters } from 'vuex'
 
 @Component({
   computed: {
-    ...mapGetters(['isNewUser'])
+    ...mapGetters('Accounts', ['isNewUser'])
   },
   methods: {
-    ...mapActions(['signUp'])
+    ...mapActions('Accounts', ['signUp'])
   }
 })
 export default class SignUp extends Vue {

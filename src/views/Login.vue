@@ -13,10 +13,10 @@ import { mapActions, mapGetters } from 'vuex'
 
 @Component({
   computed: {
-    ...mapGetters(['isAuthenticated'])
+    ...mapGetters('Auth', ['isAuthenticated'])
   },
   methods: {
-    ...mapActions(['login'])
+    ...mapActions('Auth', ['login'])
   }
 })
 export default class Login extends Vue {

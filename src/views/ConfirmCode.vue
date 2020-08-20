@@ -14,11 +14,11 @@ import { mapGetters, mapActions, mapState } from 'vuex'
 
 @Component({
   computed: {
-    ...mapState({ newUserEmail: 'newUserEmail' }),
-    ...mapGetters(['isNewUser, isConfirmCodeSuccess', 'statusMessage'])
+    ...mapState('Accounts', { newUserEmail: 'newUserEmail' }),
+    ...mapGetters('Accounts', ['isNewUser', 'statusMessage'])
   },
   methods: {
-    ...mapActions(['confirmCode'])
+    ...mapActions('Accounts', ['confirmCode'])
   }
 })
 export default class ConfirmCode extends Vue {

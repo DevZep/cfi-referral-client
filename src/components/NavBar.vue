@@ -67,10 +67,10 @@ import { mapActions, mapGetters } from 'vuex'
 
 @Component({
   computed: {
-    ...mapGetters(['isAuthenticated'])
+    ...mapGetters('Auth', ['isAuthenticated'])
   },
   methods: {
-    ...mapActions(['signOut'])
+    ...mapActions('Auth', ['signOut'])
   }
 })
 export default class NavBar extends Vue {

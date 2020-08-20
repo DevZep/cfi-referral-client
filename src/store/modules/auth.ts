@@ -84,8 +84,8 @@ const module: Module<AuthState, RootState> = {
   state,
   mutations,
   actions,
-  getters
-  // namespaced: true
+  getters,
+  namespaced: true
 }
 
 export default module

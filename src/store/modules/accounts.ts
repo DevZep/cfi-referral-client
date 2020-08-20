@@ -63,8 +63,8 @@ const module: Module<AccountState, RootState> = {
   state,
   mutations,
   actions,
-  getters
-  // namespaced: true
+  getters,
+  namespaced: true
 }
 
 export default module
