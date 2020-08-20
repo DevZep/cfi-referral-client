@@ -8,7 +8,7 @@
         <span>Referral</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <div v-if="!authenticated" >
+      <div v-if="!isAuthenticated" >
       <v-btn text color="grey">
         <span>Signup</span>
         <v-icon>mdi-account-plus</v-icon>
@@ -18,7 +18,7 @@
         <v-icon>mdi-login</v-icon>
       </v-btn>
       </div>
-      <v-btn v-if="authenticated" text color="grey" @click="submitSignOut()">
+      <v-btn v-if="isAuthenticated" text color="grey" @click="submitSignOut()">
         <span>Sign Out</span>
         <v-icon>mdi-logout</v-icon>
       </v-btn>
@@ -63,11 +63,11 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 @Component({
   computed: {
-    ...mapState(['authenticated'])
+    ...mapGetters(['isAuthenticated'])
   },
   methods: {
     ...mapActions(['signOut'])

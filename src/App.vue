@@ -8,14 +8,28 @@
   </v-app>
 </template>
 
-<script>
+<script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { mapGetters, mapActions } from 'vuex'
 import NavBar from '@/components/NavBar.vue'
 
-  @Component({
-    components: {
-      NavBar
+@Component({
+  components: {
+    NavBar
+  },
+  computed: {
+    ...mapGetters(['isAuthenticated']),
+    ...mapActions(['currentSession'])
+  }
+})
+export default class App extends Vue {
+  isAuthenticated!: boolean // from the mapGetters above
+  currentSession!: () => void // from the mapActions above
+
+  created () {
+    if (this.isAuthenticated) {
+      this.currentSession()
     }
-  })
-export default class App extends Vue {}
+  }
+}
 </script>

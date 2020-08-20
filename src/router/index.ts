@@ -1,6 +1,27 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
+import About from '../views/About.vue'
+import Login from '../views/Login.vue'
+import store from '../store'
+
+const ifNotAuthenticated = (to: any, from: any, next: any) => {
+  if (!store.getters.isAuthenticated) {
+    next()
+    return
+  }
+  next('/')
+}
+
+const ifAuthenticated = (to: any, from: any, next: any) => {
+  if (store.getters.isAuthenticated) {
+    // if user is authenticated then proceed
+    next()
+    return
+  }
+  // ...else redirect the user to the login screen
+  next('/login')
+}
 
 Vue.use(VueRouter)
 
@@ -13,18 +34,14 @@ const routes: Array<RouteConfig> = [
   {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: About,
+    beforeEnter: ifAuthenticated
   },
   {
     path: '/login',
     name: 'Login',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../components/Login.vue')
+    component: Login,
+    beforeEnter: ifNotAuthenticated
   },
   {
     // catch all 404 - define at the very end

@@ -9,24 +9,27 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 @Component({
+  computed: {
+    ...mapGetters(['isAuthenticated'])
+  },
   methods: {
     ...mapActions(['login'])
   }
 })
 export default class Login extends Vue {
   login!: (credentials: {}) => void // from the mapActions above
+  isAuthenticated!: boolean // from the mapGetters above
   username = ''
   password = ''
 
   async submitLogin () {
     if (this.username !== '' && this.password !== '') {
-      const username = this.username
-      const password = this.password
+      const { username, password } = this
       await this.login({ username, password })
-      if (this.$store.state.authenticated) { this.$router.push('/about') }
+      if (this.isAuthenticated) { this.$router.push('/') }
     }
   }
 }

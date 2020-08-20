@@ -6,19 +6,42 @@
       <v-spacer></v-spacer>
       <i>Volunteer Referral App</i>
     </div>
+    <div class="center">
+      <div v-if="loading()">
+        <Loading />
+      </div>
+      <div v-if="!isAuthenticated && authStatus !== 'loading'">
+        <Login />
+      </div>
+      <div v-if="isAuthenticated && authStatus !== 'loading'">
+        <p>Welcome {{ user.email }} </p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
+import { mapGetters } from 'vuex'
+import Login from './Login.vue'
 
 @Component({
   components: {
-    HelloWorld
+    Login
+  },
+  computed: {
+    ...mapGetters({ user: 'getUser' }),
+    ...mapGetters(['isAuthenticated', 'authStatus'])
   }
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  isAuthenticated!: boolean // from the mapGetters above
+  authStatus!: string
+
+  loading () {
+    return this.authStatus === 'loading' && !this.isAuthenticated
+  }
+}
 </script>
 
 <style scoped>
