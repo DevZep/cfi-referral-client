@@ -23,7 +23,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { mapGetters } from 'vuex'
-import Login from './Login.vue'
+import Login from '@/components/Login.vue'
 
 @Component({
   components: {

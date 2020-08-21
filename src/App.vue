@@ -2,11 +2,9 @@
   <v-app class="grey lighten-4">
     <NavBar />
     <div class="main-container">
-      <CenterContainer>
-        <v-content>
-          <router-view></router-view>
-        </v-content>
-      </CenterContainer>
+      <v-content>
+        <router-view></router-view>
+      </v-content>
     </div>
   </v-app>
 </template>
@@ -53,6 +51,10 @@ ul {
 .center {
   margin: auto;
   width: 50%;
+  border: 3px solid rgba(248, 251, 250, 0.561);
+  padding: 10px;
+}
+input {
   border: 3px solid rgba(248, 251, 250, 0.561);
   padding: 10px;
 }

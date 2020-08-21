@@ -1,5 +1,5 @@
 <template>
-  <div class="NotFound">
+  <div id="404" class="center">
     <v-container>
       <v-layout row wrap>
         <v-flex xs12>

@@ -4,16 +4,18 @@ import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
 import SignUp from '@/views/SignUp.vue'
 import ConfirmCode from '@/views/ConfirmCode.vue'
+import ReferralForm from '@/views/ReferralForm.vue'
+import ReferralCounter from '@/views/ReferralCounter.vue'
 import NotFound from '@/views/NotFound.vue'
 import store from '../store'
 
-const ifNotAuthenticated = (to: any, from: any, next: any) => {
-  if (!store.getters['Auth/isAuthenticated']) {
-    next()
-    return
-  }
-  next('/')
-}
+// const ifNotAuthenticated = (to: any, from: any, next: any) => {
+//   if (!store.getters['Auth/isAuthenticated']) {
+//     next()
+//     return
+//   }
+//   next('/')
+// }
 
 const ifAuthenticated = (to: any, from: any, next: any) => {
   if (store.getters['Auth/isAuthenticated']) {
@@ -58,6 +60,17 @@ const routes: Array<RouteConfig> = [
     name: 'ConfirmCode',
     component: ConfirmCode,
     beforeEnter: ifNewUser
+  },
+  {
+    path: '/referralForm',
+    name: 'ReferralForm',
+    component: ReferralForm,
+    beforeEnter: ifAuthenticated
+  },
+  {
+    path: '/referralCounter',
+    name: 'ReferralCounter',
+    component: ReferralCounter
   },
   {
     // catch all 404 - define at the very end
