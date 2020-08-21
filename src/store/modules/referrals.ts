@@ -5,22 +5,40 @@ import { s3Upload } from '../../aws/s3Upload'
 import router from '@/router'
 
 export interface ReferralState {
-  client: {};
+  referral: {
+    name: string;
+    phone: string;
+  };
   count: number;
 }
 
 const state: ReferralState = {
-  client: {},
+  referral: {
+    name: 'DADOU',
+    phone: '+855123123'
+  },
   count: 0
 }
 
 const mutations: MutationTree<ReferralState> = {
   UPDATE_COUNT (state, count) {
     state.count = count
+  },
+  SET_REFERRAL (state, referral) {
+    state.referral = referral
   }
 }
 
 const actions: ActionTree<ReferralState, RootState> = {
+  async fetchReferral ({ commit }, { referralId }) {
+    try {
+      const res = await API.get('referrals', `/referrals/${referralId}`, {})
+      console.log('REFERRAL', res)
+      commit('SET_REFERRAL', res)
+    } catch (e) {
+      console.error('Error fetching referral: ', e)
+    }
+  },
   async fetchCount ({ commit }) {
     try {
       const res = await API.get('count', '/count', {})
@@ -50,7 +68,8 @@ const actions: ActionTree<ReferralState, RootState> = {
 }
 
 const getters: GetterTree<ReferralState, RootState> = {
-  getCount: state => state.count
+  getCount: state => state.count,
+  getReferral: state => state.referral
 }
 
 const module: Module<ReferralState, RootState> = {
