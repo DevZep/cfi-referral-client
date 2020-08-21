@@ -1,6 +1,7 @@
 import { Module, ActionTree, MutationTree, GetterTree } from 'vuex'
 import { RootState } from '@/store'
 import { API } from 'aws-amplify'
+import { s3Upload } from '../../aws/s3Upload'
 import router from '@/router'
 
 export interface ReferralState {
@@ -16,14 +17,15 @@ const mutations: MutationTree<ReferralState> = {
 }
 
 const actions: ActionTree<ReferralState, RootState> = {
-  async submitReferral ({ commit }, { clientname, clientphone }) {
-    console.log('Posting Referral to AWS!!', clientname)
+  async submitReferral ({ commit }, { clientname, clientphone, clientphoto }) {
     // Set to a loading state
     try {
+      const s3key = clientphoto ? await s3Upload(clientphoto) : null
       await API.post('referrals', '/referrals', {
         body: {
           name: clientname,
-          phone: clientphone
+          phone: clientphone,
+          photo: s3key
         }
       })
       router.push('/referralCounter')

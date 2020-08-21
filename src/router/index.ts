@@ -9,14 +9,6 @@ import ReferralCounter from '@/views/ReferralCounter.vue'
 import NotFound from '@/views/NotFound.vue'
 import store from '../store'
 
-// const ifNotAuthenticated = (to: any, from: any, next: any) => {
-//   if (!store.getters['Auth/isAuthenticated']) {
-//     next()
-//     return
-//   }
-//   next('/')
-// }
-
 const ifAuthenticated = (to: any, from: any, next: any) => {
   if (store.getters['Auth/isAuthenticated']) {
     // if user is authenticated then proceed
