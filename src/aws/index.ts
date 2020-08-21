@@ -37,6 +37,11 @@ Amplify.configure({
         name: 'referrals',
         endpoint: config.apiGateway.URL,
         region: config.apiGateway.REGION
+      },
+      {
+        name: 'count',
+        endpoint: config.apiGateway.URL,
+        region: config.apiGateway.REGION
       }
     ]
   }

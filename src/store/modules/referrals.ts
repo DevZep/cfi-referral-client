@@ -6,17 +6,29 @@ import router from '@/router'
 
 export interface ReferralState {
   client: {};
+  count: number;
 }
 
 const state: ReferralState = {
-  client: {}
+  client: {},
+  count: 0
 }
 
 const mutations: MutationTree<ReferralState> = {
-
+  UPDATE_COUNT (state, count) {
+    state.count = count
+  }
 }
 
 const actions: ActionTree<ReferralState, RootState> = {
+  async fetchCount ({ commit }) {
+    try {
+      const res = await API.get('count', '/count', {})
+      commit('UPDATE_COUNT', res.Count)
+    } catch (e) {
+      console.error('Error fetching count: ', e)
+    }
+  },
   async submitReferral ({ commit }, { clientname, clientphone, clientphoto }) {
     // Set to a loading state
     try {
@@ -32,13 +44,13 @@ const actions: ActionTree<ReferralState, RootState> = {
     } catch (e) {
       // Set to NOT loading state
       // Handle error
-      console.log('Error in SubmitReferral: ', e)
+      console.error('Error in SubmitReferral: ', e)
     }
   }
 }
 
 const getters: GetterTree<ReferralState, RootState> = {
-
+  getCount: state => state.count
 }
 
 const module: Module<ReferralState, RootState> = {
