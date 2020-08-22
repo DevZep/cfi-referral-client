@@ -1,5 +1,5 @@
 <template>
-  <div class="loader loader--style2">
+  <div id='loading' class="loader loader--style2">
     <svg
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"

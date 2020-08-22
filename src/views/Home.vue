@@ -14,7 +14,7 @@
         <Login />
       </div>
       <div v-if="isAuthenticated && authStatus !== 'loading'">
-        <p>Welcome {{ user.email }} </p>
+        <p id='welcomeMessage'>Welcome {{ user.email }}</p>
       </div>
     </div>
   </div>
