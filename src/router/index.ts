@@ -6,7 +6,6 @@ import SignUp from '@/views/SignUp.vue'
 import ConfirmCode from '@/views/ConfirmCode.vue'
 import ReferralForm from '@/views/ReferralForm.vue'
 import ReferralCounter from '@/views/ReferralCounter.vue'
-import ReferralShow from '@/views/ReferralShow.vue'
 import NotFound from '@/views/NotFound.vue'
 import store from '../store'
 
@@ -64,11 +63,6 @@ const routes: Array<RouteConfig> = [
     path: '/referralCounter',
     name: 'ReferralCounter',
     component: ReferralCounter
-  },
-  {
-    path: '/referralShow/:id',
-    name: 'ReferralShow',
-    component: ReferralShow
   },
   {
     // catch all 404 - define at the very end

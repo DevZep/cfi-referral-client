@@ -30,19 +30,10 @@ const mutations: MutationTree<ReferralState> = {
 }
 
 const actions: ActionTree<ReferralState, RootState> = {
-  async fetchReferral ({ commit }, { referralId }) {
-    try {
-      const res = await API.get('referrals', `/referrals/${referralId}`, {})
-      console.log('REFERRAL', res)
-      commit('SET_REFERRAL', res)
-    } catch (e) {
-      console.error('Error fetching referral: ', e)
-    }
-  },
   async fetchCount ({ commit }) {
     try {
       const res = await API.get('count', '/count', {})
-      commit('UPDATE_COUNT', res.Count)
+      commit('UPDATE_COUNT', res.referralCount)
     } catch (e) {
       console.error('Error fetching count: ', e)
     }
