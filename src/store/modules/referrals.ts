@@ -33,7 +33,7 @@ const actions: ActionTree<ReferralState, RootState> = {
   async fetchCount ({ commit }) {
     try {
       const res = await API.get('count', '/count', {})
-      commit('UPDATE_COUNT', res.referralCount)
+      if (res) commit('UPDATE_COUNT', res.referralCount)
     } catch (e) {
       console.error('Error fetching count: ', e)
     }
