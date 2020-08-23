@@ -12,7 +12,7 @@ localVue.component('Loading', Loading)
 describe('Home.vue', () => {
   let store: any
   let wrapper: any
-  const stubsList = ['v-spacer', 'v-btn']
+  const stubsList = ['v-spacer', 'v-btn', 'router-link']
 
   beforeEach(() => {
     // Mock the Vuex store Auth namespace
@@ -69,7 +69,7 @@ describe('Home.vue', () => {
 
     it('updates the email address based on the logged in user', () => {
       store.state.Auth.user = { email: 'somethingelse@email.com' }
-      wrapper = shallowMount(Home, { localVue, store, stubs: ['v-spacer'] })
+      wrapper = shallowMount(Home, { localVue, store, stubs: stubsList })
       expect(wrapper.find('#welcomeMessage').text().trim()).to.eq('Welcome somethingelse@email.com')
     })
   })
