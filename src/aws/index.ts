@@ -1,22 +1,9 @@
 import Amplify, { Auth } from 'aws-amplify'
 import '@aws-amplify/ui-vue'
+import config from './config'
 
-const config = {
-  s3: {
-    REGION: 'ap-southeast-1',
-    BUCKET: 'cfi-referrals-uploads'
-  },
-  apiGateway: {
-    REGION: 'ap-southeast-1',
-    URL: 'https://r2ezcyy4oj.execute-api.ap-southeast-1.amazonaws.com/prod'
-  },
-  cognito: {
-    REGION: 'ap-southeast-1',
-    USER_POOL_ID: 'ap-southeast-1_k8wtO4A4h',
-    APP_CLIENT_ID: '7o5ejd170d1idos7ittap044lq',
-    IDENTITY_POOL_ID: 'ap-southeast-1:18bf9795-6fbc-4345-aef5-7db31dd08e67'
-  }
-}
+console.log('IN INDEX', config)
+console.log('CONFIG: process.env.VUE_APP_STAGE', process.env.VUE_APP_STAGE)
 
 Amplify.configure({
   Auth: {
