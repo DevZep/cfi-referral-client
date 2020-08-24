@@ -15,6 +15,7 @@
       </div>
       <div v-if="isAuthenticated && authStatus !== 'loading'">
         <p id='welcomeMessage'>Welcome {{ user.email }}</p>
+        <h1>For Demo Purpose</h1>
         <router-link to='referralForm'>Create New Referral</router-link>
       </div>
     </div>
