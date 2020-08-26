@@ -3,6 +3,7 @@
     <h3>Referral Form</h3>
     <input type="text" name="clientname" v-model="clientname" placeholder="Client Name" />
     <input type="text" name="clientphone" v-model="clientphone" placeholder="Client Phone" />
+    <input type="text" name="clientnote" v-model="clientnote" placeholder="Client Note" />
     <label class="file-select">
       <!-- We can't use a normal button element here, as it would become the target of the label. -->
       <div class="select-button">
@@ -30,6 +31,7 @@ export default class ReferralForm extends Vue {
   submitReferral!: (referral: {}) => void // from the mapActions above
   clientname = ''
   clientphone = ''
+  clientnote = ''
   clientphoto = null
 
   validateForm () {
@@ -43,8 +45,8 @@ export default class ReferralForm extends Vue {
 
   async submit () {
     if (this.validateForm()) {
-      const { clientname, clientphone, clientphoto } = this
-      await this.submitReferral({ clientname, clientphone, clientphoto })
+      const { clientname, clientphone, clientphoto, clientnote } = this
+      await this.submitReferral({ clientname, clientphone, clientphoto, clientnote })
     }
   }
 }
