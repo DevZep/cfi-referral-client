@@ -3,7 +3,9 @@
     <h3>Referral Form</h3>
     <input type="text" name="clientname" v-model="clientname" placeholder="Client Name" />
     <input type="text" name="clientphone" v-model="clientphone" placeholder="Client Phone" />
-    <input type="text" name="clientnote" v-model="clientnote" placeholder="Client Note" />
+    <input type="text" name="clientnote" v-model="clientnote" placeholder="Client Note" /><br>
+    <label for="">Date of Birth:</label>
+    <input type="date" name="clientbirth" v-model="clientbirth" />
     <label class="file-select">
       <!-- We can't use a normal button element here, as it would become the target of the label. -->
       <div class="select-button">
@@ -32,10 +34,11 @@ export default class ReferralForm extends Vue {
   clientname = ''
   clientphone = ''
   clientnote = ''
+  clientbirth = ''
   clientphoto = null
 
   validateForm () {
-    return this.clientname !== '' && this.clientphone !== ''
+    return this.clientname !== '' && this.clientphone !== '' && this.clientbirth !== ''
   }
 
   handleFileChange (e: any) {
@@ -45,8 +48,8 @@ export default class ReferralForm extends Vue {
 
   async submit () {
     if (this.validateForm()) {
-      const { clientname, clientphone, clientphoto, clientnote } = this
-      await this.submitReferral({ clientname, clientphone, clientphoto, clientnote })
+      const { clientname, clientphone, clientphoto, clientnote, clientbirth } = this
+      await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth })
     }
   }
 }
