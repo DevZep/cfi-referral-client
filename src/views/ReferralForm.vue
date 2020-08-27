@@ -2,7 +2,7 @@
   <div id="referralForm" class="center">
     <h3>Referral Form</h3>
     <input type="text" name="clientname" v-model="clientname" placeholder="Client Name" />
-    <input type="text" name="clientphone" v-model="clientphone" placeholder="Client Phone" />
+    <input type="tel" name="clientphone" v-model="clientphone" placeholder="Client Phone" />
     <input type="text" name="clientnote" v-model="clientnote" placeholder="Client Note" /><br>
     <label for="">Date of Birth:</label>
     <input type="date" name="clientbirth" v-model="clientbirth" />
@@ -15,10 +15,7 @@
         <option>Unknown</option>
         <option>Prefer not to answer</option>
     </select>
-    <form action="">
-      <label for="phone">Enter a phone number:</label>
-      <input type="tel" id="phone" name="phone" placeholder="123-45-678">
-    </form>
+
     <label class="file-select">
       <!-- We can't use a normal button element here, as it would become the target of the label. -->
       <div class="select-button">
