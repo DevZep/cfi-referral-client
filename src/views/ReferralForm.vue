@@ -15,6 +15,20 @@
         <option>Unknown</option>
         <option>Prefer not to answer</option>
     </select>
+    <br>
+    <label>GPS Location:</label>
+    <input type="text" name="latitude" v-model="location" placeholder="Latitude"/>
+    <input type="text" name="longitude" v-model="location" placeholder="Longitude"/><br>
+    <label>Location Classification:</label>
+    <select v-model="location">
+        <option selected disabled>Please select one</option>
+        <option>home</option>
+        <option>School</option>
+        <option>work</option>
+        <option>family member</option>
+        <option>friend</option>
+        <option>commune/village</option>
+    </select>
 
     <label class="file-select">
       <!-- We can't use a normal button element here, as it would become the target of the label. -->
