@@ -23,6 +23,10 @@
 [context.branch-deploy]
   command = "VUE_APP_STAGE=dev npm run build"
 
+# This is the build context for the staging branch
+[context.staging]
+  command = "VUE_APP_STAGE=staging npm run build"
+
 # Always redirect any request to our index.html
 # and return the status code 200.
 [[redirects]]
