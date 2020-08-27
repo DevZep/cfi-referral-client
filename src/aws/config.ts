@@ -1,7 +1,7 @@
 const dev = {
   s3: {
     REGION: 'ap-southeast-1',
-    BUCKET: 'cfi-referral-api-dev-attachmentsbucket-1cohl5t7ziug3'
+    BUCKET: 'cfi-referral-api-dev-attachments-1cohl5t7ziug3'
   },
   apiGateway: {
     REGION: 'ap-southeast-1',
