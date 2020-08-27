@@ -1,5 +1,6 @@
 <template>
   <v-app class="grey lighten-4">
+    <b v-if="env !== 'PROD'" class='warning'>WARNING: THE APP IS RUNNING IN {{env}} MODE. DO NOT USE REAL CLIENT REFERRAL DATA!</b>
     <NavBar />
     <div class="main-container">
       <v-content>
@@ -28,6 +29,7 @@ import NavBar from '@/components/NavBar.vue'
 export default class App extends Vue {
   isAuthenticated!: boolean // from the mapGetters above
   currentSession!: () => void // from the mapActions above
+  env = process.env.VUE_APP_STAGE ? process.env.VUE_APP_STAGE.toUpperCase() : 'DEV'
 
   created () {
     if (this.isAuthenticated) {
@@ -57,6 +59,9 @@ ul {
 input {
   border: 3px solid rgba(248, 251, 250, 0.561);
   padding: 10px;
+}
+.warning {
+  color: rgba(248, 251, 250, 0.561)
 }
 </style>
 
