@@ -38,7 +38,7 @@ const actions: ActionTree<ReferralState, RootState> = {
       console.error('Error fetching count: ', e)
     }
   },
-  async submitReferral ({ commit }, { clientname, clientphone, clientphoto, clientnote, clientbirth }) {
+  async submitReferral ({ commit }, { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender }) {
     // Set to a loading state
     try {
       const s3key = clientphoto ? await s3Upload(clientphoto) : null
@@ -48,6 +48,7 @@ const actions: ActionTree<ReferralState, RootState> = {
           phone: clientphone,
           note: clientnote,
           dob: clientbirth,
+          gender: clientgender,
           photo: s3key
         }
       })

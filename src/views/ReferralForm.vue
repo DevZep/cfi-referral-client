@@ -6,6 +6,19 @@
     <input type="text" name="clientnote" v-model="clientnote" placeholder="Client Note" /><br>
     <label for="">Date of Birth:</label>
     <input type="date" name="clientbirth" v-model="clientbirth" />
+    <label>Gender: </label>
+    <select v-model="clientgender">
+        <option selected disabled>Please select one</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+        <option>Unknown</option>
+        <option>Prefer not to answer</option>
+    </select>
+    <form action="">
+      <label for="phone">Enter a phone number:</label>
+      <input type="tel" id="phone" name="phone" placeholder="123-45-678">
+    </form>
     <label class="file-select">
       <!-- We can't use a normal button element here, as it would become the target of the label. -->
       <div class="select-button">
@@ -35,10 +48,11 @@ export default class ReferralForm extends Vue {
   clientphone = ''
   clientnote = ''
   clientbirth = ''
+  clientgender = ''
   clientphoto = null
 
   validateForm () {
-    return this.clientname !== '' && this.clientphone !== '' && this.clientbirth !== ''
+    return this.clientname !== '' && this.clientphone !== '' && this.clientbirth !== '' && this.clientgender !== ''
   }
 
   handleFileChange (e: any) {
@@ -48,8 +62,8 @@ export default class ReferralForm extends Vue {
 
   async submit () {
     if (this.validateForm()) {
-      const { clientname, clientphone, clientphoto, clientnote, clientbirth } = this
-      await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth })
+      const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender } = this
+      await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender })
     }
   }
 }
