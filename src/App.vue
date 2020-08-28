@@ -1,6 +1,6 @@
 <template>
   <v-app class="grey lighten-4">
-    <b v-if="env !== 'PROD'" class='warning'>WARNING: THE APP IS RUNNING IN {{env}} MODE. DO NOT USE REAL CLIENT REFERRAL DATA!!</b>
+    <b v-if="env !== 'PROD'" class='warning'>WARNING: THE APP IS RUNNING IN {{env}} MODE. DO NOT USE REAL CLIENT REFERRAL DATA!</b>
     <NavBar />
     <div class="main-container">
       <v-content>
