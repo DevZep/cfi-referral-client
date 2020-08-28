@@ -10,8 +10,6 @@ export function initSentry () {
     return
   }
 
-  console.log('IN INIT SENTRY')
-
   Sentry.init({
     dsn: 'https://43539ad690ef4c99a30b24b99c555a0a@o440420.ingest.sentry.io/5409343',
     integrations: [
