@@ -16,11 +16,11 @@
         <option>Prefer not to answer</option>
     </select>
     <br>
-    <label>GPS Location:</label>
-    <input type="text" name="latitude" v-model="location" placeholder="Latitude"/>
-    <input type="text" name="longitude" v-model="location" placeholder="Longitude"/><br>
+    <!-- <label>GPS Location:</label>
+    <input type="text" name="latitude" v-model="latitude" placeholder="Latitude"/>
+    <input type="text" name="longitude" v-model="longitude" placeholder="Longitude"/><br> -->
     <label>Location Classification:</label>
-    <select v-model="location">
+    <select v-model="clientlocation">
         <option selected disabled>Please select one</option>
         <option>home</option>
         <option>School</option>
@@ -60,10 +60,11 @@ export default class ReferralForm extends Vue {
   clientnote = ''
   clientbirth = ''
   clientgender = ''
+  location = ''
   clientphoto = null
 
   validateForm () {
-    return this.clientname !== '' && this.clientphone !== '' && this.clientbirth !== '' && this.clientgender !== ''
+    return this.clientname !== '' && this.clientphone !== '' && this.clientbirth !== '' && this.clientgender !== '' && this.location !== ''
   }
 
   handleFileChange (e: any) {
@@ -73,8 +74,8 @@ export default class ReferralForm extends Vue {
 
   async submit () {
     if (this.validateForm()) {
-      const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender } = this
-      await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender })
+      const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, location } = this
+      await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, location })
     }
   }
 }
