@@ -35,17 +35,17 @@ const staging = {
 const prod = {
   s3: {
     REGION: 'ap-southeast-1',
-    BUCKET: 'cfi-referrals-uploads'
+    BUCKET: 'cfi-referral-api-prod-attachments-1cohl5t7ziug3'
   },
   apiGateway: {
     REGION: 'ap-southeast-1',
-    URL: 'https://r2ezcyy4oj.execute-api.ap-southeast-1.amazonaws.com/prod'
+    URL: 'https://xdw7sad3pc.execute-api.ap-southeast-1.amazonaws.com/prod'
   },
   cognito: {
     REGION: 'ap-southeast-1',
-    USER_POOL_ID: 'ap-southeast-1_k8wtO4A4h',
-    APP_CLIENT_ID: '7o5ejd170d1idos7ittap044lq',
-    IDENTITY_POOL_ID: 'ap-southeast-1:18bf9795-6fbc-4345-aef5-7db31dd08e67'
+    USER_POOL_ID: 'ap-southeast-1_ZySOpqZ9y',
+    APP_CLIENT_ID: '7nspnq03l2ki1l02jtak0817kd',
+    IDENTITY_POOL_ID: 'ap-southeast-1:1afbfb62-7e51-46de-960c-27927149b563'
   }
 }
 
