@@ -2,7 +2,34 @@
   <div id="referralForm" class="center">
     <h3>Referral Form</h3>
     <input type="text" name="clientname" v-model="clientname" placeholder="Client Name" />
-    <input type="text" name="clientphone" v-model="clientphone" placeholder="Client Phone" />
+    <input type="tel" name="clientphone" v-model="clientphone" placeholder="Client Phone" />
+    <input type="text" name="clientnote" v-model="clientnote" placeholder="Client Note" /><br>
+    <label for="">Date of Birth:</label>
+    <input type="date" name="clientbirth" v-model="clientbirth" />
+    <label>Gender: </label>
+    <select v-model="clientgender">
+        <option selected disabled>Please select one</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+        <option>Unknown</option>
+        <option>Prefer not to answer</option>
+    </select>
+    <br>
+    <!-- <label>GPS Location:</label>
+    <input type="text" name="latitude" v-model="latitude" placeholder="Latitude"/>
+    <input type="text" name="longitude" v-model="longitude" placeholder="Longitude"/><br> -->
+    <label>Location Classification:</label>
+    <select v-model="clientlocation">
+        <option selected disabled>Please select one</option>
+        <option>home</option>
+        <option>School</option>
+        <option>work</option>
+        <option>family member</option>
+        <option>friend</option>
+        <option>commune/village</option>
+    </select>
+
     <label class="file-select">
       <!-- We can't use a normal button element here, as it would become the target of the label. -->
       <div class="select-button">
@@ -30,10 +57,14 @@ export default class ReferralForm extends Vue {
   submitReferral!: (referral: {}) => void // from the mapActions above
   clientname = ''
   clientphone = ''
+  clientnote = ''
+  clientbirth = ''
+  clientgender = ''
+  location = ''
   clientphoto = null
 
   validateForm () {
-    return this.clientname !== '' && this.clientphone !== ''
+    return this.clientname !== '' && this.clientphone !== '' && this.clientbirth !== '' && this.clientgender !== '' && this.location !== ''
   }
 
   handleFileChange (e: any) {
@@ -43,8 +74,8 @@ export default class ReferralForm extends Vue {
 
   async submit () {
     if (this.validateForm()) {
-      const { clientname, clientphone, clientphoto } = this
-      await this.submitReferral({ clientname, clientphone, clientphoto })
+      const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, location } = this
+      await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, location })
     }
   }
 }
