@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@aws-amplify/ui-vue": "^0.2.13",
+    "@sentry/browser": "^5.22.0",
+    "@sentry/integrations": "^5.22.0",
+    "@sentry/tracing": "^5.22.0",
     "aws-amplify": "^3.0.23",
     "aws-amplify-vue": "^2.1.2",
     "core-js": "^3.6.5",

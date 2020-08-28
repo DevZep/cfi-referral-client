@@ -5,7 +5,10 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
 import './aws' // setup and configure AWS Amplify
+import { initSentry } from './libs/errorLib' // setup error monitoring
 import Loading from '@/components/Loading.vue'
+
+initSentry()
 
 Vue.component('Loading', Loading)
 Vue.config.productionTip = false
