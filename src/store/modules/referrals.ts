@@ -2,6 +2,7 @@ import { Module, ActionTree, MutationTree, GetterTree } from 'vuex'
 import { RootState } from '@/store'
 import { API } from 'aws-amplify'
 import { s3Upload } from '../../aws/s3Upload'
+import { onError } from '../../libs/errorLib'
 import router from '@/router'
 
 export interface ReferralState {
@@ -36,6 +37,7 @@ const actions: ActionTree<ReferralState, RootState> = {
       if (res && res.referralCount !== undefined) commit('UPDATE_COUNT', res.referralCount)
     } catch (e) {
       console.error('Error fetching count: ', e)
+      onError(e)
     }
   },
   async submitReferral ({ commit }, { clientname, clientphone, clientphoto }) {
