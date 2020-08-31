@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <div class="center">
-      <span class="font-weight-light">CFI</span>
-      <span>Referral</span>
+      <span class="">Child Safe</span>
+      <span> Migration</span>
       <v-spacer></v-spacer>
-      <i>Volunteer Referral App</i>
+      <span>Referral App</span>
     </div>
     <div class="center">
       <div v-if="authStatus === 'loading'">
