@@ -47,6 +47,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { mapActions } from 'vuex'
+import { onError } from '@/libs/errorLib'
 
 @Component({
   methods: {
@@ -62,6 +63,28 @@ export default class ReferralForm extends Vue {
   clientgender = ''
   clientlocation = ''
   clientphoto = null
+  clientlat = 0
+  clientlon = 0
+
+  created () {
+    this.getCurrentPosition()
+  }
+
+  async getCurrentPosition () {
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000
+    }
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        const { latitude, longitude } = position.coords
+        this.clientlat = latitude
+        this.clientlon = longitude
+      }, err => {
+        onError(err)
+      }, options)
+    }
+  }
 
   validateForm () {
     return this.clientname !== '' && this.clientphone !== '' && this.clientbirth !== '' && this.clientgender !== '' && this.clientlocation !== ''
@@ -74,8 +97,8 @@ export default class ReferralForm extends Vue {
 
   async submit () {
     if (this.validateForm()) {
-      const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation } = this
-      await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation })
+      const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon } = this
+      await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon })
     }
   }
 }
