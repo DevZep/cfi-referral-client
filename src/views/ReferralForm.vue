@@ -60,11 +60,11 @@ export default class ReferralForm extends Vue {
   clientnote = ''
   clientbirth = ''
   clientgender = ''
-  location = ''
+  clientlocation = ''
   clientphoto = null
 
   validateForm () {
-    return this.clientname !== '' && this.clientphone !== '' && this.clientbirth !== '' && this.clientgender !== '' && this.location !== ''
+    return this.clientname !== '' && this.clientphone !== '' && this.clientbirth !== '' && this.clientgender !== '' && this.clientlocation !== ''
   }
 
   handleFileChange (e: any) {
@@ -74,8 +74,8 @@ export default class ReferralForm extends Vue {
 
   async submit () {
     if (this.validateForm()) {
-      const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, location } = this
-      await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, location })
+      const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation } = this
+      await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation })
     }
   }
 }
