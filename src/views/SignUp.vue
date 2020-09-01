@@ -1,11 +1,32 @@
 <template>
   <div id="signUp" class='center'>
-    <h3>Sign Up</h3>
-    <input type="text" name="email" v-model="email" placeholder="Email" />
-    <input type="password" name="password" v-model="password" placeholder="Password" />
-    <input type="password" name="passwordConfirm" v-model="passwordConfirm" placeholder="Password" />
-    <v-btn text color="grey" @click="submitSignUp()">Sign Up</v-btn>
-  </div>
+     <div class="center-title">
+      <h3>Child Safe</h3>
+      <h3>Migration Referral App</h3><br>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mt-5 mx-auto">
+        <form >
+          <h3>Sign Up</h3><br>
+          <div class="form-group">
+            <label for="email">Email</label><br>
+            <input type="email" name="email" v-model="email" placeholder="Email@email.com" /><br>
+          </div>
+          <div class="form-group">
+              <label for="">Password</label><br>
+              <input type="password" name="password" v-model="password" placeholder="Password" /><br><br>
+          </div>
+          <div class="form-group">
+              <label for="">Verify Password</label><br>
+              <input type="password" name="passwordConfirm" v-model="passwordConfirm" placeholder="Verify Password" />
+          </div>
+          <v-btn text color="white" class="block" @click="submitSignUp()">Sign Up</v-btn><br><br>
+          <p>Have an account?</p><v-btn text color="green" class="block1" @click="navigate('/')">Sign In</v-btn>
+        </form>
+      </div>
+      </div>
+    </div>
+
 </template>
 
 <script lang="ts">
@@ -26,6 +47,9 @@ export default class SignUp extends Vue {
   email = ''
   password = ''
   passwordConfirm = ''
+  navigate (path: string) {
+    if (this.$route.path !== path) { this.$router.push(path) }
+  }
 
   validateForm () {
     return (
@@ -50,4 +74,27 @@ input {
   border: 3px solid rgba(248, 251, 250, 0.561);
   padding: 10px;
 }
+.block {
+  display: block;
+  width: 60%;
+  border: none;
+  background-color: #4CAF50;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+.block1{
+  float: right;
+  margin-right: 100px;
+  margin-top: -47px;
+}
+input {
+  border: 3px solid rgba(248, 251, 250, 0.561);
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+
 </style>
