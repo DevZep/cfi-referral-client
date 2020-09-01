@@ -1,10 +1,9 @@
 <template>
   <div class="home">
-    <div class="center">
-      <span class="">Child Safe</span>
-      <span> Migration</span>
+    <div class="center-title">
+      <h3>Child Safe</h3>
+      <h3>Migration Referral App</h3>
       <v-spacer></v-spacer>
-      <span>Referral App</span>
     </div>
     <div class="center">
       <div v-if="authStatus === 'loading'">
@@ -44,3 +43,10 @@ export default class Home extends Vue {
   }
 }
 </script>
+<style >
+.center-title{
+  text-align: center;
+  margin-left: -120px;
+  margin-top: 30px;
+}
+</style>
