@@ -69,6 +69,7 @@ input {
   font-size: 16px;
   cursor: pointer;
   text-align: center;
+  margin-bottom: 30px;
 }
 .block1{
   float: right;

@@ -1,10 +1,24 @@
 <template>
   <div id="confirmCode" class='center'>
-    <h3>Confirm Code</h3>
-    <h4>Check your email {{newUserEmail}} for a confirmation code and submit it below.</h4>
-    <input type="text" name="code" v-model="code" placeholder="Code" />
-    <v-btn text color="grey" @click="submitConfirmCode()">Confirm Code</v-btn>
-    <p v-if="statusMessage">{{statusMessage}}</p>
+    <div class="center-title">
+      <h3>Child Safe</h3>
+      <h3>Migration Referral App</h3><br>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mt-5 mx-auto">
+        <form >
+          <h3>Confirm Account</h3>
+          <h4>Check your email {{newUserEmail}} for a confirmation code and submit it below.</h4><br>
+          <div class="form-group">
+            <label for="">Code</label><br>
+            <input type="text" name="code" v-model="code" placeholder="Insert Code" />
+          </div>
+          <v-btn text color="white" class="block" @click="submitConfirmCode()">Submit Code</v-btn>
+          <p>Have an account?</p><v-btn text color="green" class="block1" @click="navigate('/')">Sign In</v-btn><br>
+          <p v-if="statusMessage">{{statusMessage}}</p>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,6 +40,9 @@ export default class ConfirmCode extends Vue {
   newUserEmail!: string
   statusMessage!: string
   isConfirmCodeSuccess!: boolean // from the mapGetters above
+  navigate (path: string) {
+    if (this.$route.path !== path) { this.$router.push(path) }
+  }
 
   code = ''
 
@@ -39,3 +56,31 @@ export default class ConfirmCode extends Vue {
   }
 }
 </script>
+<style>
+.block {
+  display: block;
+  width: 60%;
+  border: none;
+  background-color: #4CAF50;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 100px;
+}
+.block1{
+  float: right;
+  margin-right: 100px;
+  margin-top: -47px;
+}
+input {
+  border: 3px solid rgba(248, 251, 250, 0.561);
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+
+}
+v-btn{
+  margin-bottom: 40px;
+}
+</style>
