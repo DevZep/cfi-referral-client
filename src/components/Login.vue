@@ -6,16 +6,16 @@
           <h3>Sign In</h3><br>
             <div class="form-group">
               <label for="email">Email</label><br>
-              <input type="email" name="email" v-model="email" placeholder="Email@email.com" /><br>
+              <input type="email" name="email" v-model="email" placeholder="Email@email.com" />
             </div>
             <div class="form-group">
               <label for="">Password</label><br>
                 <span class="passwordEye" v-show="password">
                     <span><font-awesome-icon :icon="['fas', 'eye']" @click="password = !password" /></span>
                 </span>
-              <input type="password" name="password" v-model="password" placeholder="Password" /><br><br>
+              <input type="password" name="password" v-model="password" placeholder="Password" /><br>
             </div>
-            <v-btn text color="white" class="block" @click="submitLogin()">Sign In</v-btn><br><br>
+            <v-btn text color="white" class="block" @click="submitLogin()">Sign In</v-btn>
             <v-btn text color="green" class="block1" @click="navigate('/signUp')">Sign Up</v-btn>
         </form>
       </div>
@@ -69,17 +69,16 @@ input {
   font-size: 16px;
   cursor: pointer;
   text-align: center;
-  margin-bottom: 30px;
 }
 .block1{
   float: right;
   margin-right: 100px;
+  margin-top: 10px;
 }
 input {
   border: 3px solid rgba(248, 251, 250, 0.561);
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
-
 }
 </style>

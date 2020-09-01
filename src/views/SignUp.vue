@@ -20,7 +20,7 @@
               <label for="">Verify Password</label><br>
               <input type="password" name="passwordConfirm" v-model="passwordConfirm" placeholder="Verify Password" />
           </div>
-          <v-btn text color="white" class="block" @click="submitSignUp()">Sign Up</v-btn><br><br>
+          <v-btn text color="white" class="block" @click="submitSignUp()">Sign Up</v-btn>
           <p>Have an account?</p><v-btn text color="green" class="block1" @click="navigate('/')">Sign In</v-btn>
         </form>
       </div>
@@ -83,6 +83,7 @@ input {
   font-size: 16px;
   cursor: pointer;
   text-align: center;
+  margin-bottom: 20px;
 }
 .block1{
   float: right;
