@@ -1,46 +1,70 @@
 <template>
   <div id="referralForm" class="center">
-    <h3>Referral Form</h3>
-    <input type="text" name="clientname" v-model="clientname" placeholder="Client Name" />
-    <input type="tel" name="clientphone" v-model="clientphone" placeholder="Client Phone" />
-    <input type="text" name="clientnote" v-model="clientnote" placeholder="Client Note" /><br>
-    <label for="">Date of Birth:</label>
-    <input type="date" name="clientbirth" v-model="clientbirth" />
-    <label>Gender: </label>
-    <select v-model="clientgender">
-        <option selected disabled>Please select one</option>
-        <option>Male</option>
-        <option>Female</option>
-        <option>Other</option>
-        <option>Unknown</option>
-        <option>Prefer not to answer</option>
-    </select>
-    <br>
-    <!-- <label>GPS Location:</label>
-    <input type="text" name="latitude" v-model="latitude" placeholder="Latitude"/>
-    <input type="text" name="longitude" v-model="longitude" placeholder="Longitude"/><br> -->
-    <label>Location Classification:</label>
-    <select v-model="clientlocation">
-        <option selected disabled>Please select one</option>
-        <option>home</option>
-        <option>School</option>
-        <option>work</option>
-        <option>family member</option>
-        <option>friend</option>
-        <option>commune/village</option>
-    </select>
-
-    <label class="file-select">
-      <!-- We can't use a normal button element here, as it would become the target of the label. -->
-      <div class="select-button">
-        <!-- Display the filename if a file has been selected. -->
-        <span v-if="clientphoto">Selected Photo: {{clientphoto.name}}</span>
-        <span v-else>Select Photo</span>
+    <div class="row">
+      <div class="col-md-6 mt-5 mx-auto">
+        <form class="form" >
+          <div class="title">
+              <h4>Refer Client, Referral Form</h4><br>
+          </div><br>
+            <div class="form-group">
+              <label>Name</label><br>
+              <input type="text" name="clientname" v-model="clientname" placeholder="Name" />
+            </div>
+            <div class="form-group">
+              <label for="">Date of Birth</label><br>
+              <input type="date" name="clientbirth" v-model="clientbirth" />
+            </div>
+            <div class="form-group">
+              <form action="">
+                <label>Gender</label><br>
+                <select v-model="clientgender" required>
+                  <option value="" selected disabled >Choose your gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                  <option>Unknown</option>
+                  <option>Prefer not to answer</option>
+                </select>
+              </form>
+            </div><br>
+             <div class="form-group">
+              <label>Phone</label><br>
+              <input type="tel" name="clientphone" v-model="clientphone" placeholder="Phone Number" />
+            </div>
+            <div class="form-group">
+              <label for="">Photo</label>
+                <label class="file-select">
+                <!-- We can't use a normal button element here, as it would become the target of the label. -->
+                <div class="select-button">
+                  <!-- Display the filename if a file has been selected. -->
+                  <span v-if="clientphoto">Selected Photo: {{clientphoto.name}}</span>
+                  <span v-else>Select Photo</span>
+                </div>
+                <!-- Now, the file input that we hide. -->
+                <input type="file" @change="handleFileChange"/>
+                </label>
+            </div><br>
+            <div class="form-group">
+              <label>Location</label><br>
+                <select v-model="clientlocation" required>
+                    <option value="" selected disabled >Choose your locatoin</option>
+                    <option>home</option>
+                    <option>School</option>
+                    <option>work</option>
+                    <option>family member</option>
+                    <option>friend</option>
+                    <option>commune/village</option>
+                </select>
+            </div><br>
+            <div class="form-group">
+              <label>Note</label><br>
+               <textarea disabled-text rows="4" cols="22" name="comment" placeholder="Type here..."></textarea><br>
+            </div>
+            <br>
+            <v-btn text color="white" class="block1" @click="submit()">Submit</v-btn>
+        </form>
       </div>
-      <!-- Now, the file input that we hide. -->
-      <input type="file" @change="handleFileChange"/>
-    </label>
-    <v-btn text color="grey" @click="submit()">Submit Referral</v-btn>
+    </div>
   </div>
 </template>
 
@@ -120,4 +144,37 @@ export default class ReferralForm extends Vue {
 .file-select > input[type="file"] {
   display: none;
 }
+select:required:invalid {
+  color: gray;
+}
+.select-button{
+  margin-right: 130px;
+}
+.block1{
+  float: right;
+  margin-right: 100px;
+  margin-top: -47px;
+  background: green;
+  width: 50px;
+  height: 70px;
+  margin-top: 20px;
+}
+.title{
+  background:green;
+  color: white;
+  margin: 0px;
+  text-align: center;
+  padding-top: 15px;
+
+}
+.form-group{
+  margin-left: 40px;
+}
+.form{
+  border-style:groove;
+  padding-top: -90px;
+  padding-bottom: 60px;
+
+}
+
 </style>
