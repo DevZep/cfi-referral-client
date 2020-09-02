@@ -87,8 +87,8 @@ export default class ReferralForm extends Vue {
   clientgender = ''
   clientlocation = ''
   clientphoto = null
-  clientlat = 0
-  clientlon = 0
+  clientlat: number | null = null
+  clientlon: number | null = null
 
   created () {
     this.getCurrentPosition()
@@ -111,7 +111,7 @@ export default class ReferralForm extends Vue {
   }
 
   validateForm () {
-    return this.clientname !== '' && this.clientphone !== '' && this.clientbirth !== '' && this.clientgender !== '' && this.clientlocation !== ''
+    return this.clientname !== '' && this.clientphone !== ''
   }
 
   handleFileChange (e: any) {
