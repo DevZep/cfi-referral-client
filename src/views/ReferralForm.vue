@@ -58,7 +58,7 @@
             </div><br>
             <div class="form-group">
               <label>Note</label><br>
-               <textarea disabled-text rows="4" cols="22" name="comment" placeholder="Type here..."></textarea><br>
+              <textarea disabled-text rows="4" cols="22" name="clientnote" v-model="clientnote" placeholder="Type here..."></textarea><br>
             </div>
             <br>
             <v-btn text color="white" class="block1" @click="submit()">Submit</v-btn>
