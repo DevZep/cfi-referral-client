@@ -15,8 +15,8 @@ export interface ReferralState {
 
 const state: ReferralState = {
   referral: {
-    name: 'DADOU',
-    phone: '+855123123'
+    name: '',
+    phone: ''
   },
   count: 0
 }
@@ -57,7 +57,7 @@ const actions: ActionTree<ReferralState, RootState> = {
           photo: s3key
         }
       })
-      router.push('/referralCounter')
+      router.push('/')
     } catch (e) {
       // Set to NOT loading state
       // Handle error

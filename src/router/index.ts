@@ -5,7 +5,6 @@ import About from '@/views/About.vue'
 import SignUp from '@/views/SignUp.vue'
 import ConfirmCode from '@/views/ConfirmCode.vue'
 import ReferralForm from '@/views/ReferralForm.vue'
-import ReferralCounter from '@/views/ReferralCounter.vue'
 import NotFound from '@/views/NotFound.vue'
 import store from '../store'
 
@@ -58,11 +57,6 @@ const routes: Array<RouteConfig> = [
     name: 'ReferralForm',
     component: ReferralForm,
     beforeEnter: ifAuthenticated
-  },
-  {
-    path: '/referralCounter',
-    name: 'ReferralCounter',
-    component: ReferralCounter
   },
   {
     // catch all 404 - define at the very end

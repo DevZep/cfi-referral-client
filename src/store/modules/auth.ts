@@ -37,13 +37,16 @@ const mutations: MutationTree<AuthState> = {
 }
 
 const actions: ActionTree<AuthState, RootState> = {
-  async login ({ commit }, { email, password }) {
+  async login ({ commit, dispatch }, { email, password }) {
     commit('authRequest')
     try {
       const user = await Auth.signIn(email, password)
       const token = user.signInUserSession.accessToken.jwtToken
       commit('setUser', user.attributes)
       commit('authSuccess', token)
+      // Now the user is authenticated we can ask the
+      // referrals vuex store to fetch the referral count
+      dispatch('Referrals/fetchCount', {}, { root: true })
       localStorage.setItem('user-token', token)
     } catch (e) {
       localStorage.removeItem('user-token')

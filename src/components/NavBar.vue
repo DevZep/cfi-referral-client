@@ -80,8 +80,7 @@ export default class NavBar extends Vue {
   items= [
     { title: 'Home', icon: 'mdi-home', route: '/' },
     { title: 'About', icon: 'mdi-help-box', route: '/about' },
-    { title: 'Referral', icon: 'mdi-help-box', route: '/referralForm' },
-    { title: 'Counter', icon: 'mdi-help-box', route: '/referralCounter' }
+    { title: 'Referral', icon: 'mdi-help-box', route: '/referralForm' }
   ]
 
   navigate (path: string) {
