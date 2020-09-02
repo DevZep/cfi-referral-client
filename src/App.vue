@@ -52,7 +52,7 @@ ul {
 }
 .center {
   margin: auto;
-  width: 50%;
+  width: 80%;
   border: 3px solid rgba(248, 251, 250, 0.561);
   padding: 10px;
 }
@@ -62,11 +62,5 @@ input {
 }
 .warning {
   color: rgba(248, 251, 250, 0.561)
-}
-</style>
-
-<style scoped>
-.main-container {
-  min-height: calc(100vh - 70px);
 }
 </style>
