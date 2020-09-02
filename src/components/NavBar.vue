@@ -8,16 +8,6 @@
         <span>Referral</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <div v-if="!isAuthenticated" >
-      <v-btn text color="grey" @click="navigate('/signUp')">
-        <span>Signup</span>
-        <v-icon>mdi-account-plus</v-icon>
-      </v-btn>
-      <v-btn text color="grey" @click="navigate('/')">
-        <span>Login</span>
-        <v-icon>mdi-login</v-icon>
-      </v-btn>
-      </div>
       <v-btn v-if="isAuthenticated" text color="grey" @click="submitSignOut()">
         <span>Sign Out</span>
         <v-icon>mdi-logout</v-icon>
@@ -79,7 +69,6 @@ export default class NavBar extends Vue {
   drawer = false
   items= [
     { title: 'Home', icon: 'mdi-home', route: '/' },
-    { title: 'About', icon: 'mdi-help-box', route: '/about' },
     { title: 'Referral', icon: 'mdi-help-box', route: '/referralForm' }
   ]
 

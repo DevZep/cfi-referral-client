@@ -37,11 +37,6 @@ const routes: Array<RouteConfig> = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    component: About
-  },
-  {
     path: '/signUp',
     name: 'SignUp',
     component: SignUp
