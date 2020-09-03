@@ -61,7 +61,8 @@ export default class SignUp extends Vue {
       passwordRules: [
         (v: string) => (v && v.length >= 8) || 'Password must have at least 8 characters',
         (v: string) => /(?=.*[A-Z])/.test(v) || 'Must have one uppercase character',
-        (v: string) => /(?=.*\d)/.test(v) || 'Must have one number'
+        (v: string) => /(?=.*\d)/.test(v) || 'Must have one number',
+        (v: string) => /(?=.*[a-z])/.test(v) || 'Must have one lower case'
       ]
     }
   }
