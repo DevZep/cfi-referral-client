@@ -59,11 +59,9 @@ export default class SignUp extends Vue {
   data () {
     return {
       passwordRules: [
-        // v => !!v || 'Password is required',
-        v => (v && v.length >= 8) || 'Password must have at least 8 characters',
-        v => /(?=.*[A-Z])/.test(v) || 'Must have one uppercase character',
-        v => /(?=.*\d)/.test(v) || 'Must have one number',
-        v => /([!@$%])/.test(v) || 'Must have one special character [!@#$%]'
+        (v: string) => (v && v.length >= 8) || 'Password must have at least 8 characters',
+        (v: string) => /(?=.*[A-Z])/.test(v) || 'Must have one uppercase character',
+        (v: string) => /(?=.*\d)/.test(v) || 'Must have one number'
       ]
     }
   }
@@ -115,11 +113,5 @@ input {
   margin-top: 10px;
   margin-bottom: 10px;
 
-}
-v-text-field{
-  border: 3px solid rgba(248, 251, 250, 0.561);
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 </style>
