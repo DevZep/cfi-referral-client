@@ -4,7 +4,7 @@
       <h3>Child Safe</h3>
       <h3>Migration Referral App</h3><br>
     </div>
-    <div class="row">
+    <div class="row" id="app">
       <div class="col-md-6 mt-5 mx-auto">
         <form >
           <h3>Sign Up</h3><br>
@@ -14,8 +14,15 @@
           </div>
           <div class="form-group">
               <label for="">Password</label><br>
-              <input type="password" name="password" v-model="password" placeholder="Password" /><br><br>
+              <!-- <input type="password" name="password" v-model="password" placeholder="Password" /><br><br> -->
           </div>
+          <v-text-field
+                  v-model="password"
+                  type="password"
+                  :rules="passwordRules"
+                  error-count="5"
+                  required
+          ></v-text-field>
           <div class="form-group">
               <label for="">Verify Password</label><br>
               <input type="password" name="passwordConfirm" v-model="passwordConfirm" placeholder="Verify Password" />
@@ -26,9 +33,7 @@
       </div>
       </div>
     </div>
-
 </template>
-
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { mapActions, mapGetters } from 'vuex'
@@ -51,11 +56,24 @@ export default class SignUp extends Vue {
     if (this.$route.path !== path) { this.$router.push(path) }
   }
 
+  data () {
+    return {
+      passwordRules: [
+        // v => !!v || 'Password is required',
+        v => (v && v.length >= 8) || 'Password must have at least 8 characters',
+        v => /(?=.*[A-Z])/.test(v) || 'Must have one uppercase character',
+        v => /(?=.*\d)/.test(v) || 'Must have one number',
+        v => /([!@$%])/.test(v) || 'Must have one special character [!@#$%]'
+      ]
+    }
+  }
+
   validateForm () {
     return (
       this.email !== '' &&
       this.password !== '' &&
       this.password === this.passwordConfirm
+
     )
   }
 
@@ -67,6 +85,7 @@ export default class SignUp extends Vue {
     }
   }
 }
+
 </script>
 
 <style scoped>
@@ -97,5 +116,10 @@ input {
   margin-bottom: 10px;
 
 }
-
+v-text-field{
+  border: 3px solid rgba(248, 251, 250, 0.561);
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 </style>
