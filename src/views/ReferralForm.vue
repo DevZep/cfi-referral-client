@@ -2,68 +2,118 @@
   <div id="referralForm" class="center">
     <div class="row">
       <div class="col-md-6 mt-5 mx-auto">
-        <form class="form" >
-          <div class="title">
-              <h4>Refer Client, Referral Form</h4><br>
-          </div><br>
-            <div class="form-group">
-              <label>Name</label><br>
-              <input type="text" name="clientname" v-model="clientname" placeholder="Name" />
-            </div>
-            <div class="form-group">
-              <label for="">Date of Birth</label><br>
-              <input type="date" name="clientbirth" v-model="clientbirth" />
-            </div>
-            <div class="form-group">
-              <form action="">
-                <label>Gender</label><br>
-                <select v-model="clientgender" required>
-                  <option value="" selected disabled >Choose your gender</option>
-                  <option>Male</option>
-                  <option>Female</option>
-                  <option>Other</option>
-                  <option>Unknown</option>
-                  <option>Prefer not to answer</option>
-                </select>
-              </form>
-            </div><br>
-             <div class="form-group">
-              <label>Phone</label><br>
-              <input type="tel" name="clientphone" v-model="clientphone" placeholder="Phone Number" />
-            </div>
-            <div class="form-group">
-              <label for="">Photo</label>
-                <label class="file-select">
-                <!-- We can't use a normal button element here, as it would become the target of the label. -->
-                <div class="select-button">
-                  <!-- Display the filename if a file has been selected. -->
-                  <span v-if="clientphoto">Selected Photo: {{clientphoto.name}}</span>
-                  <span v-else>Select Photo</span>
-                </div>
-                <!-- Now, the file input that we hide. -->
-                <input type="file" @change="handleFileChange"/>
+        <v-form v-model="valid" ref="form">
+          <h1>Referral Form</h1>
+          <v-container>
+            <v-row>
+              <v-col
+                cols="12"
+              >
+                <v-text-field
+                  v-model="clientname"
+                  label="Name"
+                  hint="Enter the clients name"
+                  :rules="nameRules"
+                  required
+                ></v-text-field>
+              </v-col>
+            </v-row>
+
+            <v-row>
+              <v-col cols="12">
+                <v-menu
+                  v-model="dobmenu"
+                  :close-on-content-click="false"
+                  transition="scale-transition"
+                  offset-y
+                  max-width="290px"
+                  min-width="290px"
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-text-field
+                      v-model="clientbirth"
+                      label="Date of Birth"
+                      hint="YYYY/MM/DD format"
+                      v-bind="attrs"
+                      v-on="on"
+                    ></v-text-field>
+                  </template>
+                  <v-date-picker v-model="clientbirth" no-title @input="dobmenu = false"></v-date-picker>
+                </v-menu>
+              </v-col>
+            </v-row>
+
+            <v-row>
+              <v-col
+                cols="12"
+              >
+                <v-select
+                  v-model="clientgender"
+                  :items="genders"
+                  label="Gender"
+                ></v-select>
+
+              </v-col>
+            </v-row>
+
+            <v-row>
+               <v-col
+                cols="12"
+              >
+                <v-text-field
+                  v-model="clientphone"
+                  label="Phone"
+                  :rules="phoneRules"
+                  required
+                  hint="Enter the clients phone in local format, example: 012999888"
+                ></v-text-field>
+              </v-col>
+            </v-row>
+
+            <v-row>
+              <v-col
+                cols="12"
+              >
+                <label for="">Photo</label>
+                  <label class="file-select">
+                  <!-- We can't use a normal button element here, as it would become the target of the label. -->
+                  <div class="select-button">
+                    <!-- Display the filename if a file has been selected. -->
+                    <span v-if="clientphoto">Selected Photo: {{clientphoto.name.slice(0,15)}}</span>
+                    <span v-else>Select Photo</span>
+                  </div>
+                  <!-- Now, the file input that we hide. -->
+                  <input type="file" @change="handleFileChange"/>
                 </label>
-            </div><br>
-            <div class="form-group">
-              <label>Location</label><br>
-                <select v-model="clientlocation" required>
-                    <option value="" selected disabled >Choose your locatoin</option>
-                    <option>home</option>
-                    <option>School</option>
-                    <option>work</option>
-                    <option>family member</option>
-                    <option>friend</option>
-                    <option>commune/village</option>
-                </select>
-            </div><br>
-            <div class="form-group">
-              <label>Note</label><br>
-              <textarea disabled-text rows="4" cols="22" name="clientnote" v-model="clientnote" placeholder="Type here..."></textarea><br>
-            </div>
-            <br>
-            <v-btn text color="white" class="block1" @click="submit()">Submit</v-btn>
-             <!-- <router-link to='referralCounter'><v-btn text color="white" class="block1" @click="submit()">Submit</v-btn></router-link> -->
-        </form>
+              </v-col>
+            </v-row>
+
+            <v-row>
+              <v-col
+                cols="12"
+              >
+                <v-select
+                  v-model="clientlocation"
+                  :items="locations"
+                  label="Location Classification"
+                ></v-select>
+
+              </v-col>
+            </v-row>
+
+            <v-row>
+              <v-col cols="12">
+                <v-textarea
+                  v-model="clientnote"
+                  label="Note"
+                  value=""
+                  hint="Include any additional information here"
+                ></v-textarea>
+              </v-col>
+            </v-row>
+            <v-btn @click="submit()">Submit</v-btn>
+          </v-container>
+        </v-form>
       </div>
     </div>
   </div>
@@ -91,6 +141,35 @@ export default class ReferralForm extends Vue {
   clientlat: number | null = null
   clientlon: number | null = null
 
+  dobmenu = false
+
+  valid= false
+
+  nameRules = [
+    (v: string) => !!v || 'Name is required'
+  ]
+
+  phoneRules = [
+    (v: string) => !!v || 'Phone is required'
+  ]
+
+  genders = [
+    'Male',
+    'Female',
+    'Other',
+    'Unknown',
+    'Prefer not to answer'
+  ]
+
+  locations = [
+    'Home',
+    'School',
+    'Work',
+    'Family Member',
+    'Friend',
+    'Commune/Village'
+  ]
+
   created () {
     this.getCurrentPosition()
   }
@@ -111,17 +190,13 @@ export default class ReferralForm extends Vue {
     }
   }
 
-  validateForm () {
-    return this.clientname !== '' && this.clientphone !== ''
-  }
-
   handleFileChange (e: any) {
     this.$emit('input', e.target.files[0])
     this.clientphoto = e.target.files[0]
   }
 
   async submit () {
-    if (this.validateForm()) {
+    if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
       const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon } = this
       await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon })
     }
@@ -140,42 +215,14 @@ export default class ReferralForm extends Vue {
 
   text-align: center;
   font-weight: bold;
+  margin-top: 1rem;
 }
 
 .file-select > input[type="file"] {
   display: none;
 }
+
 select:required:invalid {
   color: gray;
 }
-.select-button{
-  margin-right: 130px;
-}
-.block1{
-  float: right;
-  margin-right: 100px;
-  margin-top: -47px;
-  background: green;
-  width: 50px;
-  height: 70px;
-  margin-top: 20px;
-}
-.title{
-  background:green;
-  color: white;
-  margin: 0px;
-  text-align: center;
-  padding-top: 15px;
-
-}
-.form-group{
-  margin-left: 40px;
-}
-.form{
-  border-style:groove;
-  padding-top: -90px;
-  padding-bottom: 60px;
-
-}
-
 </style>

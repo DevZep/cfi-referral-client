@@ -1,12 +1,10 @@
 <template>
   <v-app class="grey lighten-4">
-    <b v-if="env !== 'PROD'" class='warning'>WARNING: THE APP IS RUNNING IN {{env}} MODE. DO NOT USE REAL CLIENT REFERRAL DATA!</b>
+    <b v-if="env !== 'PROD'" class='warning center-text'>WARNING: THE APP IS RUNNING IN <span style='color: red'>{{env}}</span> MODE. DO NOT USE REAL CLIENT REFERRAL DATA!</b>
     <NavBar />
-    <div class="main-container">
-      <v-content>
-        <router-view></router-view>
-      </v-content>
-    </div>
+    <v-content>
+      <router-view></router-view>
+    </v-content>
   </v-app>
 </template>
 
@@ -50,9 +48,12 @@ ul {
   padding: 0;
   list-style-type: none;
 }
+.center-text {
+  text-align: center;
+}
 .center {
   margin: auto;
-  width: 50%;
+  width: 80%;
   border: 3px solid rgba(248, 251, 250, 0.561);
   padding: 10px;
 }
@@ -62,11 +63,5 @@ input {
 }
 .warning {
   color: rgba(248, 251, 250, 0.561)
-}
-</style>
-
-<style scoped>
-.main-container {
-  min-height: calc(100vh - 70px);
 }
 </style>

@@ -10,9 +10,6 @@
             </div>
             <div class="form-group">
               <label for="">Password</label><br>
-                <span class="passwordEye" v-show="password">
-                    <span><font-awesome-icon :icon="['fas', 'eye']" @click="password = !password" /></span>
-                </span>
               <input type="password" name="password" v-model="password" placeholder="Password" /><br>
             </div>
             <v-btn text color="white" class="block" @click="submitLogin()">Sign In</v-btn>
