@@ -12,7 +12,9 @@
       max-width="400"
       v-if="isAuthenticated && authStatus !== 'loading'"
     >
-    <v-card-title>Child Safe: Migration Referral App</v-card-title>
+    <v-card-title>Child Safe</v-card-title>
+
+      <v-card-subtitle><b>Migration Referral App</b></v-card-subtitle>
 
       <v-card-subtitle id="name" class="pb-0">Logged in as: {{ user.email }}</v-card-subtitle>
 

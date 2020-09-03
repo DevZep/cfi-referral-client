@@ -79,7 +79,7 @@
                   <!-- We can't use a normal button element here, as it would become the target of the label. -->
                   <div class="select-button">
                     <!-- Display the filename if a file has been selected. -->
-                    <span v-if="clientphoto">Selected Photo: {{clientphoto.name}}</span>
+                    <span v-if="clientphoto">Selected Photo: {{clientphoto.name.slice(0,15)}}</span>
                     <span v-else>Select Photo</span>
                   </div>
                   <!-- Now, the file input that we hide. -->
@@ -95,7 +95,7 @@
                 <v-select
                   v-model="clientlocation"
                   :items="locations"
-                  label="Location"
+                  label="Location Classification"
                 ></v-select>
 
               </v-col>
