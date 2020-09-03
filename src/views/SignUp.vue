@@ -11,7 +11,7 @@
           <h3>Child Safe</h3>
           <h4>Migration Referral App</h4><br>
         </div>
-        <form >
+        <v-form v-model="valid" ref="form">
           <h3>Sign Up</h3><br>
           <div class="form-group">
             <label for="email">Email</label><br>
@@ -34,7 +34,7 @@
           <v-btn text color="white" class="block" @click="submitSignUp()">Sign Up</v-btn>
           <p>Have an account?</p><br>
           <v-btn text color="green" class="block1" @click="navigate('/')">Sign In</v-btn>
-        </form>
+        </v-form>
       </div>
       </div>
     </div>
@@ -61,6 +61,8 @@ export default class SignUp extends Vue {
     if (this.$route.path !== path) { this.$router.push(path) }
   }
 
+  valid=false
+
   data () {
     return {
       passwordRules: [
@@ -72,17 +74,8 @@ export default class SignUp extends Vue {
     }
   }
 
-  validateForm () {
-    return (
-      this.email !== '' &&
-      this.password !== '' &&
-      this.password === this.passwordConfirm
-
-    )
-  }
-
   async submitSignUp () {
-    if (this.validateForm()) {
+    if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
       const { email, password, passwordConfirm } = this
       await this.signUp({ email, password })
       if (this.isNewUser) { this.$router.push('/confirmCode') }

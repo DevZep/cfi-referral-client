@@ -47,6 +47,7 @@ const actions: ActionTree<AuthState, RootState> = {
       // Now the user is authenticated we can ask the
       // referrals vuex store to fetch the referral count
       dispatch('Referrals/fetchCount', {}, { root: true })
+      commit('Accounts/setEmailCodeConfirmed', false, { root: true })
       localStorage.setItem('user-token', token)
     } catch (e) {
       localStorage.removeItem('user-token')
