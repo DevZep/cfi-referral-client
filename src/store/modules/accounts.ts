@@ -34,16 +34,8 @@ const actions: ActionTree<AccountState, RootState> = {
       const newUser = await Auth.signUp(email, password)
     } catch (e) {
       if (e.code === 'UsernameExistsException') {
-        commit('setStatusMessage', 'This email already exists. Sending another code now.')
-        dispatch('resendCode')
+        commit('setStatusMessage', 'This email already exists! You should just login!')
       }
-    }
-  },
-  async resendCode ({ state }) {
-    try {
-      await Auth.resendSignUp(state.newUserEmail)
-    } catch (e) {
-      console.log('Error in resendCode: ', e)
     }
   },
   async confirmCode ({ commit, state }, code) {
