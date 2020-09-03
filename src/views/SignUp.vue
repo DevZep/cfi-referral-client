@@ -1,11 +1,16 @@
 <template>
   <div id="signUp" class='center'>
-     <div class="center-title">
-      <h3>Child Safe</h3>
-      <h3>Migration Referral App</h3><br>
-    </div>
+     <!-- <div class="center-title">
+      <div class="col-md-6 mt-5 mx-auto">
+
+      </div>
+    </div> -->
     <div class="row" id="app">
       <div class="col-md-6 mt-5 mx-auto">
+        <div class="center-title">
+          <h3>Child Safe</h3>
+          <h4>Migration Referral App</h4><br>
+        </div>
         <form >
           <h3>Sign Up</h3><br>
           <div class="form-group">
@@ -14,7 +19,6 @@
           </div>
           <div class="form-group">
               <label for="">Password</label><br>
-              <!-- <input type="password" name="password" v-model="password" placeholder="Password" /><br><br> -->
           </div>
           <v-text-field
                   v-model="password"
@@ -28,7 +32,8 @@
               <input type="password" name="passwordConfirm" v-model="passwordConfirm" placeholder="Verify Password" />
           </div>
           <v-btn text color="white" class="block" @click="submitSignUp()">Sign Up</v-btn>
-          <p>Have an account?</p><v-btn text color="green" class="block1" @click="navigate('/')">Sign In</v-btn>
+          <p>Have an account?</p><br>
+          <v-btn text color="green" class="block1" @click="navigate('/')">Sign In</v-btn>
         </form>
       </div>
       </div>
@@ -115,4 +120,7 @@ input {
   margin-bottom: 10px;
 
 }
+/* .center-title{
+  margin-left: 290px;
+} */
 </style>

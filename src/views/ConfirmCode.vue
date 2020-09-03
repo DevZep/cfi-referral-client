@@ -1,11 +1,14 @@
 <template>
   <div id="confirmCode" class='center'>
-    <div class="center-title">
-      <h3>Child Safe</h3>
-      <h3>Migration Referral App</h3><br>
-    </div>
+    <!-- <div class="center-title">
+
+    </div> -->
     <div class="row">
       <div class="col-md-6 mt-5 mx-auto">
+        <div class="center-title">
+          <h3>Child Safe</h3>
+          <h4>Migration Referral App</h4><br>
+        </div>
         <form >
           <h3>Confirm Account</h3>
           <h4>Check your email {{newUserEmail}} for a confirmation code and submit it below.</h4><br>
@@ -14,7 +17,8 @@
             <input type="text" name="code" v-model="code" placeholder="Insert Code" />
           </div>
           <v-btn text color="white" class="block" @click="submitConfirmCode()">Submit Code</v-btn>
-          <p>Have an account?</p><v-btn text color="green" class="block1" @click="navigate('/')">Sign In</v-btn><br>
+          <p>Have an account?</p><br>
+          <v-btn text color="green" class="block1" @click="navigate('/')">Sign In</v-btn><br>
           <p v-if="statusMessage">{{statusMessage}}</p>
         </form>
       </div>
@@ -83,4 +87,7 @@ input {
 v-btn{
   margin-bottom: 40px;
 }
+/* .center-title{
+  margin-left: 300px;
+} */
 </style>

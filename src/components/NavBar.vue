@@ -2,8 +2,7 @@
   <nav>
     <v-toolbar >
       <v-toolbar-title class="grey--text" @click="navigate('/')">
-        <span class="font-weight-light">CFI</span>
-        <span>Referral</span>
+        <v-icon>mdi-home</v-icon>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn v-if="isAuthenticated" text color="grey" @click="submitSignOut()">
