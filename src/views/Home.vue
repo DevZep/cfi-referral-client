@@ -12,14 +12,7 @@
       max-width="400"
       v-if="isAuthenticated && authStatus !== 'loading'"
     >
-      <v-img
-        class="black--text align-end"
-        height="200px"
-        src="@/assets/childrens-future-logo.png"
-      >
-        <v-card-title>Child Safe: Migration Referral App</v-card-title>
-
-      </v-img>
+    <v-card-title>Child Safe: Migration Referral App</v-card-title>
 
       <v-card-subtitle id="name" class="pb-0">Logged in as: {{ user.email }}</v-card-subtitle>
 
@@ -28,7 +21,7 @@
       </v-card-subtitle>
 
       <v-card-text class="text--primary">
-          <v-btn id='btnNavigateReferralForm' text color="white" class="block" @click="navigate('/referralForm')">
+          <v-btn id='btnNavigateReferralForm' @click="navigate('/referralForm')">
             Create New Referral
           </v-btn>
       </v-card-text>
