@@ -2,7 +2,7 @@
   <div id="referralForm" class="center">
     <div class="row">
       <div class="col-md-6 mt-5 mx-auto">
-        <v-form v-model="valid">
+        <v-form v-model="valid" ref="form">
           <h1>Referral Form</h1>
           <v-container>
             <v-row>
@@ -13,6 +13,7 @@
                   v-model="clientname"
                   label="Name"
                   hint="Enter the clients name"
+                  :rules="nameRules"
                   required
                 ></v-text-field>
               </v-col>
@@ -62,6 +63,7 @@
                 <v-text-field
                   v-model="clientphone"
                   label="Phone"
+                  :rules="phoneRules"
                   required
                   hint="Enter the clients phone in local format, example: 012999888"
                 ></v-text-field>
@@ -141,6 +143,16 @@ export default class ReferralForm extends Vue {
 
   dobmenu = false
 
+  valid= false
+
+  nameRules = [
+    (v: string) => !!v || 'Name is required'
+  ]
+
+  phoneRules = [
+    (v: string) => !!v || 'Phone is required'
+  ]
+
   genders = [
     'Male',
     'Female',
@@ -178,17 +190,13 @@ export default class ReferralForm extends Vue {
     }
   }
 
-  validateForm () {
-    return this.clientname !== '' && this.clientphone !== ''
-  }
-
   handleFileChange (e: any) {
     this.$emit('input', e.target.files[0])
     this.clientphoto = e.target.files[0]
   }
 
   async submit () {
-    if (this.validateForm()) {
+    if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
       const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon } = this
       await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon })
     }

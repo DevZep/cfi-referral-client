@@ -1,21 +1,38 @@
 <template>
-  <div class="home">
-    <div class="center">
-      <h3>Child Safe</h3>
-      <h3>Migration Referral App</h3>
-      <v-spacer></v-spacer>
-      <div v-if="authStatus === 'loading'">
-        <Loading />
-      </div>
-      <div v-if="!isAuthenticated && authStatus !== 'loading'">
-        <Login />
-      </div>
-      <div v-if="isAuthenticated && authStatus !== 'loading'">
-        <p id='welcomeMessage'>Welcome {{ user.email }}</p>
-        <p id="countMessage">You have created {{ count }} referrals</p>
-        <v-btn text color="white" class="block" @click="navigate('/referralForm')">Create New Referral</v-btn>
-      </div>
+  <div class='home center'>
+    <div v-if="authStatus === 'loading'">
+      <Loading />
     </div>
+    <div v-if="!isAuthenticated && authStatus !== 'loading'">
+      <Login />
+    </div>
+    <v-card
+      id='homeCard'
+      class="mx-auto"
+      max-width="400"
+      v-if="isAuthenticated && authStatus !== 'loading'"
+    >
+      <v-img
+        class="black--text align-end"
+        height="200px"
+        src="@/assets/childrens-future-logo.png"
+      >
+        <v-card-title>Child Safe: Migration Referral App</v-card-title>
+
+      </v-img>
+
+      <v-card-subtitle id="name" class="pb-0">Logged in as: {{ user.email }}</v-card-subtitle>
+
+      <v-card-subtitle id="cid" class="pb-0">
+        <p id="countMessage">You have created {{ count }} referrals</p>
+      </v-card-subtitle>
+
+      <v-card-text class="text--primary">
+          <v-btn id='btnNavigateReferralForm' text color="white" class="block" @click="navigate('/referralForm')">
+            Create New Referral
+          </v-btn>
+      </v-card-text>
+    </v-card>
   </div>
 </template>
 
