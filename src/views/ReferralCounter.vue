@@ -1,8 +1,11 @@
 <template>
   <div id="referralCounter" class='center'>
-    <h1>Referral Counter</h1>
+    <div class="title">
+    <h1>Refer Client</h1>
+    </div>
     <p>Thank you for assitance!</p>
-    <p id="countMessage">You have created {{ count }} referrals</p>
+    <p id="countMessage">You have successfully referred this many clients:      {{ count }} </p> <br>
+
     <router-link to='referralForm'>New Referral</router-link>
   </div>
 </template>
@@ -27,3 +30,12 @@ export default class ReferralCounter extends Vue {
   }
 }
 </script>
+<style scoped>
+.title{
+  background:green;
+  color: white;
+  margin: 0px;
+  text-align: center;
+  padding-top: 15px;
+}
+</style>

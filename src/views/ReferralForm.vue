@@ -62,6 +62,7 @@
             </div>
             <br>
             <v-btn text color="white" class="block1" @click="submit()">Submit</v-btn>
+             <!-- <router-link to='referralCounter'><v-btn text color="white" class="block1" @click="submit()">Submit</v-btn></router-link> -->
         </form>
       </div>
     </div>

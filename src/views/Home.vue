@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div id="home" class="homes">
     <div class="center-title">
       <h3>Child Safe</h3>
       <h3>Migration Referral App</h3>
@@ -19,7 +19,6 @@
     </div>
   </div>
 </template>
-
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { mapGetters } from 'vuex'
