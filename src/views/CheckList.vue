@@ -80,8 +80,12 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import navigate from '../libs/navigate'
 
 @Component({
+  methods: {
+    navigate: navigate
+  }
 })
 export default class Checklist extends Vue {
   questionCount = 7 // be sure that this matches the number of questions in the form above
