@@ -24,7 +24,7 @@
       </v-card-subtitle>
 
       <v-card-text class="text--primary">
-          <v-btn id='btnNavigateReferralForm' @click="navigate('/referralForm')">
+          <v-btn id='btnNavigateReferralForm' @click="navigate('/checklist')">
             {{ $t('home.create-new-referral') }}
           </v-btn>
       </v-card-text>

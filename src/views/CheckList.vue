@@ -72,6 +72,9 @@
         </v-container>
         <v-container v-if="showSafeMigrationForm">
           <h1>Safe Migration form goes here!</h1>
+          <v-btn color="success" id='btnNavigateToHomeScreen' @click="navigate('/')">
+            Return to Home Screen
+          </v-btn>
         </v-container>
       </div>
     </div>
