@@ -1,6 +1,7 @@
 import { Module, ActionTree, MutationTree, GetterTree } from 'vuex'
 import { RootState } from '@/store'
 import { Auth } from 'aws-amplify'
+import router from '@/router'
 
 export interface AuthState {
   user: string | null;
@@ -59,6 +60,7 @@ const actions: ActionTree<AuthState, RootState> = {
       commit('clearSession')
       localStorage.removeItem('user-token')
       await Auth.signOut()
+      router.push('/')
     } catch (error) {
       // console.log('error signing out: ', error)
     }

@@ -16,26 +16,24 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { mapActions, mapGetters } from 'vuex'
+import navigate from '../libs/navigate'
 
 @Component({
   computed: {
     ...mapGetters('Auth', ['isAuthenticated'])
   },
   methods: {
-    ...mapActions('Auth', ['signOut'])
+    ...mapActions('Auth', ['signOut']),
+    navigate: navigate
   }
 })
 export default class NavBar extends Vue {
   isAuthenticated!: boolean
   signOut!: () => void; // method from mapActions
 
-  navigate (path: string) {
-    if (this.$route.path !== path) { this.$router.push(path) }
-  }
-
   async submitSignOut () {
     await this.signOut()
-    if (!this.isAuthenticated) { this.navigate('/') }
+    // if (!this.isAuthenticated) { this.navigate('/') }
   }
 }
 </script>

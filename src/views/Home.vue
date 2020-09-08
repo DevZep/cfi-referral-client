@@ -12,9 +12,9 @@
       max-width="400"
       v-if="isAuthenticated && authStatus !== 'loading'"
     >
-    <v-card-title>Child Safe</v-card-title>
+    <v-card-title>{{ $t('app.title') }}</v-card-title>
 
-      <v-card-subtitle><b>Migration Referral App</b></v-card-subtitle>
+      <v-card-subtitle><b>{{ $t('app.subtitle') }}</b></v-card-subtitle>
 
       <v-card-subtitle id="name" class="pb-0">Logged in as: {{ user.email }}</v-card-subtitle>
 
@@ -34,13 +34,15 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { mapGetters, mapActions } from 'vuex'
 import Login from '@/components/Login.vue'
+import navigate from '../libs/navigate'
 
 @Component({
   components: {
     Login
   },
   methods: {
-    ...mapActions('Referrals', ['fetchCount'])
+    ...mapActions('Referrals', ['fetchCount']),
+    navigate: navigate
   },
   computed: {
     ...mapGetters('Auth', { user: 'getUser' }),
@@ -57,9 +59,10 @@ export default class Home extends Vue {
     if (this.isAuthenticated) { this.fetchCount() }
   }
 
-  navigate (path: string) {
-    if (this.$route.path !== path) { this.$router.push(path) }
-  }
+  // navigate (path: string) {
+  //   let localePath = `/${this.$i18n.locale}${path}`
+  //   if (this.$route.path !== localePath) { this.$router.push(localePath) }
+  // }
 
   loading () {
     return this.authStatus === 'loading' && !this.isAuthenticated

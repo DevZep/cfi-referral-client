@@ -42,13 +42,15 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { mapActions, mapGetters } from 'vuex'
+import navigate from '../libs/navigate'
 
 @Component({
   computed: {
     ...mapGetters('Accounts', ['isNewUser'])
   },
   methods: {
-    ...mapActions('Accounts', ['signUp'])
+    ...mapActions('Accounts', ['signUp']),
+    navigate: navigate
   }
 })
 export default class SignUp extends Vue {
@@ -57,9 +59,6 @@ export default class SignUp extends Vue {
   email = ''
   password = ''
   passwordConfirm = ''
-  navigate (path: string) {
-    if (this.$route.path !== path) { this.$router.push(path) }
-  }
 
   valid=false
 

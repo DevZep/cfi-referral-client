@@ -26,6 +26,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { mapGetters, mapActions, mapState } from 'vuex'
+import navigate from '../libs/navigate'
 
 @Component({
   computed: {
@@ -33,17 +34,14 @@ import { mapGetters, mapActions, mapState } from 'vuex'
     ...mapGetters('Accounts', ['isNewUser', 'statusMessage'])
   },
   methods: {
-    ...mapActions('Accounts', ['confirmCode'])
+    ...mapActions('Accounts', ['confirmCode']),
+    navigate: navigate
   }
 })
 export default class ConfirmCode extends Vue {
   confirmCode!: (code: string) => void
   newUserEmail!: string
   statusMessage!: string
-  navigate (path: string) {
-    if (this.$route.path !== path) { this.$router.push(path) }
-  }
-
   code = ''
 
   async submitConfirmCode () {
@@ -80,7 +78,4 @@ input {
 v-btn{
   margin-bottom: 40px;
 }
-/* .center-title{
-  margin-left: 300px;
-} */
 </style>
