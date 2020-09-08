@@ -6,8 +6,8 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn v-if="isAuthenticated" text color="grey" @click="submitSignOut()">
-        <span>Sign Out</span>
-        <v-icon>mdi-logout</v-icon>
+        <!-- <span>Sign Out</span> -->
+        <!-- <v-icon>mdi-logout</v-icon> -->
       </v-btn>
     </v-toolbar>
   </nav>

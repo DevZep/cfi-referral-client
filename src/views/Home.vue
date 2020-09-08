@@ -23,7 +23,7 @@
       </v-card-subtitle>
 
       <v-card-text class="text--primary">
-          <v-btn id='btnNavigateReferralForm' @click="navigate('/referralForm')">
+          <v-btn id='btnNavigateCheckList' @click="navigate('/checkList')">
             Create New Referral
           </v-btn>
       </v-card-text>

@@ -5,6 +5,7 @@ import About from '@/views/About.vue'
 import SignUp from '@/views/SignUp.vue'
 import ConfirmCode from '@/views/ConfirmCode.vue'
 import ReferralForm from '@/views/ReferralForm.vue'
+import CheckList from '@/views/CheckList.vue'
 import NotFound from '@/views/NotFound.vue'
 import store from '../store'
 
@@ -51,6 +52,12 @@ const routes: Array<RouteConfig> = [
     path: '/referralForm',
     name: 'ReferralForm',
     component: ReferralForm,
+    beforeEnter: ifAuthenticated
+  },
+  {
+    path: '/checkList',
+    name: 'CheckList',
+    component: CheckList,
     beforeEnter: ifAuthenticated
   },
   {
