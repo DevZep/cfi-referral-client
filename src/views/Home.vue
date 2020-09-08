@@ -16,15 +16,15 @@
 
       <v-card-subtitle><b>{{ $t('app.subtitle') }}</b></v-card-subtitle>
 
-      <v-card-subtitle id="name" class="pb-0">Logged in as: {{ user.email }}</v-card-subtitle>
+      <v-card-subtitle id="name" class="pb-0">{{ $t('home.logged-in-as') }}: {{ user.email }}</v-card-subtitle>
 
       <v-card-subtitle id="cid" class="pb-0">
-        <p id="countMessage">You have created {{ count }} referrals</p>
+        <p id="countMessage">{{ $t('home.you-have-created') }} {{ count }} referrals</p>
       </v-card-subtitle>
 
       <v-card-text class="text--primary">
           <v-btn id='btnNavigateReferralForm' @click="navigate('/referralForm')">
-            Create New Referral
+            {{ $t('home.create-new-referral') }}
           </v-btn>
       </v-card-text>
     </v-card>

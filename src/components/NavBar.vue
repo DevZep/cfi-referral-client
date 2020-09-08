@@ -33,7 +33,6 @@ export default class NavBar extends Vue {
 
   async submitSignOut () {
     await this.signOut()
-    // if (!this.isAuthenticated) { this.navigate('/') }
   }
 }
 </script>

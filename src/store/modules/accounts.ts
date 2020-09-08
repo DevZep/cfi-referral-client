@@ -1,7 +1,8 @@
 import { Module, ActionTree, MutationTree, GetterTree } from 'vuex'
 import { RootState } from '@/store'
 import { Auth } from 'aws-amplify'
-import router from '@/router'
+import { onError } from '../../libs/errorLib'
+import navigate from '../../libs/navigate'
 
 export interface AccountState {
   newUserEmail: string;
@@ -42,11 +43,11 @@ const actions: ActionTree<AccountState, RootState> = {
     try {
       const resp = await Auth.confirmSignUp(state.newUserEmail, code)
       commit('setEmailCodeConfirmed', true)
-      router.push('/')
+      navigate('/')
     } catch (e) {
       if (e.code === 'NotAuthorizedException') {
         commit('setEmailCodeConfirmed', true)
-        router.push('/')
+        navigate('/')
       }
       commit('setStatusMessage', e.message)
       console.log('Error in confirmCode: ', e)
