@@ -2,7 +2,8 @@
   "app": {
     "title": "សុវត្ថិភាពកុមារ",
     "subtitle": "ការបញ្ជូនការធ្វើចំណាកស្រុក App",
-    "current-language": "ភាសា"
+    "current-language": "ភាសា",
+    "sign-out": "ភាសា"
   },
   "home": {
     "logged-in-as": "ចូលជា",
