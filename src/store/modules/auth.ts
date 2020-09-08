@@ -1,6 +1,8 @@
 import { Module, ActionTree, MutationTree, GetterTree } from 'vuex'
 import { RootState } from '@/store'
 import { Auth } from 'aws-amplify'
+import { onError } from '../../libs/errorLib'
+import navigate from '../../libs/navigate'
 
 export interface AuthState {
   user: string | null;
@@ -47,9 +49,12 @@ const actions: ActionTree<AuthState, RootState> = {
       // Now the user is authenticated we can ask the
       // referrals vuex store to fetch the referral count
       dispatch('Referrals/fetchCount', {}, { root: true })
+      commit('Accounts/setEmailCodeConfirmed', false, { root: true })
       localStorage.setItem('user-token', token)
+      navigate('/')
     } catch (e) {
       localStorage.removeItem('user-token')
+      onError(e)
       commit('authError')
     }
   },
@@ -58,8 +63,9 @@ const actions: ActionTree<AuthState, RootState> = {
       commit('clearSession')
       localStorage.removeItem('user-token')
       await Auth.signOut()
-    } catch (error) {
-      // console.log('error signing out: ', error)
+      navigate('/')
+    } catch (e) {
+      onError(e)
     }
   },
   // currentSession action handles when user refreshes the app
@@ -71,6 +77,7 @@ const actions: ActionTree<AuthState, RootState> = {
       commit('authSuccess', session.getIdToken().getJwtToken())
       commit('setUser', user.attributes)
     } catch (e) {
+      onError(e)
       // AWS Session error so signOut!
       dispatch('signOut')
     }

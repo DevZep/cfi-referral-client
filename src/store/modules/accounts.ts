@@ -1,15 +1,19 @@
 import { Module, ActionTree, MutationTree, GetterTree } from 'vuex'
 import { RootState } from '@/store'
 import { Auth } from 'aws-amplify'
+import { onError } from '../../libs/errorLib'
+import navigate from '../../libs/navigate'
 
 export interface AccountState {
   newUserEmail: string;
   statusMessage: string;
+  emailCodeConfirmed: boolean;
 }
 
 const state: AccountState = {
   newUserEmail: '',
-  statusMessage: ''
+  statusMessage: '',
+  emailCodeConfirmed: false
 }
 
 const mutations: MutationTree<AccountState> = {
@@ -18,6 +22,9 @@ const mutations: MutationTree<AccountState> = {
   },
   setStatusMessage (state, message) {
     state.statusMessage = message
+  },
+  setEmailCodeConfirmed (state, confirmed) {
+    state.emailCodeConfirmed = confirmed
   }
 }
 
@@ -28,25 +35,19 @@ const actions: ActionTree<AccountState, RootState> = {
       const newUser = await Auth.signUp(email, password)
     } catch (e) {
       if (e.code === 'UsernameExistsException') {
-        commit('setStatusMessage', 'This email already exists. Sending another code now.')
-        dispatch('resendCode')
+        commit('setStatusMessage', 'This email already exists! You should just login!')
       }
-    }
-  },
-  async resendCode ({ state }) {
-    try {
-      await Auth.resendSignUp(state.newUserEmail)
-    } catch (e) {
-      console.log('Error in resendCode: ', e)
     }
   },
   async confirmCode ({ commit, state }, code) {
     try {
       const resp = await Auth.confirmSignUp(state.newUserEmail, code)
-      commit('setStatusMessage', 'Perfect! Your code was correct. Now you can login!')
+      commit('setEmailCodeConfirmed', true)
+      navigate('/')
     } catch (e) {
       if (e.code === 'NotAuthorizedException') {
-        commit('setStatusMessage', 'You are probably already confirmed. Try logging in!')
+        commit('setEmailCodeConfirmed', true)
+        navigate('/')
       }
       commit('setStatusMessage', e.message)
       console.log('Error in confirmCode: ', e)
@@ -56,7 +57,8 @@ const actions: ActionTree<AccountState, RootState> = {
 
 const getters: GetterTree<AccountState, RootState> = {
   isNewUser: state => state.newUserEmail,
-  statusMessage: state => state.statusMessage
+  statusMessage: state => state.statusMessage,
+  emailCodeConfirmed: state => state.emailCodeConfirmed
 }
 
 const module: Module<AccountState, RootState> = {

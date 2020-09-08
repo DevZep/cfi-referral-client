@@ -1,0 +1,18 @@
+{
+  "app": {
+    "title": "សុវត្ថិភាពកុមារ",
+    "subtitle": "ការបញ្ជូនការធ្វើចំណាកស្រុក App",
+    "current-language": "ភាសា",
+    "sign-out": "ភាសា"
+  },
+  "home": {
+    "logged-in-as": "ចូលជា",
+    "you-have-created": "អ្នកបានបង្កើត",
+    "create-new-referral": "បង្កើតការបញ្ជូនថ្មី"
+  },
+  "referralForm": {
+    "title": "ទម្រង់បញ្ជូន",
+    "name": "ឈ្មោះ",
+    "date-of-birth": "ថ្ងៃខែ​ឆ្នាំ​កំណើត"
+  }
+}

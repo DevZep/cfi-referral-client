@@ -7,6 +7,7 @@ import ReferralForm from '@/views/ReferralForm.vue'
 import Checklist from '@/views/Checklist.vue'
 import NotFound from '@/views/NotFound.vue'
 import store from '../store'
+import i18n from '../i18n'
 
 const ifAuthenticated = (to: any, from: any, next: any) => {
   if (store.getters['Auth/isAuthenticated']) {
@@ -15,7 +16,7 @@ const ifAuthenticated = (to: any, from: any, next: any) => {
     return
   }
   // ...else redirect the user to the login screen
-  next('/login')
+  next('/')
 }
 
 const ifNewUser = (to: any, from: any, next: any) => {
@@ -33,36 +34,49 @@ Vue.use(VueRouter)
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: `/${i18n.locale}`
   },
   {
-    path: '/signUp',
-    name: 'SignUp',
-    component: SignUp
-  },
-  {
-    path: '/confirmCode',
-    name: 'ConfirmCode',
-    component: ConfirmCode,
-    beforeEnter: ifNewUser
-  },
-  {
-    path: '/referralForm',
-    name: 'ReferralForm',
-    component: ReferralForm,
-    beforeEnter: ifAuthenticated
-  },
-  {
-    path: '/checklist',
-    name: 'Checklist',
-    component: Checklist,
-    beforeEnter: ifAuthenticated
-  },
-  {
-    // catch all 404 - define at the very end
-    path: '*',
-    component: NotFound
+    path: '/:lang',
+    // create a container component
+    component: {
+      render (c) { return c('router-view') }
+    },
+    children: [
+      {
+        path: '/',
+        name: 'Home',
+        component: Home
+      },
+      {
+        path: 'signUp',
+        name: 'SignUp',
+        component: SignUp
+      },
+      {
+        path: 'confirmCode',
+        name: 'ConfirmCode',
+        component: ConfirmCode,
+        beforeEnter: ifNewUser
+      },
+      {
+        path: 'referralForm',
+        name: 'ReferralForm',
+        component: ReferralForm,
+        beforeEnter: ifAuthenticated
+      },
+      {
+        path: 'checklist',
+        name: 'Checklist',
+        component: Checklist,
+        beforeEnter: ifAuthenticated
+      },
+      {
+        // catch all 404 - define at the very end
+        path: '*',
+        component: NotFound
+      }
+    ]
   }
 ]
 

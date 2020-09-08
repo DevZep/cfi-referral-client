@@ -1,0 +1,27 @@
+{
+  "app": {
+    "title": "Child Safe",
+    "subtitle": "Migration Referral App",
+    "current-language": "Lang",
+    "sign-out": "Sign Out"
+  },
+  "home": {
+    "logged-in-as": "Logged In As",
+    "you-have-created": "You have created",
+    "create-new-referral": "Create New Referral"
+  },
+  "referralForm": {
+    "title": "Referral Form",
+    "name": "Name",
+    "date-of-birth": "Date of Birth"
+  },
+  "login": {
+    "sign-in": "Sign In"
+  },
+  "signUp": {
+
+  },
+  "signUpEnterCode": {
+
+  }
+}

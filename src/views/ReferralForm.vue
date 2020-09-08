@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-6 mt-5 mx-auto">
         <v-form v-model="valid" ref="form">
-          <h1>Referral Form</h1>
+          <h1>{{ $t('referralForm.title') }}</h1>
           <v-container>
             <v-row>
               <v-col
@@ -11,7 +11,7 @@
               >
                 <v-text-field
                   v-model="clientname"
-                  label="Name"
+                  v-bind:label="$t('referralForm.name')"
                   hint="Enter the clients name"
                   :rules="nameRules"
                   required
@@ -32,7 +32,7 @@
                   <template v-slot:activator="{ on, attrs }">
                     <v-text-field
                       v-model="clientbirth"
-                      label="Date of Birth"
+                      v-bind:label="$t('referralForm.date-of-birth')"
                       hint="YYYY/MM/DD format"
                       v-bind="attrs"
                       v-on="on"
