@@ -1,11 +1,10 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '@/views/Home.vue'
-import About from '@/views/About.vue'
 import SignUp from '@/views/SignUp.vue'
 import ConfirmCode from '@/views/ConfirmCode.vue'
 import ReferralForm from '@/views/ReferralForm.vue'
-import CheckList from '@/views/CheckList.vue'
+import Checklist from '@/views/Checklist.vue'
 import NotFound from '@/views/NotFound.vue'
 import store from '../store'
 
@@ -55,9 +54,9 @@ const routes: Array<RouteConfig> = [
     beforeEnter: ifAuthenticated
   },
   {
-    path: '/checkList',
-    name: 'CheckList',
-    component: CheckList,
+    path: '/checklist',
+    name: 'Checklist',
+    component: Checklist,
     beforeEnter: ifAuthenticated
   },
   {
