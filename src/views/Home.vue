@@ -6,6 +6,7 @@
     <div v-if="!isAuthenticated && authStatus !== 'loading'">
       <Login />
     </div>
+
     <v-card
       id='homeCard'
       class="mx-auto"
@@ -58,11 +59,6 @@ export default class Home extends Vue {
   created () {
     if (this.isAuthenticated) { this.fetchCount() }
   }
-
-  // navigate (path: string) {
-  //   let localePath = `/${this.$i18n.locale}${path}`
-  //   if (this.$route.path !== localePath) { this.$router.push(localePath) }
-  // }
 
   loading () {
     return this.authStatus === 'loading' && !this.isAuthenticated

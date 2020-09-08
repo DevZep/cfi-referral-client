@@ -51,6 +51,7 @@ const actions: ActionTree<AuthState, RootState> = {
       dispatch('Referrals/fetchCount', {}, { root: true })
       commit('Accounts/setEmailCodeConfirmed', false, { root: true })
       localStorage.setItem('user-token', token)
+      navigate('/')
     } catch (e) {
       localStorage.removeItem('user-token')
       onError(e)
@@ -63,7 +64,7 @@ const actions: ActionTree<AuthState, RootState> = {
       localStorage.removeItem('user-token')
       await Auth.signOut()
       navigate('/')
-    } catch (error) {
+    } catch (e) {
       onError(e)
     }
   },

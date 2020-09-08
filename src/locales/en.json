@@ -1,7 +1,8 @@
 {
   "app": {
     "title": "Child Safe",
-    "subtitle": "Migration Referral App"
+    "subtitle": "Migration Referral App",
+    "current-language": "Lang"
   },
   "home": {
     "logged-in-as": "Logged In As",
