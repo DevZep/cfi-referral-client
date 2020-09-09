@@ -7,6 +7,7 @@
           <h4>Migration Referral App</h4><br>
         </div>
         <form>
+          <div v-if="emailCodeConfirmed" clsss='block' style='color: red'>You have successfully verified your email. For your security, please log in now.</div>
           <h3>Sign In</h3><br>
             <div class="form-group">
               <label for="email">Email</label><br>
@@ -28,30 +29,29 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { mapActions, mapGetters } from 'vuex'
+import navigate from '../libs/navigate'
 
 @Component({
   computed: {
-    ...mapGetters('Auth', ['isAuthenticated'])
+    ...mapGetters('Auth', ['isAuthenticated']),
+    ...mapGetters('Accounts', ['emailCodeConfirmed'])
   },
   methods: {
-    ...mapActions('Auth', ['login'])
+    ...mapActions('Auth', ['login']),
+    navigate: navigate
   }
 })
 export default class Login extends Vue {
   login!: (credentials: {}) => void // from the mapActions above
   isAuthenticated!: boolean // from the mapGetters above
+  emailCodeConfirmed!: boolean // from the mapGetters above
   email = ''
   password = ''
-
-  navigate (path: string) {
-    if (this.$route.path !== path) { this.$router.push(path) }
-  }
 
   async submitLogin () {
     if (this.email !== '' && this.password !== '') {
       const { email, password } = this
       await this.login({ email, password })
-      if (this.isAuthenticated && this.$route.path !== '/') { this.$router.push('/') }
     }
   }
 }

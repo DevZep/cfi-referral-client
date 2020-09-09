@@ -6,25 +6,26 @@
     <div v-if="!isAuthenticated && authStatus !== 'loading'">
       <Login />
     </div>
+
     <v-card
       id='homeCard'
       class="mx-auto"
       max-width="400"
       v-if="isAuthenticated && authStatus !== 'loading'"
     >
-    <v-card-title>Child Safe</v-card-title>
+    <v-card-title>{{ $t('app.title') }}</v-card-title>
 
-      <v-card-subtitle><b>Migration Referral App</b></v-card-subtitle>
+      <v-card-subtitle><b>{{ $t('app.subtitle') }}</b></v-card-subtitle>
 
-      <v-card-subtitle id="name" class="pb-0">Logged in as: {{ user.email }}</v-card-subtitle>
+      <v-card-subtitle id="name" class="pb-0">{{ $t('home.logged-in-as') }}: {{ user.email }}</v-card-subtitle>
 
       <v-card-subtitle id="cid" class="pb-0">
-        <p id="countMessage">You have created {{ count }} referrals</p>
+        <p id="countMessage">{{ $t('home.you-have-created') }} {{ count }} referrals</p>
       </v-card-subtitle>
 
       <v-card-text class="text--primary">
-          <v-btn id='btnNavigateCheckList' @click="navigate('/checkList')">
-            Create New Referral
+          <v-btn id='btnNavigateReferralForm' @click="navigate('/checklist')">
+            {{ $t('home.create-new-referral') }}
           </v-btn>
       </v-card-text>
     </v-card>
@@ -34,13 +35,15 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { mapGetters, mapActions } from 'vuex'
 import Login from '@/components/Login.vue'
+import navigate from '../libs/navigate'
 
 @Component({
   components: {
     Login
   },
   methods: {
-    ...mapActions('Referrals', ['fetchCount'])
+    ...mapActions('Referrals', ['fetchCount']),
+    navigate: navigate
   },
   computed: {
     ...mapGetters('Auth', { user: 'getUser' }),
@@ -55,10 +58,6 @@ export default class Home extends Vue {
 
   created () {
     if (this.isAuthenticated) { this.fetchCount() }
-  }
-
-  navigate (path: string) {
-    if (this.$route.path !== path) { this.$router.push(path) }
   }
 
   loading () {

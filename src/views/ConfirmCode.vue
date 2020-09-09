@@ -1,8 +1,5 @@
 <template>
   <div id="confirmCode" class='center'>
-    <!-- <div class="center-title">
-
-    </div> -->
     <div class="row">
       <div class="col-md-6 mt-5 mx-auto">
         <div class="center-title">
@@ -12,6 +9,7 @@
         <form >
           <h3>Confirm Account</h3>
           <h4>Check your email {{newUserEmail}} for a confirmation code and submit it below.</h4><br>
+          <div v-if="statusMessage" clsss='block' style='color: red'><b>{{statusMessage}}</b></div>
           <div class="form-group">
             <label for="">Code</label><br>
             <input type="text" name="code" v-model="code" placeholder="Insert Code" />
@@ -19,7 +17,6 @@
           <v-btn text color="white" class="block" @click="submitConfirmCode()">Submit Code</v-btn>
           <p>Have an account?</p><br>
           <v-btn text color="green" class="block1" @click="navigate('/')">Sign In</v-btn><br>
-          <p v-if="statusMessage">{{statusMessage}}</p>
         </form>
       </div>
     </div>
@@ -29,6 +26,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { mapGetters, mapActions, mapState } from 'vuex'
+import navigate from '../libs/navigate'
 
 @Component({
   computed: {
@@ -36,26 +34,19 @@ import { mapGetters, mapActions, mapState } from 'vuex'
     ...mapGetters('Accounts', ['isNewUser', 'statusMessage'])
   },
   methods: {
-    ...mapActions('Accounts', ['confirmCode'])
+    ...mapActions('Accounts', ['confirmCode']),
+    navigate: navigate
   }
 })
 export default class ConfirmCode extends Vue {
   confirmCode!: (code: string) => void
   newUserEmail!: string
   statusMessage!: string
-  isConfirmCodeSuccess!: boolean // from the mapGetters above
-  navigate (path: string) {
-    if (this.$route.path !== path) { this.$router.push(path) }
-  }
-
   code = ''
 
   async submitConfirmCode () {
     if (this.code !== '') {
       await this.confirmCode(this.code)
-      if (this.isConfirmCodeSuccess) {
-        this.$router.push('/')
-      }
     }
   }
 }
@@ -87,7 +78,4 @@ input {
 v-btn{
   margin-bottom: 40px;
 }
-/* .center-title{
-  margin-left: 300px;
-} */
 </style>

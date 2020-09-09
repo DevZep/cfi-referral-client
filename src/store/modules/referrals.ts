@@ -3,7 +3,7 @@ import { RootState } from '@/store'
 import { API } from 'aws-amplify'
 import { s3Upload } from '../../aws/s3Upload'
 import { onError } from '../../libs/errorLib'
-import router from '@/router'
+import navigate from '../../libs/navigate'
 
 export interface ReferralState {
   referral: {
@@ -57,10 +57,9 @@ const actions: ActionTree<ReferralState, RootState> = {
           photo: s3key
         }
       })
-      router.push('/')
+      navigate('/')
     } catch (e) {
-      // Set to NOT loading state
-      // Handle error
+      onError(e)
       console.error('Error in SubmitReferral: ', e)
     }
   }
