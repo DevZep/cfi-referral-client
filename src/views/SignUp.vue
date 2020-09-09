@@ -8,8 +8,8 @@
     <div class="row" id="app">
       <div class="col-md-6 mt-5 mx-auto">
         <div class="center-title">
-          <h3>Child Safe</h3>
-          <h4>Migration Referral App</h4><br>
+           <h3>Safe Movement</h3>
+          <!-- <h4>Migration Referral App</h4><br> -->
         </div>
         <v-form v-model="valid" ref="form">
           <h3>Sign Up</h3><br>
@@ -112,7 +112,8 @@ input {
   margin-bottom: 10px;
 
 }
-/* .center-title{
-  margin-left: 290px;
-} */
+.center-title{
+  margin-bottom: 20px;
+}
+
 </style>

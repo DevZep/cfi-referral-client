@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-md-6 mt-5 mx-auto">
         <div class="center-title">
-          <h3>Child Safe</h3>
-          <h4>Migration Referral App</h4><br>
+          <h3>Safe Movement</h3>
+          <!-- <h4>Migration Referral App</h4><br> -->
         </div>
         <form >
           <h3>Confirm Account</h3>

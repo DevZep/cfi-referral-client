@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-md-6 mt-5 mx-auto">
          <div class="center-title">
-          <h3>Child Safe</h3>
-          <h4>Migration Referral App</h4><br>
+          <h3>Safe Movement</h3>
+          <!-- <h4>Migration Referral App</h4><br> -->
         </div>
         <form>
           <div v-if="emailCodeConfirmed" clsss='block' style='color: red'>You have successfully verified your email. For your security, please log in now.</div>
@@ -81,6 +81,9 @@ input {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.center-title{
+  margin-bottom: 20px;
 }
 
 </style>

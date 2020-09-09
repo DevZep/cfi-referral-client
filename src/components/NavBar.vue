@@ -12,7 +12,7 @@
       <select v-model="$i18n.locale" @change="updateRoute()">
         <option v-for="(lang, i) in $i18n.availableLocales" :key="`Lang${i}`" :value="lang">{{ lang }}</option>
       </select>
-      <v-btn v-if="isAuthenticated" text color="grey" @click="submitSignOut()">
+      <v-btn v-if="isAuthenticated" text color="grey" @click="submitSignOut()"><v-icon>mdi-logout</v-icon>
       </v-btn>
     </v-toolbar>
   </nav>

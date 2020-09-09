@@ -8,6 +8,8 @@
           </v-row>
           <v-row>
             <p class="text-left">Travel Ticket(bus or plane ticket)</p>
+          </v-row>
+          <v-row>
             <v-radio-group v-model="answers[0]" row @change="checkUnanswered()">
               <v-radio label="Yes" value="yes" required></v-radio>
               <v-radio label="No" value="no" required></v-radio>
@@ -43,6 +45,8 @@
           </v-row>
           <v-row>
             <p class="text-left">Do you have these documents with you?</p>
+          </v-row>
+          <v-row>
             <v-radio-group v-model="answers[5]" row @change="checkUnanswered()">
               <v-radio label="Yes" value="yes" required></v-radio>
               <v-radio label="No" value="no" required></v-radio>
@@ -75,19 +79,15 @@
                <p class="text-left">Do they give their consent?</p>
             </v-row>
             <v-row>
-              <v-card-actions>
-                  <v-col>
-                  <v-btn color="success" id='btnNavigateToReferralForm' @click="navigate('/referralForm')">
-                    Yes
-                  </v-btn>
-                  </v-col>
-                  <v-col class="text-right">
-                  <v-btn color="success" id='btnNavigateToHomeScreen' @click="navigate('/')">
-                    No
-                  </v-btn>
-                  </v-col>
-              </v-card-actions>
-             </v-row>
+              <div id="button-wrapper">
+                <v-btn color="success" id='btnNavigateToReferralForm' @click="navigate('/referralForm')">
+                  Yes
+                </v-btn>
+                <v-btn color="success" id='btnNavigateToHomeScreen' @click="navigate('/')">
+                  No
+                </v-btn>
+              </div>
+            </v-row>
 
         </v-container>
         <v-container v-if="showSafeMigrationForm">
@@ -148,6 +148,11 @@ export default class Checklist extends Vue {
 <style scoped>
 #btnNavigateToHomeScreen{
   margin: 100px;
+
+}
+#button-wrapper{
+  display: flex;
+  align-items: center;
 }
 
 </style>
