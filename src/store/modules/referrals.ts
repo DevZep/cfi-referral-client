@@ -40,7 +40,7 @@ const actions: ActionTree<ReferralState, RootState> = {
       onError(e)
     }
   },
-  async submitReferral ({ commit }, { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon }) {
+  async submitReferral ({ commit }, { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, orgemail }) {
     // Set to a loading state
     try {
       const s3key = clientphoto ? await s3Upload(clientphoto) : null
@@ -54,7 +54,8 @@ const actions: ActionTree<ReferralState, RootState> = {
           location: clientlocation,
           lat: clientlat,
           lon: clientlon,
-          photo: s3key
+          photo: s3key,
+          orgemail: orgemail
         }
       })
       navigate('/')

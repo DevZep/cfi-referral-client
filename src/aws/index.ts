@@ -2,9 +2,6 @@ import Amplify, { Auth } from 'aws-amplify'
 import '@aws-amplify/ui-vue'
 import config from './config'
 
-console.log('IN INDEX', config)
-console.log('CONFIG: process.env.VUE_APP_STAGE', process.env.VUE_APP_STAGE)
-
 Amplify.configure({
   Auth: {
     mandatorySignIn: true,

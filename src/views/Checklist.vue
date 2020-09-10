@@ -112,7 +112,7 @@ import navigate from '../libs/navigate'
 
 @Component({
   methods: {
-    navigate: navigate
+    navigate
   }
 })
 export default class Checklist extends Vue {
