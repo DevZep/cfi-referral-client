@@ -4,16 +4,20 @@
       <div class="col-md-6 mt-5 mx-auto">
         <div class="center-title">
           <v-img class=" center image-logo" src="img/CSM_LogoSquare_NoTag_1.png"></v-img>
-           <h3>Safe Movement</h3>
+           <!-- <h3>Safe Movement</h3> -->
+             <v-card-title>{{ $t('app.title') }}</v-card-title>
         </div>
         <v-form v-model="valid" ref="form">
-          <h3>Sign Up</h3><br>
+          <!-- <h3>Sign Up</h3><br> -->
+          <v-card-title>{{ $t('signUp.sign-up') }}</v-card-title>
           <div class="form-group">
-            <label for="email">Email</label><br>
+            <!-- <label for="email">Email</label><br> -->
+            <v-label for="email">{{ $t('signUp.email') }}</v-label><br>
             <input type="email" name="email" v-model="email" placeholder="Email@email.com" /><br>
           </div>
           <div class="form-group">
-              <label for="">Password</label><br>
+              <!-- <label for="">Password</label><br> -->
+              <v-label for="password">{{ $t('signUp.password') }}</v-label><br>
           </div>
           <v-text-field
                   v-model="password"
@@ -23,12 +27,13 @@
                   required
           ></v-text-field>
           <div class="form-group">
-              <label for="">Verify Password</label><br>
+              <!-- <label for="">Verify Password</label><br> -->
+               <v-label for="password">{{ $t('signUp.verify-password') }}</v-label><br>
               <input type="password" name="passwordConfirm" v-model="passwordConfirm" placeholder="Verify Password" />
           </div>
-          <v-btn text color="white" class="block" @click="submitSignUp()">Sign Up</v-btn>
-          <p>Have an account?</p><br>
-          <v-btn text color="green" class="block1" @click="navigate('/')">Sign In</v-btn>
+          <v-btn text color="white" class="block" @click="submitSignUp()">{{ $t('signUp.signup') }}</v-btn>
+          <p>{{ $t('signUp.text') }}</p><br>
+          <v-btn text color="green" class="block1" @click="navigate('/')">{{ $t('signUp.signin') }}</v-btn>
         </v-form>
       </div>
       </div>

@@ -4,21 +4,26 @@
       <div class="col-md-6 mt-5 mx-auto">
          <div class="center-title">
           <v-img class="center image-logo" src="img/CSM_LogoSquare_NoTag_1.png"></v-img>
-          <h3>Safe Movement</h3>
+          <!-- <h3>Safe Movement</h3> -->
+          <v-card-title>{{ $t('app.title') }}</v-card-title>
         </div>
         <form>
           <div v-if="emailCodeConfirmed" clsss='block' style='color: red'>You have successfully verified your email. For your security, please log in now.</div>
-          <h3>Sign In</h3><br>
+          <!-- <h3>Sign In</h3><br> -->
+          <v-card-title>{{ $t('login.sign-in') }}</v-card-title>
             <div class="form-group">
-              <label for="email">Email</label><br>
+              <!-- <label for="email">Email</label><br> -->
+              <v-label for="email">{{ $t('login.email') }}</v-label><br>
               <input type="email" name="email" v-model="email" placeholder="Email@email.com" />
             </div>
             <div class="form-group">
-              <label for="">Password</label><br>
+              <!-- <label for="">Password</label><br> -->
+              <v-label for="password">{{ $t('login.password') }}</v-label><br>
               <input type="password" name="password" v-model="password" placeholder="Password" /><br>
             </div>
-            <v-btn text color="white" class="block" @click="submitLogin()">Sign In</v-btn>
-            <v-btn text color="green" class="block1" @click="navigate('/signUp')">Sign Up</v-btn>
+            <v-btn text color="white" class="block" @click="submitLogin()">{{ $t('login.signin') }}</v-btn>
+            <!-- <v-btn text color="green" class="block1" @click="navigate('/signUp')">Sign Up</v-btn> -->
+              <v-btn text color="green" class="block1" @click="navigate('/signUp')">{{ $t('login.signup') }}</v-btn>
         </form>
       </div>
 

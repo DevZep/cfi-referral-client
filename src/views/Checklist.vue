@@ -4,10 +4,10 @@
       <div class="col-md-6 mt-5 mx-auto">
         <v-container v-if="showChecklist">
           <v-row>
-              <p class="text-left">Does the person you wish to refer have the following:</p>
+              <p class="text-left">{{ $t('checkList.header') }}</p>
           </v-row>
           <v-row>
-            <p class="text-left">Travel Ticket(bus or plane ticket)</p>
+            <p class="text-left">{{ $t('checkList.question1') }}</p>
           </v-row>
           <v-row>
             <v-radio-group v-model="answers[0]" row @change="checkUnanswered()">
@@ -16,35 +16,35 @@
             </v-radio-group>
           </v-row>
           <v-row>
-            <p class="text-left">Cambodia Overseas worker card (Card issued by the Cambodian government)</p>
+            <p class="text-left">{{ $t('checkList.question2') }}</p>
             <v-radio-group v-model="answers[1]" row @change="checkUnanswered()">
               <v-radio label="Yes" value="yes" required></v-radio>
               <v-radio label="No" value="no" required></v-radio>
             </v-radio-group>
           </v-row>
+           <v-row><p class="text-left">{{ $t('checkList.question3') }}</p><br></v-row>
           <v-row>
-            <p class="text-left">Black Passport (document issued by the Cambodian government)</p>
             <v-radio-group v-model="answers[2]" row @change="checkUnanswered()">
               <v-radio label="Yes" value="yes" required></v-radio>
               <v-radio label="No" value="no" required></v-radio>
             </v-radio-group>
           </v-row>
           <v-row>
-            <p class="text-left">Work Visa (document or Stamp in your Black passport) or Work permit (issued by the country you are moving to)</p>
+            <p class="text-left">{{ $t('checkList.question4') }}</p>
             <v-radio-group v-model="answers[3]" row @change="checkUnanswered()">
               <v-radio label="Yes" value="yes" required></v-radio>
               <v-radio label="No" value="no" required></v-radio>
             </v-radio-group>
           </v-row>
           <v-row>
-            <p class="text-left">Employment Contract (issued by the person you plan to work for) or Service Contract / Guarantee Agreement (an agreement between you and a recruitment agency)</p>
+            <p class="text-left">{{ $t('checkList.question5') }}</p>
             <v-radio-group v-model="answers[4]" row @change="checkUnanswered()">
               <v-radio label="Yes" value="yes" required></v-radio>
               <v-radio label="No" value="no" required></v-radio>
             </v-radio-group>
           </v-row>
           <v-row>
-            <p class="text-left">Do you have these documents with you?</p>
+            <p class="text-left">{{ $t('checkList.question6') }}</p>
           </v-row>
           <v-row>
             <v-radio-group v-model="answers[5]" row @change="checkUnanswered()">
@@ -53,7 +53,7 @@
             </v-radio-group>
           </v-row>
           <v-row>
-            <p class="text-left">Do you know where you can access support and help in your destination country?</p>
+            <p class="text-left">{{ $t('checkList.question7') }}</p>
             <v-radio-group v-model="answers[6]" row @change="checkUnanswered()">
               <v-radio label="Yes" value="yes"  required></v-radio>
               <v-radio label="No" value="no" required></v-radio>
@@ -63,7 +63,7 @@
             <v-spacer></v-spacer>
             <v-card-text class="text--primary">
               <v-btn color="success" id='btnSubmitChecklist' :disabled="disableSubmitBtn" @click="submit()">
-                Next
+                {{ $t('checkList.next') }}
               </v-btn>
             </v-card-text>
           </v-card-actions>
@@ -92,13 +92,13 @@
         </v-container>
         <v-container v-if="showSafeMigrationForm">
              <v-row>
-               <p class="text-left">The client who you are talking to appears to have safe migration plans.</p>
+               <p class="text-left">{{ $t('safeMigration.text1') }}</p>
             </v-row>
             <v-row>
-               <p class="text-left">Press 'Next' to return to the Home page.</p>
+               <p class="text-left">{{ $t('safeMigration.text2') }}</p>
             </v-row>
           <v-btn color="success" id='btnNavigateToHomeScreen' @click="navigate('/')">
-            Next
+            {{ $t('safeMigration.next') }}
           </v-btn>
         </v-container>
       </div>

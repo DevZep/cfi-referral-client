@@ -17,12 +17,40 @@
     "date-of-birth": "Date of Birth"
   },
   "login": {
-    "sign-in": "Sign In"
+    "sign-in": "Sign In",
+    "email": "Email",
+    "password":"Password",
+    "signin":"Sign In",
+    "signup":"Sign UP"
+
   },
   "signUp": {
-
+    "sign-up": "Sign Up",
+    "email": "Email",
+    "password":"Password",
+    "verify-password":"Verify Password",
+    "signup":"Sign UP",
+    "signin":"Sign In",
+    "text":"Have an account?"
   },
   "signUpEnterCode": {
 
+  },
+  "checkList": {
+    "header" : "Does the person you wish to refer have the following: ",
+    "question1":"Travel Ticket (bus or plane ticket)",
+    "question2":"Cambodia Overseas worker card (Card issued by the Cambodian Government)",
+    "question3":"Black Passport (document issued by the Cambodian Government)",
+    "question4":"Work Visa (document or stamp in your Black passport) or Work Permit (issued by the country you are moving to)",
+    "question5":"Employment Contract (issued by the person you plan to work for) or Service Contract / Guarantee Agreement (an agreement between you and a recruitment agency)",
+    "question6":"Do you have these documents with you?",
+    "question7":"Do you know where you can access support and help in your destination country?",
+    "next":"Next"
+
+  },
+  "safeMigration":{
+    "text1":"The client who you are talking to appears to have safe migration plans.",
+    "text2":"Press 'Next' to return to the Home page.",
+    "next":"Next"
   }
 }
