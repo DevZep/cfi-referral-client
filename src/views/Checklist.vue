@@ -7,7 +7,7 @@
               <p class="text-left">Does the person you wish to refer have the following:</p>
           </v-row>
           <v-row>
-            <p class="text-left">Travel Ticket(bus or plane ticket)</p>
+            <p class="text-left">Travel Ticket (bus or plane ticket)</p>
           </v-row>
           <v-row>
             <v-radio-group v-model="answers[0]" row @change="checkUnanswered()">
