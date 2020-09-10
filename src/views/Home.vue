@@ -43,7 +43,7 @@ import navigate from '../libs/navigate'
   },
   methods: {
     ...mapActions('Referrals', ['fetchCount']),
-    navigate: navigate
+    navigate
   },
   computed: {
     ...mapGetters('Auth', { user: 'getUser' }),

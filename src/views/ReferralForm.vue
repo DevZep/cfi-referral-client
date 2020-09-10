@@ -111,6 +111,23 @@
                 ></v-textarea>
               </v-col>
             </v-row>
+
+            <v-row>
+              <v-col
+                cols="12"
+              >
+                <v-select
+                  v-model="orgemail"
+                  :items="orgemails"
+                  :rules="orgemailRules"
+                  label="Send referral to?"
+                  item-text="display"
+                  item-value="email"
+                ></v-select>
+
+              </v-col>
+            </v-row>
+
             <v-btn @click="submit()">Submit</v-btn>
           </v-container>
         </v-form>
@@ -123,6 +140,7 @@
 import { Vue, Component } from 'vue-property-decorator'
 import { mapActions } from 'vuex'
 import { onError } from '@/libs/errorLib'
+import orgemails from '@/libs/orgEmails'
 
 @Component({
   methods: {
@@ -140,9 +158,9 @@ export default class ReferralForm extends Vue {
   clientphoto = null
   clientlat: number | null = null
   clientlon: number | null = null
+  orgemail = null
 
   dobmenu = false
-
   valid= false
 
   nameRules = [
@@ -152,6 +170,14 @@ export default class ReferralForm extends Vue {
   phoneRules = [
     (v: string) => !!v || 'Phone is required'
   ]
+
+  orgemailRules = [
+    (v: string) => !!v || 'Org email is required'
+  ]
+
+  // the whitelisted set of orgemails
+  // loaded from @/libs/orgEmails
+  orgemails = orgemails
 
   genders = [
     'Male',
@@ -197,8 +223,8 @@ export default class ReferralForm extends Vue {
 
   async submit () {
     if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
-      const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon } = this
-      await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon })
+      const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, orgemail } = this
+      await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, orgemail })
     }
   }
 }

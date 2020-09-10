@@ -35,7 +35,7 @@ import navigate from '../libs/navigate'
   },
   methods: {
     ...mapActions('Accounts', ['confirmCode']),
-    navigate: navigate
+    navigate
   }
 })
 export default class ConfirmCode extends Vue {

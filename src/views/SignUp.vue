@@ -50,7 +50,7 @@ import navigate from '../libs/navigate'
   },
   methods: {
     ...mapActions('Accounts', ['signUp']),
-    navigate: navigate
+    navigate
   }
 })
 export default class SignUp extends Vue {
