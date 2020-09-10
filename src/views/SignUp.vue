@@ -45,9 +45,6 @@ import { mapActions, mapGetters } from 'vuex'
 import navigate from '../libs/navigate'
 
 @Component({
-  computed: {
-    ...mapGetters('Accounts', ['isNewUser'])
-  },
   methods: {
     ...mapActions('Accounts', ['signUp']),
     navigate
@@ -55,7 +52,6 @@ import navigate from '../libs/navigate'
 })
 export default class SignUp extends Vue {
   signUp!: (credentials: {}) => void // from the mapActions above
-  isNewUser!: boolean
   email = ''
   password = ''
   passwordConfirm = ''
@@ -77,7 +73,6 @@ export default class SignUp extends Vue {
     if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
       const { email, password, passwordConfirm } = this
       await this.signUp({ email, password })
-      if (this.isNewUser) { this.$router.push('/confirmCode') }
     }
   }
 }

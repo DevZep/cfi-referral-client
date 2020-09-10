@@ -33,6 +33,7 @@ const actions: ActionTree<AccountState, RootState> = {
     try {
       commit('setNewUserEmail', email)
       const newUser = await Auth.signUp(email, password)
+      navigate('/confirmCode')
     } catch (e) {
       if (e.code === 'UsernameExistsException') {
         commit('setStatusMessage', 'This email already exists! You should just login!')
