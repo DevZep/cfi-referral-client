@@ -13,9 +13,11 @@
       max-width="400"
       v-if="isAuthenticated && authStatus !== 'loading'"
     >
+    <v-img class=" center img" src="img/CSM_LogoSquare_NoTag_1.png"></v-img>
+
     <v-card-title>{{ $t('app.title') }}</v-card-title>
 
-      <v-card-subtitle><b>{{ $t('app.subtitle') }}</b></v-card-subtitle>
+      <!-- <v-card-subtitle><b>{{ $t('app.subtitle') }}</b></v-card-subtitle> -->
 
       <v-card-subtitle id="name" class="pb-0">{{ $t('home.logged-in-as') }}: {{ user.email }}</v-card-subtitle>
 
@@ -65,3 +67,9 @@ export default class Home extends Vue {
   }
 }
 </script>
+<style scoped>
+.img {
+  width:60%;
+  height:60%;
+}
+</style>

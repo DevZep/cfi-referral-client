@@ -8,8 +8,8 @@
     <div class="row" id="app">
       <div class="col-md-6 mt-5 mx-auto">
         <div class="center-title">
+          <v-img class=" center img" src="img/CSM_LogoSquare_NoTag_1.png"></v-img>
            <h3>Safe Movement</h3>
-          <!-- <h4>Migration Referral App</h4><br> -->
         </div>
         <v-form v-model="valid" ref="form">
           <h3>Sign Up</h3><br>
@@ -32,6 +32,7 @@
               <input type="password" name="passwordConfirm" v-model="passwordConfirm" placeholder="Verify Password" />
           </div>
           <v-btn text color="white" class="block" @click="submitSignUp()">Sign Up</v-btn>
+          <!-- <v-btn text color="white" class="block" @click="navigate('confirmCode')">Sign Up</v-btn> -->
           <p>Have an account?</p><br>
           <v-btn text color="green" class="block1" @click="navigate('/')">Sign In</v-btn>
         </v-form>
@@ -115,5 +116,9 @@ input {
 .center-title{
   margin-bottom: 20px;
 }
-
+.img {
+  width:60%;
+  height:60%;
+  /* text-align:center;  */
+}
 </style>

@@ -30,7 +30,7 @@
             </v-radio-group>
           </v-row>
           <v-row>
-            <p class="text-left">Work Visa (document or Stamp in your Black passport or Work permit (issued by your country you are moving to)</p>
+            <p class="text-left">Work Visa (document or Stamp in your Black passport or Work permit (issued by the country you are moving to)</p>
             <v-radio-group v-model="answers[3]" row @change="checkUnanswered()">
               <v-radio label="Yes" value="yes" required></v-radio>
               <v-radio label="No" value="no" required></v-radio>

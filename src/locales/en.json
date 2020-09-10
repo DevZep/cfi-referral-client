@@ -1,7 +1,8 @@
 {
   "app": {
+    
     "title": "Safe Movement",
-    "subtitle": "Migration Referral App",
+    "subtitle": "",
     "current-language": "Lang",
     "sign-out": "Sign Out"
   },
