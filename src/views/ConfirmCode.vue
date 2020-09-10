@@ -3,6 +3,7 @@
     <div class="row">
       <div class="col-md-6 mt-5 mx-auto">
         <div class="center-title">
+          <v-img class=" center img" src="img/CSM_LogoSquare_NoTag_1.png"></v-img>
           <h3>Safe Movement</h3>
           <!-- <h4>Migration Referral App</h4><br> -->
         </div>
@@ -77,5 +78,9 @@ input {
 }
 v-btn{
   margin-bottom: 40px;
+}
+.img {
+  width:30%;
+  height:30%;
 }
 </style>

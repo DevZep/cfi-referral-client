@@ -114,6 +114,5 @@ input {
 .img {
   width:60%;
   height:60%;
-  /* text-align:center;  */
 }
 </style>
