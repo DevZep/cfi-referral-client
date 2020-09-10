@@ -3,9 +3,8 @@
     <div class="row">
       <div class="col-md-6 mt-5 mx-auto">
          <div class="center-title">
-          <v-img class="center img" src="img/CSM_LogoSquare_NoTag_1.png"></v-img>
+          <v-img class="center image-logo" src="img/CSM_LogoSquare_NoTag_1.png"></v-img>
           <h3>Safe Movement</h3>
-          <!-- <h4>Migration Referral App</h4><br> -->
         </div>
         <form>
           <div v-if="emailCodeConfirmed" clsss='block' style='color: red'>You have successfully verified your email. For your security, please log in now.</div>
@@ -86,8 +85,8 @@ input {
 .center-title{
   margin-bottom: 20px;
 }
-.img {
-  width:60%;
-  height:60%;
+.image-logo {
+  border: none !important;
 }
+
 </style>

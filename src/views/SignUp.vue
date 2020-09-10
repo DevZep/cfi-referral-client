@@ -1,14 +1,9 @@
 <template>
   <div id="signUp" class='center'>
-     <!-- <div class="center-title">
-      <div class="col-md-6 mt-5 mx-auto">
-
-      </div>
-    </div> -->
     <div class="row" id="app">
       <div class="col-md-6 mt-5 mx-auto">
         <div class="center-title">
-          <v-img class=" center img" src="img/CSM_LogoSquare_NoTag_1.png"></v-img>
+          <v-img class=" center image-logo" src="img/CSM_LogoSquare_NoTag_1.png"></v-img>
            <h3>Safe Movement</h3>
         </div>
         <v-form v-model="valid" ref="form">
@@ -32,7 +27,6 @@
               <input type="password" name="passwordConfirm" v-model="passwordConfirm" placeholder="Verify Password" />
           </div>
           <v-btn text color="white" class="block" @click="submitSignUp()">Sign Up</v-btn>
-          <!-- <v-btn text color="white" class="block" @click="navigate('confirmCode')">Sign Up</v-btn> -->
           <p>Have an account?</p><br>
           <v-btn text color="green" class="block1" @click="navigate('/')">Sign In</v-btn>
         </v-form>
@@ -111,8 +105,7 @@ input {
 .center-title{
   margin-bottom: 20px;
 }
-.img {
-  width:60%;
-  height:60%;
+.image-logo {
+  border: none !important;
 }
 </style>
