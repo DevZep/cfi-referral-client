@@ -73,17 +73,13 @@
               <v-col
                 cols="12"
               >
-                <v-label for="">{{ $t('referralForm.photo') }}</v-label>
-                  <label class="file-select">
-                  <!-- We can't use a normal button element here, as it would become the target of the label. -->
-                  <div class="select-button">
-                    <!-- Display the filename if a file has been selected. -->
-                    <span v-if="clientphoto">Selected Photo: {{clientphoto.name.slice(0,15)}}</span>
-                    <span v-else>{{ $t('referralForm.selectPhoto') }}</span>
-                  </div>
-                  <!-- Now, the file input that we hide. -->
-                  <input type="file" @change="handleFileChange"/>
-                </label>
+              <v-file-input
+                label="Photo"
+                filled
+                accept="image/*"
+                prepend-icon="mdi-camera"
+                @change="handleFileChange"
+              ></v-file-input>
               </v-col>
             </v-row>
 
@@ -127,7 +123,7 @@
               </v-col>
             </v-row>
 
-            <v-btn @click="submit()">{{ $t('referralForm.submit') }}</v-btn>
+            <v-btn @click="submit()" :loading='loading'>{{ $t('referralForm.submit') }}</v-btn>
           </v-container>
         </v-form>
       </div>
@@ -162,6 +158,7 @@ export default class ReferralForm extends Vue {
 
   dobmenu = false
   valid= false
+  loading= false
 
   nameRules = [
     (v: string) => !!v || i18n.t('referralForm.nameRule')
@@ -216,15 +213,16 @@ export default class ReferralForm extends Vue {
     }
   }
 
-  handleFileChange (e: any) {
-    this.$emit('input', e.target.files[0])
-    this.clientphoto = e.target.files[0]
+  handleFileChange (file: any) {
+    this.clientphoto = file
   }
 
   async submit () {
     if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
+      this.loading = true
       const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, orgemail } = this
       await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, orgemail })
+      this.loading = false
     }
   }
 }
