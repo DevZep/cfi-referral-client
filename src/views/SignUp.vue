@@ -13,7 +13,7 @@
           <div class="form-group">
             <!-- <label for="email">Email</label><br> -->
             <v-label for="email">{{ $t('signUp.email') }}</v-label><br>
-            <input type="email" name="email" v-model="email" placeholder="Email@email.com" /><br>
+            <input type="email" name="email" v-model="email" :placeholder=" $t('signUp.email')" /><br>
           </div>
           <div class="form-group">
               <!-- <label for="">Password</label><br> -->
@@ -29,7 +29,7 @@
           <div class="form-group">
               <!-- <label for="">Verify Password</label><br> -->
                <v-label for="password">{{ $t('signUp.verify-password') }}</v-label><br>
-              <input type="password" name="passwordConfirm" v-model="passwordConfirm" placeholder="Verify Password" />
+              <input type="password" name="passwordConfirm" v-model="passwordConfirm" :placeholder="$t('signUp.verify-password')" />
           </div>
           <v-btn text color="white" class="block" @click="submitSignUp()">{{ $t('signUp.signup') }}</v-btn>
           <p>{{ $t('signUp.text') }}</p><br>
@@ -43,6 +43,7 @@
 import { Vue, Component } from 'vue-property-decorator'
 import { mapActions, mapGetters } from 'vuex'
 import navigate from '../libs/navigate'
+import i18n from './../i18n'
 
 @Component({
   methods: {
@@ -61,10 +62,10 @@ export default class SignUp extends Vue {
   data () {
     return {
       passwordRules: [
-        (v: string) => (v && v.length >= 8) || 'Password must have at least 8 characters',
-        (v: string) => /(?=.*[A-Z])/.test(v) || 'Must have one uppercase character',
-        (v: string) => /(?=.*\d)/.test(v) || 'Must have one number',
-        (v: string) => /(?=.*[a-z])/.test(v) || 'Must have one lower case'
+        (v: string) => (v && v.length >= 8) || i18n.t('signUp.passwordRules'),
+        (v: string) => /(?=.*[A-Z])/.test(v) || i18n.t('signUp.passwordRules1'),
+        (v: string) => /(?=.*\d)/.test(v) || i18n.t('signUp.passwordRules2'),
+        (v: string) => /(?=.*[a-z])/.test(v) || i18n.t('signUp.passwordRules3')
       ]
     }
   }

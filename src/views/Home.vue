@@ -20,7 +20,7 @@
       <v-card-subtitle id="name" class="pb-0">{{ $t('home.logged-in-as') }}: {{ user.email }}</v-card-subtitle>
 
       <v-card-subtitle id="cid" class="pb-0">
-        <p id="countMessage">{{ $t('home.you-have-created') }} {{ count }} referrals</p>
+        <p id="countMessage">{{ $t('home.you-have-created') }} {{ count }} {{ $t('home.text') }} </p>
       </v-card-subtitle>
 
       <v-card-text class="text--primary">

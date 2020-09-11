@@ -11,36 +11,36 @@
           </v-row>
           <v-row>
             <v-radio-group v-model="answers[0]" row @change="checkUnanswered()">
-              <v-radio label="Yes" value="yes" required></v-radio>
-              <v-radio label="No" value="no" required></v-radio>
+              <v-radio v-bind:label=" $t('checkList.yes') " value="yes" required></v-radio>
+              <v-radio v-bind:label=" $t('checkList.no') " value="no" required></v-radio>
             </v-radio-group>
           </v-row>
           <v-row>
             <p class="text-left">{{ $t('checkList.question2') }}</p>
             <v-radio-group v-model="answers[1]" row @change="checkUnanswered()">
-              <v-radio label="Yes" value="yes" required></v-radio>
-              <v-radio label="No" value="no" required></v-radio>
+              <v-radio v-bind:label=" $t('checkList.yes') " value="yes" required></v-radio>
+              <v-radio v-bind:label=" $t('checkList.no') " value="no" required></v-radio>
             </v-radio-group>
           </v-row>
            <v-row><p class="text-left">{{ $t('checkList.question3') }}</p><br></v-row>
           <v-row>
             <v-radio-group v-model="answers[2]" row @change="checkUnanswered()">
-              <v-radio label="Yes" value="yes" required></v-radio>
-              <v-radio label="No" value="no" required></v-radio>
+              <v-radio v-bind:label=" $t('checkList.yes') " value="yes" required></v-radio>
+              <v-radio v-bind:label=" $t('checkList.no') " value="no" required></v-radio>
             </v-radio-group>
           </v-row>
           <v-row>
             <p class="text-left">{{ $t('checkList.question4') }}</p>
             <v-radio-group v-model="answers[3]" row @change="checkUnanswered()">
-              <v-radio label="Yes" value="yes" required></v-radio>
-              <v-radio label="No" value="no" required></v-radio>
+              <v-radio v-bind:label=" $t('checkList.yes') " value="yes" required></v-radio>
+              <v-radio v-bind:label=" $t('checkList.no') " value="no" required></v-radio>
             </v-radio-group>
           </v-row>
           <v-row>
             <p class="text-left">{{ $t('checkList.question5') }}</p>
             <v-radio-group v-model="answers[4]" row @change="checkUnanswered()">
-              <v-radio label="Yes" value="yes" required></v-radio>
-              <v-radio label="No" value="no" required></v-radio>
+              <v-radio v-bind:label=" $t('checkList.yes') " value="yes" required></v-radio>
+              <v-radio v-bind:label=" $t('checkList.no') " value="no" required></v-radio>
             </v-radio-group>
           </v-row>
           <v-row>
@@ -48,15 +48,15 @@
           </v-row>
           <v-row>
             <v-radio-group v-model="answers[5]" row @change="checkUnanswered()">
-              <v-radio label="Yes" value="yes" required></v-radio>
-              <v-radio label="No" value="no" required></v-radio>
+              <v-radio v-bind:label=" $t('checkList.yes') " required></v-radio>
+              <v-radio v-bind:label=" $t('checkList.no') " value="no" required></v-radio>
             </v-radio-group>
           </v-row>
           <v-row>
             <p class="text-left">{{ $t('checkList.question7') }}</p>
             <v-radio-group v-model="answers[6]" row @change="checkUnanswered()">
-              <v-radio label="Yes" value="yes"  required></v-radio>
-              <v-radio label="No" value="no" required></v-radio>
+              <v-radio v-bind:label=" $t('checkList.yes') " value="yes"  required></v-radio>
+              <v-radio v-bind:label=" $t('checkList.no') " value="no" required></v-radio>
             </v-radio-group>
           </v-row>
           <v-card-actions>
@@ -70,21 +70,21 @@
         </v-container>
         <v-container v-if="showConsentForm">
             <v-row>
-               <p class="text-left">The client who you are talking to appears to have unsafe migration plans.</p>
+               <p class="text-left">{{ $t('unsafeMigration.text1') }}</p>
             </v-row>
              <v-row>
-               <p class="text-left">Please ask for their consent to pass on their details to a safe agency that can help make sure they and their family are safe.</p>
+               <p class="text-left">{{ $t('unsafeMigration.text2') }}</p>
             </v-row>
              <v-row>
-               <p class="text-left">Do they give their consent?</p>
+               <p class="text-left">{{ $t('unsafeMigration.text3') }}</p>
             </v-row>
             <v-row>
               <div id="button-wrapper">
                 <v-btn color="success" id='btnNavigateToReferralForm' @click="navigate('/referralForm')">
-                  Yes
+                 {{ $t('unsafeMigration.yes') }}
                 </v-btn>
                 <v-btn color="success" id='btnNavigateToHomeScreen' @click="navigate('/')">
-                  No
+                  {{ $t('unsafeMigration.no') }}
                 </v-btn>
               </div>
             </v-row>

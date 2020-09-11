@@ -4,19 +4,20 @@
       <div class="col-md-6 mt-5 mx-auto">
         <div class="center-title">
           <v-img class="center image-logo" src="img/CSM_LogoSquare_NoTag_1.png"></v-img>
-          <h3>Safe Movement</h3>
+          <v-card-title>{{ $t('app.title') }}</v-card-title>
         </div>
         <form >
-          <h3>Confirm Account</h3>
-          <h4>Check your email {{newUserEmail}} for a confirmation code and submit it below.</h4><br>
+          <v-card-title>{{ $t('signUpEnterCode.title') }}</v-card-title>
+          <v-card-title>{{ $t('signUpEnterCode.paragraph1') }} {{newUserEmail}} {{ $t('signUpEnterCode.paragraph2') }}</v-card-title>
           <div v-if="statusMessage" clsss='block' style='color: red'><b>{{statusMessage}}</b></div>
           <div class="form-group">
-            <label for="">Code</label><br>
-            <input type="text" name="code" v-model="code" placeholder="Insert Code" />
+            <!-- <label for="">Code</label><br> -->
+            <v-label>{{ $t('signUpEnterCode.code') }}</v-label><br>
+            <input type="text" name="code" v-model="code" :placeholder="$t('signUpEnterCode.insertCode')" />
           </div>
-          <v-btn text color="white" class="block" @click="submitConfirmCode()">Submit Code</v-btn>
-          <p>Have an account?</p><br>
-          <v-btn text color="green" class="block1" @click="navigate('/')">Sign In</v-btn><br>
+          <v-btn text color="white" class="block" @click="submitConfirmCode()">{{ $t('signUpEnterCode.submitCode') }}</v-btn>
+          <p>{{ $t('signUpEnterCode.text') }}</p><br>
+          <v-btn text color="green" class="block1" @click="navigate('/')">{{ $t('signUpEnterCode.signIn') }}</v-btn><br>
         </form>
       </div>
     </div>

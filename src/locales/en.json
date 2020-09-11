@@ -9,16 +9,45 @@
   "home": {
     "logged-in-as": "Logged In As",
     "you-have-created": "You have created",
+    "text": "referrals",
     "create-new-referral": "Create New Referral"
   },
   "referralForm": {
     "title": "Referral Form",
     "name": "Name",
-    "date-of-birth": "Date of Birth"
+    "date-of-birth": "Date of Birth",
+    "gender":"Gender",
+    "phone":"Phone",
+    "photo":"Photo",
+    "selectPhoto":"Select Photo",
+    "locationClassification":"Location Classification",
+    "note":"Note",
+    "sendReferral":"Send referral to?",
+    "submit":"Submit",
+    "gender1":"Male",
+    "gender2":"Female",
+    "gender3":"Other",
+    "gender4":"Unknown",
+    "gender5":"Prefer not to answer",
+    "location1":"Home",
+    "location2":"School",
+    "location3":"Work",
+    "location4":"Family Member",
+    "location5":"Friend",
+    "location6":"Commune/Village",
+
+    "nameRule":"Name is required",
+    "phoneRule":"Phone is required",
+    "orgemailRule":"Org email is required",
+
+    "clientName":"Enter the clients name"
+
+    
   },
   "login": {
     "sign-in": "Sign In",
     "email": "Email",
+    "text":"You have successfully verified your email. For your security, please log in now.",
     "password":"Password",
     "signin":"Sign In",
     "signup":"Sign UP"
@@ -31,10 +60,21 @@
     "verify-password":"Verify Password",
     "signup":"Sign UP",
     "signin":"Sign In",
-    "text":"Have an account?"
+    "text":"Have an account?",
+    "passwordRules":"Password must have at least 8 characters",
+    "passwordRules1":"Must have at least one uppercase character",
+    "passwordRules2":"Must have at least one number",
+    "passwordRules3":"Must have at least one lowercase character"
   },
   "signUpEnterCode": {
-
+    "title":"Confirm Account",
+    "code":"Code",
+    "insertCode":"Insert Code",
+    "submitCode":"Submit Code",
+    "paragraph1":"Check your email",
+    "paragraph2":"for a confirmation code and submit it below.",
+    "text":"Have an account?",
+    "signIn":"Sign In"
   },
   "checkList": {
     "header" : "Does the person you wish to refer have the following: ",
@@ -45,12 +85,20 @@
     "question5":"Employment Contract (issued by the person you plan to work for) or Service Contract / Guarantee Agreement (an agreement between you and a recruitment agency)",
     "question6":"Do you have these documents with you?",
     "question7":"Do you know where you can access support and help in your destination country?",
-    "next":"Next"
-
+    "next":"Next",
+    "yes":"Yes",
+    "no":"No"
   },
   "safeMigration":{
     "text1":"The client who you are talking to appears to have safe migration plans.",
     "text2":"Press 'Next' to return to the Home page.",
     "next":"Next"
+  },
+  "unsafeMigration":{
+    "text1":"The client who you are talking to appears to have unsafe migration plans.",
+    "text2":"Please ask for their consent to pass on their details to a safe agency that can help make sure they and their family are safe.",
+    "text3":"Do they give their consent?",
+    "yes":"Yes",
+    "no":"No"
   }
 }

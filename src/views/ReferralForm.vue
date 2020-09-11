@@ -11,8 +11,8 @@
               >
                 <v-text-field
                   v-model="clientname"
-                  v-bind:label="$t('referralForm.name')"
-                  hint="Enter the clients name"
+                  :label="$t('referralForm.name')"
+                  hint=""
                   :rules="nameRules"
                   required
                 ></v-text-field>
@@ -29,12 +29,11 @@
                   max-width="290px"
                   min-width="290px"
                 >
-                  <template v-slot:activator="{ on, attrs }">
+                  <template v-slot:activator="{ on }">
                     <v-text-field
                       v-model="clientbirth"
-                      v-bind:label="$t('referralForm.date-of-birth')"
+                      :label="$t('referralForm.date-of-birth')"
                       hint="YYYY/MM/DD format"
-                      v-bind="attrs"
                       v-on="on"
                     ></v-text-field>
                   </template>
@@ -50,7 +49,7 @@
                 <v-select
                   v-model="clientgender"
                   :items="genders"
-                  label="Gender"
+                  :label="$t('referralForm.gender')"
                 ></v-select>
 
               </v-col>
@@ -62,10 +61,10 @@
               >
                 <v-text-field
                   v-model="clientphone"
-                  label="Phone"
+                  :label="$t('referralForm.phone')"
                   :rules="phoneRules"
                   required
-                  hint="Enter the clients phone in local format, example: 012999888"
+                  :hint="$t('referralForm.phone')"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -74,13 +73,13 @@
               <v-col
                 cols="12"
               >
-                <label for="">Photo</label>
+                <v-label for="">{{ $t('referralForm.photo') }}</v-label>
                   <label class="file-select">
                   <!-- We can't use a normal button element here, as it would become the target of the label. -->
                   <div class="select-button">
                     <!-- Display the filename if a file has been selected. -->
                     <span v-if="clientphoto">Selected Photo: {{clientphoto.name.slice(0,15)}}</span>
-                    <span v-else>Select Photo</span>
+                    <span v-else>{{ $t('referralForm.selectPhoto') }}</span>
                   </div>
                   <!-- Now, the file input that we hide. -->
                   <input type="file" @change="handleFileChange"/>
@@ -95,7 +94,7 @@
                 <v-select
                   v-model="clientlocation"
                   :items="locations"
-                  label="Location Classification"
+                  :label="$t('referralForm.locationClassification')"
                 ></v-select>
 
               </v-col>
@@ -105,9 +104,9 @@
               <v-col cols="12">
                 <v-textarea
                   v-model="clientnote"
-                  label="Note"
+                  v-bind:label="$t('referralForm.note')"
                   value=""
-                  hint="Include any additional information here"
+                  :hint="$t('referralForm.locationClassification')"
                 ></v-textarea>
               </v-col>
             </v-row>
@@ -120,7 +119,7 @@
                   v-model="orgemail"
                   :items="orgemails"
                   :rules="orgemailRules"
-                  label="Send referral to?"
+                  v-bind:label="$t('referralForm.sendReferral')"
                   item-text="display"
                   item-value="email"
                 ></v-select>
@@ -128,7 +127,7 @@
               </v-col>
             </v-row>
 
-            <v-btn @click="submit()">Submit</v-btn>
+            <v-btn @click="submit()">{{ $t('referralForm.submit') }}</v-btn>
           </v-container>
         </v-form>
       </div>
@@ -141,6 +140,7 @@ import { Vue, Component } from 'vue-property-decorator'
 import { mapActions } from 'vuex'
 import { onError } from '@/libs/errorLib'
 import orgemails from '@/libs/orgEmails'
+import i18n from './../i18n'
 
 @Component({
   methods: {
@@ -164,15 +164,15 @@ export default class ReferralForm extends Vue {
   valid= false
 
   nameRules = [
-    (v: string) => !!v || 'Name is required'
+    (v: string) => !!v || i18n.t('referralForm.nameRule')
   ]
 
   phoneRules = [
-    (v: string) => !!v || 'Phone is required'
+    (v: string) => !!v || i18n.t('referralForm.phoneRule')
   ]
 
   orgemailRules = [
-    (v: string) => !!v || 'Org email is required'
+    (v: string) => !!v || i18n.t('referralForm.orgemailRule')
   ]
 
   // the whitelisted set of orgemails
@@ -180,20 +180,20 @@ export default class ReferralForm extends Vue {
   orgemails = orgemails
 
   genders = [
-    'Male',
-    'Female',
-    'Other',
-    'Unknown',
-    'Prefer not to answer'
+    this.$t('referralForm.gender1'),
+    this.$t('referralForm.gender2'),
+    this.$t('referralForm.gender3'),
+    this.$t('referralForm.gender4'),
+    this.$t('referralForm.gender5')
   ]
 
   locations = [
-    'Home',
-    'School',
-    'Work',
-    'Family Member',
-    'Friend',
-    'Commune/Village'
+    this.$t('referralForm.location1'),
+    this.$t('referralForm.location2'),
+    this.$t('referralForm.location3'),
+    this.$t('referralForm.location4'),
+    this.$t('referralForm.location5'),
+    this.$t('referralForm.location6')
   ]
 
   created () {
