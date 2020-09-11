@@ -12,7 +12,7 @@
                 <v-text-field
                   v-model="clientname"
                   :label="$t('referralForm.name')"
-                  hint=""
+                  :hint="$t('referralForm.clientName')"
                   :rules="nameRules"
                   required
                 ></v-text-field>
@@ -33,7 +33,7 @@
                     <v-text-field
                       v-model="clientbirth"
                       :label="$t('referralForm.date-of-birth')"
-                      hint="YYYY/MM/DD format"
+                      :hint="$t('referralForm.dbClient')"
                       v-on="on"
                     ></v-text-field>
                   </template>
@@ -64,7 +64,7 @@
                   :label="$t('referralForm.phone')"
                   :rules="phoneRules"
                   required
-                  :hint="$t('referralForm.phone')"
+                  :hint="$t('referralForm.phoneMassage')"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -74,7 +74,7 @@
                 cols="12"
               >
               <v-file-input
-                label="Photo"
+                :label="$t('referralForm.photo')"
                 filled
                 accept="image/*"
                 prepend-icon="mdi-camera"
@@ -100,9 +100,9 @@
               <v-col cols="12">
                 <v-textarea
                   v-model="clientnote"
-                  v-bind:label="$t('referralForm.note')"
+                  :label="$t('referralForm.note')"
                   value=""
-                  :hint="$t('referralForm.locationClassification')"
+                  :hint="$t('referralForm.noteMassage')"
                 ></v-textarea>
               </v-col>
             </v-row>
@@ -115,7 +115,7 @@
                   v-model="orgemail"
                   :items="orgemails"
                   :rules="orgemailRules"
-                  v-bind:label="$t('referralForm.sendReferral')"
+                  :label="$t('referralForm.sendReferral')"
                   item-text="display"
                   item-value="email"
                 ></v-select>

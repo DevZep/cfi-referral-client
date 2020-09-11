@@ -11,36 +11,36 @@
           </v-row>
           <v-row>
             <v-radio-group v-model="answers[0]" row @change="checkUnanswered()">
-              <v-radio v-bind:label=" $t('checkList.yes') " value="yes" required></v-radio>
-              <v-radio v-bind:label=" $t('checkList.no') " value="no" required></v-radio>
+              <v-radio :label=" $t('checkList.yes') " value="yes" required></v-radio>
+              <v-radio :label=" $t('checkList.no') " value="no" required></v-radio>
             </v-radio-group>
           </v-row>
           <v-row>
             <p class="text-left">{{ $t('checkList.question2') }}</p>
             <v-radio-group v-model="answers[1]" row @change="checkUnanswered()">
-              <v-radio v-bind:label=" $t('checkList.yes') " value="yes" required></v-radio>
-              <v-radio v-bind:label=" $t('checkList.no') " value="no" required></v-radio>
+              <v-radio :label=" $t('checkList.yes') " value="yes" required></v-radio>
+              <v-radio :label=" $t('checkList.no') " value="no" required></v-radio>
             </v-radio-group>
           </v-row>
            <v-row><p class="text-left">{{ $t('checkList.question3') }}</p><br></v-row>
           <v-row>
             <v-radio-group v-model="answers[2]" row @change="checkUnanswered()">
-              <v-radio v-bind:label=" $t('checkList.yes') " value="yes" required></v-radio>
-              <v-radio v-bind:label=" $t('checkList.no') " value="no" required></v-radio>
+              <v-radio :label=" $t('checkList.yes') " value="yes" required></v-radio>
+              <v-radio :label=" $t('checkList.no') " value="no" required></v-radio>
             </v-radio-group>
           </v-row>
           <v-row>
             <p class="text-left">{{ $t('checkList.question4') }}</p>
             <v-radio-group v-model="answers[3]" row @change="checkUnanswered()">
-              <v-radio v-bind:label=" $t('checkList.yes') " value="yes" required></v-radio>
-              <v-radio v-bind:label=" $t('checkList.no') " value="no" required></v-radio>
+              <v-radio :label=" $t('checkList.yes') " value="yes" required></v-radio>
+              <v-radio :label=" $t('checkList.no') " value="no" required></v-radio>
             </v-radio-group>
           </v-row>
           <v-row>
             <p class="text-left">{{ $t('checkList.question5') }}</p>
             <v-radio-group v-model="answers[4]" row @change="checkUnanswered()">
-              <v-radio v-bind:label=" $t('checkList.yes') " value="yes" required></v-radio>
-              <v-radio v-bind:label=" $t('checkList.no') " value="no" required></v-radio>
+              <v-radio :label=" $t('checkList.yes') " value="yes" required></v-radio>
+              <v-radio :label=" $t('checkList.no') " value="no" required></v-radio>
             </v-radio-group>
           </v-row>
           <v-row>
@@ -48,15 +48,15 @@
           </v-row>
           <v-row>
             <v-radio-group v-model="answers[5]" row @change="checkUnanswered()">
-              <v-radio v-bind:label=" $t('checkList.yes') " required></v-radio>
-              <v-radio v-bind:label=" $t('checkList.no') " value="no" required></v-radio>
+              <v-radio :label=" $t('checkList.yes') " required></v-radio>
+              <v-radio :label=" $t('checkList.no') " value="no" required></v-radio>
             </v-radio-group>
           </v-row>
           <v-row>
             <p class="text-left">{{ $t('checkList.question7') }}</p>
             <v-radio-group v-model="answers[6]" row @change="checkUnanswered()">
-              <v-radio v-bind:label=" $t('checkList.yes') " value="yes"  required></v-radio>
-              <v-radio v-bind:label=" $t('checkList.no') " value="no" required></v-radio>
+              <v-radio :label=" $t('checkList.yes') " value="yes"  required></v-radio>
+              <v-radio :label=" $t('checkList.no') " value="no" required></v-radio>
             </v-radio-group>
           </v-row>
           <v-card-actions>
