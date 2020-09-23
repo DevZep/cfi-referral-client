@@ -1,8 +1,8 @@
 <template>
   <div class='home center'>
-    <div v-if="authStatus === 'loading'">
+    <!-- <div v-if="authStatus === 'loading'">
       <Loading />
-    </div>
+    </div> -->
     <div v-if="!isAuthenticated && authStatus !== 'loading'">
       <Login />
     </div>

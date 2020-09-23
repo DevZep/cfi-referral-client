@@ -13,24 +13,49 @@
           <div class="form-group">
             <!-- <label for="email">Email</label><br> -->
             <v-label for="email">{{ $t('signUp.email') }}</v-label><br>
-            <input type="email" name="email" v-model="email" :placeholder=" $t('signUp.email')" /><br>
+            <!-- <input type="email" name="email" v-model="email" :placeholder=" $t('signUp.email')" /><br> -->
           </div>
+          <v-row>
+            <v-col cols="8">
+              <v-text-field
+                    type="email"
+                      v-model="email"
+                      :hint="$t('signUp.email')"
+                      required
+              ></v-text-field>
+            </v-col>
+          </v-row>
           <div class="form-group">
-              <!-- <label for="">Password</label><br> -->
               <v-label for="password">{{ $t('signUp.password') }}</v-label><br>
           </div>
-          <v-text-field
-                  v-model="password"
-                  type="password"
-                  :rules="passwordRules"
-                  error-count="5"
-                  required
-          ></v-text-field>
+          <v-row>
+            <v-col cols="8">
+              <v-text-field
+                      v-model="password"
+                      type="password"
+                      :rules="passwordRules"
+                      error-count="5"
+                      required
+              ></v-text-field>
+            </v-col>
+          </v-row>
+
           <div class="form-group">
               <!-- <label for="">Verify Password</label><br> -->
                <v-label for="password">{{ $t('signUp.verify-password') }}</v-label><br>
-              <input type="password" name="passwordConfirm" v-model="passwordConfirm" :placeholder="$t('signUp.verify-password')" />
+              <!-- <input type="password" name="passwordConfirm" v-model="passwordConfirm" :placeholder="$t('signUp.verify-password')" /> -->
           </div>
+            <v-row>
+            <v-col cols="8">
+              <v-text-field
+                      type="password"
+                      v-model="passwordConfirm"
+                      :hint="$t('signUp.verify-password')"
+                      required
+              ></v-text-field>
+            </v-col>
+          </v-row>
+
           <v-btn text color="white" class="block" @click="submitSignUp()">{{ $t('signUp.signup') }}</v-btn>
           <p>{{ $t('signUp.text') }}</p><br>
           <v-btn text color="green" class="block1" @click="navigate('/')">{{ $t('signUp.signin') }}</v-btn>
@@ -56,6 +81,7 @@ export default class SignUp extends Vue {
   email = ''
   password = ''
   passwordConfirm = ''
+  loading= false
 
   valid=false
 
@@ -73,6 +99,7 @@ export default class SignUp extends Vue {
   async submitSignUp () {
     if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
       const { email, password, passwordConfirm } = this
+      await new Promise(resolve => setTimeout(resolve, 1000))
       await this.signUp({ email, password })
     }
   }
