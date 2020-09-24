@@ -148,7 +148,6 @@ export default class Checklist extends Vue {
 <style scoped>
 #btnNavigateToHomeScreen{
   margin: 100px;
-
 }
 #button-wrapper{
   display: flex;

@@ -13,7 +13,6 @@
           <div v-if="emailCodeConfirmed" clsss='block' style='color: red'>{{ $t('login.text') }}</div>
           <v-card-title>{{ $t('login.sign-in') }}</v-card-title>
             <v-label for="email">{{ $t('login.email') }}</v-label><br>
-                <!-- <v-label for="email">{{ $t('login.email') }}</v-label><br> -->
             <v-row>
                <v-col
                 cols="8"
