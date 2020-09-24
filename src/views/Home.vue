@@ -1,8 +1,5 @@
 <template>
   <div class='home center'>
-    <!-- <div v-if="authStatus === 'loading'">
-      <Loading />
-    </div> -->
     <div v-if="!isAuthenticated && authStatus !== 'loading'">
       <Login />
     </div>
@@ -22,7 +19,6 @@
       <v-card-subtitle id="cid" class="pb-0">
         <p id="countMessage">{{ $t('home.you-have-created') }} {{ count }} {{ $t('home.text') }} </p>
       </v-card-subtitle>
-
       <v-card-text class="text--primary">
           <v-btn id='btnNavigateReferralForm' @click="navigate('/checklist')">
             {{ $t('home.create-new-referral') }}

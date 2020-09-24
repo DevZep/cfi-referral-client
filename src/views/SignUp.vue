@@ -4,13 +4,11 @@
       <div class="col-md-6 mt-5 mx-auto">
         <div class="center-title">
           <v-img class=" center image-logo" src="img/CSM_LogoSquare_NoTag_1.png"></v-img>
-             <v-card-title>{{ $t('app.title') }}</v-card-title>
+          <v-card-title>{{ $t('app.title') }}</v-card-title>
         </div>
         <v-form v-model="valid" ref="form">
           <v-card-title>{{ $t('signUp.sign-up') }}</v-card-title>
-          <div class="form-group">
-            <v-label for="email">{{ $t('signUp.email') }}</v-label><br>
-          </div>
+          <v-label for="email">{{ $t('signUp.email') }}</v-label><br>
           <v-row>
             <v-col cols="8">
               <v-text-field
@@ -21,9 +19,7 @@
               ></v-text-field>
             </v-col>
           </v-row>
-          <div class="form-group">
-              <v-label for="password">{{ $t('signUp.password') }}</v-label><br>
-          </div>
+          <v-label for="password">{{ $t('signUp.password') }}</v-label><br>
           <v-row>
             <v-col cols="8">
               <v-text-field
@@ -35,10 +31,7 @@
               ></v-text-field>
             </v-col>
           </v-row>
-
-          <div class="form-group">
-               <v-label for="password">{{ $t('signUp.verify-password') }}</v-label><br>
-          </div>
+           <v-label for="password">{{ $t('signUp.verify-password') }}</v-label><br>
             <v-row>
             <v-col cols="8">
               <v-text-field
