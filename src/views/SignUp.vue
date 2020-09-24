@@ -4,16 +4,12 @@
       <div class="col-md-6 mt-5 mx-auto">
         <div class="center-title">
           <v-img class=" center image-logo" src="img/CSM_LogoSquare_NoTag_1.png"></v-img>
-           <!-- <h3>Safe Movement</h3> -->
              <v-card-title>{{ $t('app.title') }}</v-card-title>
         </div>
         <v-form v-model="valid" ref="form">
-          <!-- <h3>Sign Up</h3><br> -->
           <v-card-title>{{ $t('signUp.sign-up') }}</v-card-title>
           <div class="form-group">
-            <!-- <label for="email">Email</label><br> -->
             <v-label for="email">{{ $t('signUp.email') }}</v-label><br>
-            <!-- <input type="email" name="email" v-model="email" :placeholder=" $t('signUp.email')" /><br> -->
           </div>
           <v-row>
             <v-col cols="8">
@@ -41,9 +37,7 @@
           </v-row>
 
           <div class="form-group">
-              <!-- <label for="">Verify Password</label><br> -->
                <v-label for="password">{{ $t('signUp.verify-password') }}</v-label><br>
-              <!-- <input type="password" name="passwordConfirm" v-model="passwordConfirm" :placeholder="$t('signUp.verify-password')" /> -->
           </div>
             <v-row>
             <v-col cols="8">
@@ -56,7 +50,7 @@
             </v-col>
           </v-row>
 
-          <v-btn text color="white" class="block" @click="submitSignUp()">{{ $t('signUp.signup') }}</v-btn>
+          <v-btn text color="white" class="block" @click="submitSignUp()" :loading='loading'>{{ $t('signUp.signup') }}</v-btn>
           <p>{{ $t('signUp.text') }}</p><br>
           <v-btn text color="green" class="block1" @click="navigate('/')">{{ $t('signUp.signin') }}</v-btn>
         </v-form>
@@ -98,9 +92,11 @@ export default class SignUp extends Vue {
 
   async submitSignUp () {
     if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
+      this.loading = true
       const { email, password, passwordConfirm } = this
       await new Promise(resolve => setTimeout(resolve, 1000))
-      await this.signUp({ email, password })
+      await this.signUp({ email, password, passwordConfirm })
+      this.loading = false
     }
   }
 }

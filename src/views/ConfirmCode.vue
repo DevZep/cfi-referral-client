@@ -11,11 +11,20 @@
           <v-card-title>{{ $t('signUpEnterCode.paragraph1') }} {{newUserEmail}} {{ $t('signUpEnterCode.paragraph2') }}</v-card-title>
           <div v-if="statusMessage" clsss='block' style='color: red'><b>{{statusMessage}}</b></div>
           <div class="form-group">
-            <!-- <label for="">Code</label><br> -->
             <v-label>{{ $t('signUpEnterCode.code') }}</v-label><br>
-            <input type="text" name="code" v-model="code" :placeholder="$t('signUpEnterCode.insertCode')" />
-          </div>
-          <v-btn text color="white" class="block" @click="submitConfirmCode()">{{ $t('signUpEnterCode.submitCode') }}</v-btn>
+            </div>
+            <v-row>
+            <v-col cols="8">
+              <v-text-field
+                    type="email"
+                      v-model="code"
+                      :hint="$t('signUpEnterCode.insertCode')"
+                      required
+              ></v-text-field>
+            </v-col>
+          </v-row>
+
+          <v-btn text color="white" class="block" @click="submitConfirmCode()" :loading='loading'>{{ $t('signUpEnterCode.submitCode') }}</v-btn>
           <p>{{ $t('signUpEnterCode.text') }}</p><br>
           <v-btn text color="green" class="block1" @click="navigate('/')">{{ $t('signUpEnterCode.signIn') }}</v-btn><br>
         </form>
@@ -44,10 +53,14 @@ export default class ConfirmCode extends Vue {
   newUserEmail!: string
   statusMessage!: string
   code = ''
+  loading= false
 
   async submitConfirmCode () {
     if (this.code !== '') {
+      this.loading = true
+      await new Promise(resolve => setTimeout(resolve, 1000))
       await this.confirmCode(this.code)
+      this.loading = false
     }
   }
 }

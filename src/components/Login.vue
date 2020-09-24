@@ -12,15 +12,6 @@
 
           <div v-if="emailCodeConfirmed" clsss='block' style='color: red'>{{ $t('login.text') }}</div>
           <v-card-title>{{ $t('login.sign-in') }}</v-card-title>
-            <!-- <div class="form-group">
-              <v-label for="email">{{ $t('login.email') }}</v-label><br>
-              <input type="email" name="email" v-model="email" :placeholder="$t('login.email')" />
-            </div>
-            <div class="form-group">
-              <v-label for="password">{{ $t('login.password') }}</v-label><br>
-              <input type="password" name="password" v-model="password" :placeholder="$t('login.password')" /><br>
-            </div> -->
-            <!--  -->
             <div class="form-group">
               <v-label for="email">{{ $t('login.email') }}</v-label><br>
             </div>
@@ -52,9 +43,7 @@
                 ></v-text-field>
               </v-col>
             </v-row>
-
             <v-btn text color="white" class="block"  @click="submitLogin()" :loading='loading'>{{ $t('login.signin') }}</v-btn>
-            <!-- <v-btn @click="submitLogin()" :loading='loading'>{{$t('login.signin')}}</v-btn> -->
             <v-btn text color="green" class="block1" @click="navigate('/signUp')">{{ $t('login.signup') }}</v-btn>
             </v-container>
         </v-form>
