@@ -9,9 +9,9 @@
               <v-col
                 cols="12"
               >
+              <v-label for="name">{{ $t('referralForm.name') }}</v-label>
                 <v-text-field
                   v-model="clientname"
-                  :label="$t('referralForm.name')"
                   :hint="$t('referralForm.clientName')"
                   :rules="nameRules"
                   required
@@ -30,9 +30,10 @@
                   min-width="290px"
                 >
                   <template v-slot:activator="{ on }">
+                    <v-label for="name">{{ $t('referralForm.date-of-birth') }}</v-label>
                     <v-text-field
                       v-model="clientbirth"
-                      :label="$t('referralForm.date-of-birth')"
+
                       :hint="$t('referralForm.dbClient')"
                       v-on="on"
                     ></v-text-field>
@@ -48,20 +49,33 @@
               >
                 <v-select
                   v-model="clientgender"
-                  :items="genders"
                   :label="$t('referralForm.gender')"
+                  :items="genders"
+                   dense
                 ></v-select>
 
               </v-col>
             </v-row>
 
+            <v-row align="center">
+              <v-col class="d-flex" cols="12" sm="6">
+                <v-select
+                  :items="items"
+                  label="Standard"
+                  dense
+                ></v-select>
+              </v-col>
+            </v-row>
+
+            <!--  -->
+
             <v-row>
                <v-col
                 cols="12"
               >
+              <v-label for="gender">{{ $t('referralForm.phone') }}</v-label>
                 <v-text-field
                   v-model="clientphone"
-                  :label="$t('referralForm.phone')"
                   :rules="phoneRules"
                   required
                   :hint="$t('referralForm.phoneMassage')"
@@ -137,116 +151,124 @@ import { mapActions } from 'vuex'
 import { onError } from '@/libs/errorLib'
 import orgemails from '@/libs/orgEmails'
 import i18n from './../i18n'
+import Vuetify from 'vuetify/lib'
 
-@Component({
-  methods: {
-    ...mapActions('Referrals', ['submitReferral'])
-  }
-})
+  @Component({
+    methods: {
+      ...mapActions('Referrals', ['submitReferral'])
+    }
+  })
+
 export default class ReferralForm extends Vue {
-  submitReferral!: (referral: {}) => void // from the mapActions above
-  clientname = ''
-  clientphone = ''
-  clientnote = ''
-  clientbirth = ''
-  clientgender = ''
-  clientlocation = ''
-  clientphoto = null
-  clientlat: number | null = null
-  clientlon: number | null = null
-  orgemail = null
+    submitReferral!: (referral: {}) => void // from the mapActions above
+    clientname = ''
+    clientphone = ''
+    clientnote = ''
+    clientbirth = ''
+    clientgender = ''
+    clientlocation = ''
+    clientphoto = null
+    clientlat: number | null = null
+    clientlon: number | null = null
+    orgemail = null
 
-  dobmenu = false
-  valid= false
-  loading= false
+    dobmenu = false
+    valid= false
+    loading= false
 
-  nameRules = [
-    (v: string) => !!v || i18n.t('referralForm.nameRule')
-  ]
+    nameRules = [
+      (v: string) => !!v || i18n.t('referralForm.nameRule')
+    ]
 
-  phoneRules = [
-    (v: string) => !!v || i18n.t('referralForm.phoneRule')
-  ]
+    phoneRules = [
+      (v: string) => !!v || i18n.t('referralForm.phoneRule')
+    ]
 
-  orgemailRules = [
-    (v: string) => !!v || i18n.t('referralForm.orgemailRule')
-  ]
+    orgemailRules = [
+      (v: string) => !!v || i18n.t('referralForm.orgemailRule')
+    ]
 
-  // the whitelisted set of orgemails
-  // loaded from @/libs/orgEmails
-  orgemails = orgemails
+    // the whitelisted set of orgemails
+    // loaded from @/libs/orgEmails
+    orgemails = orgemails
 
-  genders = [
-    this.$t('referralForm.gender1'),
-    this.$t('referralForm.gender2'),
-    this.$t('referralForm.gender3'),
-    this.$t('referralForm.gender4'),
-    this.$t('referralForm.gender5')
-  ]
+    genders = [
+      this.$t('referralForm.gender1'),
+      this.$t('referralForm.gender2'),
+      this.$t('referralForm.gender3'),
+      this.$t('referralForm.gender4'),
+      this.$t('referralForm.gender5')
+    ]
 
-  locations = [
-    this.$t('referralForm.location1'),
-    this.$t('referralForm.location2'),
-    this.$t('referralForm.location3'),
-    this.$t('referralForm.location4'),
-    this.$t('referralForm.location5'),
-    this.$t('referralForm.location6')
-  ]
+    locations = [
+      this.$t('referralForm.location1'),
+      this.$t('referralForm.location2'),
+      this.$t('referralForm.location3'),
+      this.$t('referralForm.location4'),
+      this.$t('referralForm.location5'),
+      this.$t('referralForm.location6')
+    ]
 
-  created () {
-    this.getCurrentPosition()
-  }
+    items = ['Foo', 'Bar', 'Fizz', 'Buzz']
 
-  async getCurrentPosition () {
-    const options = {
-      enableHighAccuracy: true,
-      timeout: 5000
+    created () {
+      this.getCurrentPosition()
     }
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        const { latitude, longitude } = position.coords
-        this.clientlat = latitude
-        this.clientlon = longitude
-      }, err => {
-        onError(err)
-      }, options)
-    }
-  }
 
-  handleFileChange (file: any) {
-    this.clientphoto = file
-  }
-
-  async submit () {
-    if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
-      this.loading = true
-      const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, orgemail } = this
-      await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, orgemail })
-      this.loading = false
+    async getCurrentPosition () {
+      const options = {
+        enableHighAccuracy: true,
+        timeout: 5000
+      }
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          const { latitude, longitude } = position.coords
+          this.clientlat = latitude
+          this.clientlon = longitude
+        }, err => {
+          onError(err)
+        }, options)
+      }
     }
-  }
+
+    handleFileChange (file: any) {
+      this.clientphoto = file
+    }
+
+    async submit () {
+      if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
+        this.loading = true
+        const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, orgemail } = this
+        await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, orgemail })
+        this.loading = false
+      }
+    }
 }
 </script>
 
 <style scoped>
-.file-select > .select-button {
-  padding: 1rem;
+  .file-select > .select-button {
+    padding: 1rem;
 
-  color: white;
-  background-color: #173a3a;
+    color: white;
+    background-color: #173a3a;
 
-  border-radius: .3rem;
+    border-radius: .3rem;
 
-  text-align: center;
-  font-weight: bold;
-  margin-top: 1rem;
-}
+    text-align: center;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
 
-.file-select > input[type="file"] {
-  display: none;
-}
+  .file-select > input[type="file"] {
+    display: none;
+  }
 
-select:required:invalid {
-  color: gray;
-}
+  select:required:invalid {
+    color: gray;
+  }
+  .v-input__control .v-select__slot .v-select__selections input {
+    border: none !important;
+  }
+
 </style>
