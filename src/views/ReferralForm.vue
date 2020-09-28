@@ -228,7 +228,7 @@ export default class ReferralForm extends Vue {
   }
 
   showDialog () {
-    return this.$dialog.confirm(this.$t('referralForm.confirmLeavePage'))
+    return (this as any).$dialog.confirm(this.$t('referralForm.confirmLeavePage'))
   }
 
   handleFileChange (file: any) {

@@ -149,7 +149,7 @@ export default class Checklist extends Vue {
   }
 
   showDialog () {
-    return this.$dialog.confirm(this.$t('checkList.confirmLeavePage'))
+    return (this as any).$dialog.confirm(this.$t('checkList.confirmLeavePage'))
   }
 
   submit () {
