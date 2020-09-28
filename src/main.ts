@@ -8,9 +8,12 @@ import './aws' // setup and configure AWS Amplify
 import { initSentry } from './libs/errorLib' // setup error monitoring
 import Loading from '@/components/Loading.vue'
 import i18n from './i18n'
+import VuejsDialog from 'vuejs-dialog'
+import 'vuejs-dialog/dist/vuejs-dialog.min.css'
 
 initSentry()
 
+Vue.use(VuejsDialog)
 Vue.component('Loading', Loading)
 Vue.config.productionTip = false
 

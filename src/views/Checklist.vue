@@ -110,6 +110,9 @@
 import { Vue, Component } from 'vue-property-decorator'
 import navigate from '../libs/navigate'
 
+// register the beforeRouteLeave hook
+Component.registerHooks(['beforeRouteLeave'])
+
 @Component({
   methods: {
     navigate
@@ -133,6 +136,20 @@ export default class Checklist extends Vue {
 
   checkUnanswered () {
     if (this.allQuestionsAnswered()) { this.disableSubmitBtn = false }
+  }
+
+  beforeRouteLeave (to: any, from: any, next: any) {
+    if (this.showChecklist || (this.showConsentForm && to.name !== 'ReferralForm')) {
+      this.showDialog()
+        .then(next)
+        .catch(() => next(false))
+    } else {
+      next()
+    }
+  }
+
+  showDialog () {
+    return this.$dialog.confirm(this.$t('checkList.confirmLeavePage'))
   }
 
   submit () {

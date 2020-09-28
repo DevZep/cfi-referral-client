@@ -138,6 +138,9 @@ import { onError } from '@/libs/errorLib'
 import orgemails from '@/libs/orgEmails'
 import i18n from './../i18n'
 
+// register the beforeRouteLeave hook
+Component.registerHooks(['beforeRouteLeave'])
+
 @Component({
   methods: {
     ...mapActions('Referrals', ['submitReferral'])
@@ -159,6 +162,7 @@ export default class ReferralForm extends Vue {
   dobmenu = false
   valid= false
   loading= false
+  saved = false
 
   nameRules = [
     (v: string) => !!v || i18n.t('referralForm.nameRule')
@@ -213,6 +217,20 @@ export default class ReferralForm extends Vue {
     }
   }
 
+  beforeRouteLeave (to: any, from: any, next: any) {
+    if (!this.saved) {
+      this.showDialog()
+        .then(next)
+        .catch(() => next(false))
+    } else {
+      next()
+    }
+  }
+
+  showDialog () {
+    return this.$dialog.confirm(this.$t('referralForm.confirmLeavePage'))
+  }
+
   handleFileChange (file: any) {
     this.clientphoto = file
   }
@@ -221,6 +239,7 @@ export default class ReferralForm extends Vue {
     if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
       this.loading = true
       const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, orgemail } = this
+      this.saved = true
       await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, orgemail })
       this.loading = false
     }
