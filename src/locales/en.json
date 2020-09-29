@@ -22,7 +22,7 @@
     "selectPhoto":"Select Photo",
     "locationClassification":"Location Classification",
     "note":"Note",
-    "noteMassage":"Include any additional information here",
+    "noteMessage":"Include any additional information here",
     "sendReferral":"Send referral to?",
     "submit":"Submit",
     "gender1":"Male",
@@ -43,7 +43,7 @@
 
     "clientName":"Enter the clients name",
     "dbClient":"YYY/MM/DD format",
-    "phoneMassage":"Enter the clients phone number in local format, example: 012999888",
+    "phoneMessage":"Enter the clients phone number in local format, example: 012999888",
 
     "confirmLeavePage": "Form has not been saved! Please confirm that you want to leave this page?"
 

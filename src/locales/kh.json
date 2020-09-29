@@ -21,7 +21,7 @@
     "selectPhoto":"ជ្រើសរើសរូបភាព",
     "locationClassification":"ចំណាត់ថ្នាក់ទីតាំង",
     "note":"ចំណាំ",
-    "noteMassage":"រួមបញ្ចូលព័ត៌មានបន្ថែមណាមួយនៅទីនេះ",
+    "noteMessage":"រួមបញ្ចូលព័ត៌មានបន្ថែមណាមួយនៅទីនេះ",
     "sendReferral":"បានបញ្ជូនទៅកាន់",
     "submit":"ដាក់ស្នើ",
     "gender1":"ប្រុស",
@@ -42,7 +42,7 @@
 
     "clientName":"បញ្ចូលឈ្មោះអតិថិជន",
     "dbClient":"ឆ្នាំ/ខែ/ថ្ងៃ",
-    "phoneMassage":"បញ្ចូលលេខទូរស័ព្ទរបស់អតិថិជនក្នុងតំបន់ ឧទាហរណ៍៖ ០១២៩៩៩៨៨៨",
+    "phoneMessage":"បញ្ចូលលេខទូរស័ព្ទរបស់អតិថិជនក្នុងតំបន់ ឧទាហរណ៍៖ ០១២៩៩៩៨៨៨",
 
     "confirmLeavePage": "Form has not been saved! Please confirm that you want to leave this page?"
   },

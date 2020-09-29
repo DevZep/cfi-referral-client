@@ -64,7 +64,7 @@
                   :label="$t('referralForm.phone')"
                   :rules="phoneRules"
                   required
-                  :hint="$t('referralForm.phoneMassage')"
+                  :hint="$t('referralForm.phoneMessage')"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -102,7 +102,7 @@
                   v-model="clientnote"
                   :label="$t('referralForm.note')"
                   value=""
-                  :hint="$t('referralForm.noteMassage')"
+                  :hint="$t('referralForm.noteMessage')"
                 ></v-textarea>
               </v-col>
             </v-row>
