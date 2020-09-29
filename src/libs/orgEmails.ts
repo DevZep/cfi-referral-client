@@ -24,7 +24,7 @@ const dev = [
     display: 'Damon Email',
     org: {
       email: 'damon@devzep.com',
-      oscarSubdomian: 'darren'
+      oscarSubdomian: 'damon'
     }
   },
   {
@@ -38,7 +38,7 @@ const dev = [
     display: 'Seyha Email',
     org: {
       email: 'seyha@devzep.com',
-      oscarSubdomian: 'makara'
+      oscarSubdomian: 'seyha'
     }
   }
 ]
@@ -86,7 +86,7 @@ const prod = [
     display: 'Damon Email',
     org: {
       email: 'damon@devzep.com',
-      oscarSubdomian: 'darren'
+      oscarSubdomian: 'damon'
     }
   },
   {
@@ -100,7 +100,7 @@ const prod = [
     display: 'Seyha Email',
     org: {
       email: 'seyha@devzep.com',
-      oscarSubdomian: 'makara'
+      oscarSubdomian: 'seyha'
     }
   }
 ]
