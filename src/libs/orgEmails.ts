@@ -7,9 +7,9 @@ const dev = [
     }
   },
   {
-    display: 'Dev Email 1',
+    display: 'Dev Email 2',
     org: {
-      email: 'dev-cfi-referral-app@devzep.com',
+      email: 'dev-cfi-referral-app2@devzep.com',
       oscarSubdomain: 'dc'
     }
   },
@@ -69,9 +69,9 @@ const prod = [
     }
   },
   {
-    display: 'Dev Email 1',
+    display: 'Dev Email 2',
     org: {
-      email: 'dev-cfi-referral-app@devzep.com',
+      email: 'dev-cfi-referral-app2@devzep.com',
       oscarSubdomain: 'dc'
     }
   },
