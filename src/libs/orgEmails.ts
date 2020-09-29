@@ -20,11 +20,30 @@ const staging = [
   }
 ]
 
-// TODO: put prod emails in build env vars
 const prod = [
   {
-    display: 'Childrens Future',
-    email: 'darren.jensen@gmail.com'
+    display: 'Dev Email 1',
+    email: 'dev-cfi-referral-app@devzep.com'
+  },
+  {
+    display: 'Dev Email 2',
+    email: 'dev-cfi-referral-app2@devzep.com'
+  },
+  {
+    display: 'Darren Email',
+    email: 'darren@devzep.com'
+  },
+  {
+    display: 'Damon Email',
+    email: 'damon@devzep.com'
+  },
+  {
+    display: 'Makara Email',
+    email: 'makara@devzep.com'
+  },
+  {
+    display: 'Seyha Email',
+    email: 'seyha@devzep.com'
   }
 ]
 
