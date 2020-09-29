@@ -6,6 +6,22 @@ const dev = [
   {
     display: 'Dev Email 2',
     email: 'dev-cfi-referral-app2@devzep.com'
+  },
+  {
+    display: 'Darren Email',
+    email: 'darren@devzep.com'
+  },
+  {
+    display: 'Damon Email',
+    email: 'damon@devzep.com'
+  },
+  {
+    display: 'Makara Email',
+    email: 'makara@devzep.com'
+  },
+  {
+    display: 'Seyha Email',
+    email: 'seyha@devzep.com'
   }
 ]
 
