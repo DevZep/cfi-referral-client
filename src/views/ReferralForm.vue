@@ -112,12 +112,12 @@
                 cols="12"
               >
                 <v-select
-                  v-model="orgemail"
+                  v-model="org"
                   :items="orgemails"
                   :rules="orgemailRules"
                   :label="$t('referralForm.sendReferral')"
                   item-text="display"
-                  item-value="email"
+                  item-value="org"
                 ></v-select>
 
               </v-col>
@@ -157,7 +157,7 @@ export default class ReferralForm extends Vue {
   clientphoto = null
   clientlat: number | null = null
   clientlon: number | null = null
-  orgemail = null
+  org = null
 
   dobmenu = false
   valid= false
@@ -238,9 +238,9 @@ export default class ReferralForm extends Vue {
   async submit () {
     if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
       this.loading = true
-      const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, orgemail } = this
+      const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, org } = this
       this.saved = true
-      await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, orgemail })
+      await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, org })
       this.loading = false
     }
   }

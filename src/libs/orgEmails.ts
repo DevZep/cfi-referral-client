@@ -1,73 +1,115 @@
 const dev = [
   {
     display: 'Dev Email 1',
-    email: 'dev-cfi-referral-app@devzep.com'
+    org: {
+      email: 'dev-cfi-referral-app@devzep.com',
+      oscarSubdomian: 'demo'
+    }
   },
   {
-    display: 'Dev Email 2',
-    email: 'dev-cfi-referral-app2@devzep.com'
+    display: 'Dev Email 1',
+    org: {
+      email: 'dev-cfi-referral-app@devzep.com',
+      oscarSubdomian: 'dc'
+    }
   },
   {
     display: 'Darren Email',
-    email: 'darren@devzep.com'
+    org: {
+      email: 'darren@devzep.com',
+      oscarSubdomian: 'darren'
+    }
   },
   {
     display: 'Damon Email',
-    email: 'damon@devzep.com'
+    org: {
+      email: 'damon@devzep.com',
+      oscarSubdomian: 'darren'
+    }
   },
   {
     display: 'Makara Email',
-    email: 'makara@devzep.com'
+    org: {
+      email: 'makara@devzep.com',
+      oscarSubdomian: 'makara'
+    }
   },
   {
     display: 'Seyha Email',
-    email: 'seyha@devzep.com'
+    org: {
+      email: 'seyha@devzep.com',
+      oscarSubdomian: 'makara'
+    }
   }
 ]
 
 const staging = [
   {
     display: 'Staging Email 1',
-    email: 'staging-cfi-referral-app@devzep.com'
+    org: {
+      email: 'staging-cfi-referral-app@devzep.com',
+      oscarSubdomian: 'demo'
+    }
   },
   {
     display: 'Staging Email 2',
-    email: 'staging-cfi-referral-app2@devzep.com'
+    org: {
+      email: 'staging-cfi-referral-app2@devzep.com',
+      oscarSubdomian: 'dc'
+    }
   }
 ]
 
 const prod = [
   {
     display: 'Dev Email 1',
-    email: 'dev-cfi-referral-app@devzep.com'
+    org: {
+      email: 'dev-cfi-referral-app@devzep.com',
+      oscarSubdomian: 'demo'
+    }
   },
   {
-    display: 'Dev Email 2',
-    email: 'dev-cfi-referral-app2@devzep.com'
+    display: 'Dev Email 1',
+    org: {
+      email: 'dev-cfi-referral-app@devzep.com',
+      oscarSubdomian: 'dc'
+    }
   },
   {
     display: 'Darren Email',
-    email: 'darren@devzep.com'
+    org: {
+      email: 'darren@devzep.com',
+      oscarSubdomian: 'darren'
+    }
   },
   {
     display: 'Damon Email',
-    email: 'damon@devzep.com'
+    org: {
+      email: 'damon@devzep.com',
+      oscarSubdomian: 'darren'
+    }
   },
   {
     display: 'Makara Email',
-    email: 'makara@devzep.com'
+    org: {
+      email: 'makara@devzep.com',
+      oscarSubdomian: 'makara'
+    }
   },
   {
     display: 'Seyha Email',
-    email: 'seyha@devzep.com'
+    org: {
+      email: 'seyha@devzep.com',
+      oscarSubdomian: 'makara'
+    }
   }
 ]
 
 // default config to dev settings
-let orgeamils = dev
+let orgemails = dev
 
 // unless set by the VUE_APP_STAGE env variable
-if (process.env.VUE_APP_STAGE === 'prod') orgeamils = prod
-if (process.env.VUE_APP_STAGE === 'staging') orgeamils = staging
+if (process.env.VUE_APP_STAGE === 'prod') orgemails = prod
+if (process.env.VUE_APP_STAGE === 'staging') orgemails = staging
 
-export default orgeamils
+export default orgemails
