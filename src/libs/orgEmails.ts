@@ -3,42 +3,42 @@ const dev = [
     display: 'Dev Email 1',
     org: {
       email: 'dev-cfi-referral-app@devzep.com',
-      oscarSubdomian: 'demo'
+      oscarSubdomain: 'demo'
     }
   },
   {
     display: 'Dev Email 1',
     org: {
       email: 'dev-cfi-referral-app@devzep.com',
-      oscarSubdomian: 'dc'
+      oscarSubdomain: 'dc'
     }
   },
   {
     display: 'Darren Email',
     org: {
       email: 'darren@devzep.com',
-      oscarSubdomian: 'darren'
+      oscarSubdomain: 'darren'
     }
   },
   {
     display: 'Damon Email',
     org: {
       email: 'damon@devzep.com',
-      oscarSubdomian: 'damon'
+      oscarSubdomain: 'damon'
     }
   },
   {
     display: 'Makara Email',
     org: {
       email: 'makara@devzep.com',
-      oscarSubdomian: 'makara'
+      oscarSubdomain: 'makara'
     }
   },
   {
     display: 'Seyha Email',
     org: {
       email: 'seyha@devzep.com',
-      oscarSubdomian: 'seyha'
+      oscarSubdomain: 'seyha'
     }
   }
 ]
@@ -48,14 +48,14 @@ const staging = [
     display: 'Staging Email 1',
     org: {
       email: 'staging-cfi-referral-app@devzep.com',
-      oscarSubdomian: 'demo'
+      oscarSubdomain: 'demo'
     }
   },
   {
     display: 'Staging Email 2',
     org: {
       email: 'staging-cfi-referral-app2@devzep.com',
-      oscarSubdomian: 'dc'
+      oscarSubdomain: 'dc'
     }
   }
 ]
@@ -65,42 +65,42 @@ const prod = [
     display: 'Dev Email 1',
     org: {
       email: 'dev-cfi-referral-app@devzep.com',
-      oscarSubdomian: 'demo'
+      oscarSubdomain: 'demo'
     }
   },
   {
     display: 'Dev Email 1',
     org: {
       email: 'dev-cfi-referral-app@devzep.com',
-      oscarSubdomian: 'dc'
+      oscarSubdomain: 'dc'
     }
   },
   {
     display: 'Darren Email',
     org: {
       email: 'darren@devzep.com',
-      oscarSubdomian: 'darren'
+      oscarSubdomain: 'darren'
     }
   },
   {
     display: 'Damon Email',
     org: {
       email: 'damon@devzep.com',
-      oscarSubdomian: 'damon'
+      oscarSubdomain: 'damon'
     }
   },
   {
     display: 'Makara Email',
     org: {
       email: 'makara@devzep.com',
-      oscarSubdomian: 'makara'
+      oscarSubdomain: 'makara'
     }
   },
   {
     display: 'Seyha Email',
     org: {
       email: 'seyha@devzep.com',
-      oscarSubdomian: 'seyha'
+      oscarSubdomain: 'seyha'
     }
   }
 ]

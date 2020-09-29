@@ -44,7 +44,7 @@ const actions: ActionTree<ReferralState, RootState> = {
     // Set to a loading state
     try {
       const s3key = clientphoto ? await s3Upload(clientphoto) : null
-      const { email, oscarSubdomian } = org
+      const { email, oscarSubdomain } = org
       await API.post('referrals', '/referrals', {
         body: {
           name: clientname,
@@ -57,7 +57,7 @@ const actions: ActionTree<ReferralState, RootState> = {
           lon: clientlon,
           photo: s3key,
           orgemail: email,
-          oscarSubdomian: oscarSubdomian
+          oscarSubdomain: oscarSubdomain
         }
       })
       navigate('/')
