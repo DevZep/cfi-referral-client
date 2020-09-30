@@ -31,12 +31,14 @@ const mutations: MutationTree<AccountState> = {
 const actions: ActionTree<AccountState, RootState> = {
   async signUp ({ commit, dispatch }, { email, password }) {
     try {
+      commit('setStatusMessage', '')
       commit('setNewUserEmail', email)
       const newUser = await Auth.signUp(email, password)
       navigate('/confirmCode')
     } catch (e) {
       if (e.code === 'UsernameExistsException') {
-        commit('setStatusMessage', 'This email already exists! You should just login!')
+        commit('setStatusMessage', e.message)
+        navigate('/confirmCode')
       }
     }
   },

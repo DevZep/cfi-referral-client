@@ -40,10 +40,11 @@ const actions: ActionTree<ReferralState, RootState> = {
       onError(e)
     }
   },
-  async submitReferral ({ commit }, { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, orgemail }) {
+  async submitReferral ({ commit }, { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, org }) {
     // Set to a loading state
     try {
       const s3key = clientphoto ? await s3Upload(clientphoto) : null
+      const { email, oscarSubdomain } = org
       await API.post('referrals', '/referrals', {
         body: {
           name: clientname,
@@ -55,7 +56,8 @@ const actions: ActionTree<ReferralState, RootState> = {
           lat: clientlat,
           lon: clientlon,
           photo: s3key,
-          orgemail: orgemail
+          orgemail: email,
+          oscarSubdomain: oscarSubdomain
         }
       })
       navigate('/')

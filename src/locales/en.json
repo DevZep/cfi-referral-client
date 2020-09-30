@@ -1,6 +1,6 @@
 {
   "app": {
-    
+
     "title": "Safe Movement",
     "subtitle": "",
     "current-language": "Lang",
@@ -22,7 +22,7 @@
     "selectPhoto":"Select Photo",
     "locationClassification":"Location Classification",
     "note":"Note",
-    "noteMassage":"Include any additional information here",
+    "noteMessage":"Include any additional information here",
     "sendReferral":"Send referral to?",
     "submit":"Submit",
     "gender1":"Male",
@@ -43,9 +43,10 @@
 
     "clientName":"Enter the clients name",
     "dbClient":"YYY/MM/DD format",
-    "phoneMassage":"Enter the clients phone number in local format, example: 012999888"
+    "phoneMessage":"Enter the clients phone number in local format, example: 012999888",
 
-    
+    "confirmLeavePage": "Form has not been saved! Please confirm that you want to leave this page?"
+
   },
   "login": {
     "sign-in": "Sign In",
@@ -90,7 +91,8 @@
     "question7":"Do you know where you can access support and help in your destination country?",
     "next":"Next",
     "yes":"Yes",
-    "no":"No"
+    "no":"No",
+    "confirmLeavePage": "You are still in the process of collecting a new referral. Please confirm that you want to leave the current process and start a new referral?"
   },
   "safeMigration":{
     "text1":"The client who you are talking to appears to have safe migration plans.",

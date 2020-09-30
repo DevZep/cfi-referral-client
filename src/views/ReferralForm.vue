@@ -78,7 +78,7 @@
                   v-model="clientphone"
                   :rules="phoneRules"
                   required
-                  :hint="$t('referralForm.phoneMassage')"
+                  :hint="$t('referralForm.phoneMessage')"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -116,7 +116,7 @@
                   v-model="clientnote"
                   :label="$t('referralForm.note')"
                   value=""
-                  :hint="$t('referralForm.noteMassage')"
+                  :hint="$t('referralForm.noteMessage')"
                 ></v-textarea>
               </v-col>
             </v-row>
@@ -126,12 +126,12 @@
                 cols="12"
               >
                 <v-select
-                  v-model="orgemail"
+                  v-model="org"
                   :items="orgemails"
                   :rules="orgemailRules"
                   :label="$t('referralForm.sendReferral')"
                   item-text="display"
-                  item-value="email"
+                  item-value="org"
                 ></v-select>
 
               </v-col>
@@ -153,12 +153,14 @@ import orgemails from '@/libs/orgEmails'
 import i18n from './../i18n'
 import Vuetify from 'vuetify/lib'
 
+// register the beforeRouteLeave hook
+Component.registerHooks(['beforeRouteLeave'])
+
   @Component({
     methods: {
       ...mapActions('Referrals', ['submitReferral'])
     }
   })
-
 export default class ReferralForm extends Vue {
     submitReferral!: (referral: {}) => void // from the mapActions above
     clientname = ''
@@ -170,11 +172,12 @@ export default class ReferralForm extends Vue {
     clientphoto = null
     clientlat: number | null = null
     clientlon: number | null = null
-    orgemail = null
+    org = null
 
     dobmenu = false
     valid= false
     loading= false
+    saved = false
 
     nameRules = [
       (v: string) => !!v || i18n.t('referralForm.nameRule')
@@ -209,8 +212,6 @@ export default class ReferralForm extends Vue {
       this.$t('referralForm.location6')
     ]
 
-    items = ['Foo', 'Bar', 'Fizz', 'Buzz']
-
     created () {
       this.getCurrentPosition()
     }
@@ -231,6 +232,20 @@ export default class ReferralForm extends Vue {
       }
     }
 
+    beforeRouteLeave (to: any, from: any, next: any) {
+      if (!this.saved) {
+        this.showDialog()
+          .then(next)
+          .catch(() => next(false))
+      } else {
+        next()
+      }
+    }
+
+    showDialog () {
+      return (this as any).$dialog.confirm(this.$t('referralForm.confirmLeavePage'))
+    }
+
     handleFileChange (file: any) {
       this.clientphoto = file
     }
@@ -238,8 +253,9 @@ export default class ReferralForm extends Vue {
     async submit () {
       if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
         this.loading = true
-        const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, orgemail } = this
-        await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, orgemail })
+        const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, org } = this
+        this.saved = true
+        await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, org })
         this.loading = false
       }
     }
@@ -270,5 +286,4 @@ export default class ReferralForm extends Vue {
   .v-input__control .v-select__slot .v-select__selections input {
     border: none !important;
   }
-
 </style>

@@ -21,7 +21,7 @@
     "selectPhoto":"ជ្រើសរើសរូបភាព",
     "locationClassification":"ចំណាត់ថ្នាក់ទីតាំង",
     "note":"ចំណាំ",
-    "noteMassage":"រួមបញ្ចូលព័ត៌មានបន្ថែមណាមួយនៅទីនេះ",
+    "noteMessage":"រួមបញ្ចូលព័ត៌មានបន្ថែមណាមួយនៅទីនេះ",
     "sendReferral":"បានបញ្ជូនទៅកាន់",
     "submit":"ដាក់ស្នើ",
     "gender1":"ប្រុស",
@@ -35,14 +35,16 @@
     "location4":"សមាជិកគ្រួសារ",
     "location5":"មិត្ដភក្កិ",
     "location6":"ឃុំ / សង្កាត់",
-  
+
     "nameRule":"ទាមទារឈ្មោះ",
     "phoneRule":"លេខទូរស័ព្ទត្រូវបានទាមទារ",
     "orgemailRule":"អុីម៉ែលរបស់អង្គការត្រូវបានទាមទារ",
 
     "clientName":"បញ្ចូលឈ្មោះអតិថិជន",
     "dbClient":"ឆ្នាំ/ខែ/ថ្ងៃ",
-    "phoneMassage":"បញ្ចូលលេខទូរស័ព្ទរបស់អតិថិជនក្នុងតំបន់ ឧទាហរណ៍៖ ០១២៩៩៩៨៨៨"
+    "phoneMessage":"បញ្ចូលលេខទូរស័ព្ទរបស់អតិថិជនក្នុងតំបន់ ឧទាហរណ៍៖ ០១២៩៩៩៨៨៨",
+
+    "confirmLeavePage": "Form has not been saved! Please confirm that you want to leave this page?"
   },
   "login": {
     "sign-in": "ចេញ",
@@ -52,7 +54,7 @@
     "signin":"ចូល",
     "signup":"ចុះឈ្មោះ"
   },
-  "signUp": { 
+  "signUp": {
     "sign-up":"ចុះឈ្មោះ",
     "email": "អុីម៉ែល",
     "password":"ពាក្យសម្ងាត់",
@@ -86,8 +88,8 @@
     "question7":"តើអ្នកដឹងកន្លែងដែលអ្នកអាចរកការគាំទ្រនិងជំនួយបាន នៅក្នុងប្រទេសគោលដៅទៅរបស់អ្នកទេ?",
     "next":"បន្ទាប់",
     "yes":"យល់ព្រម",
-    "no":"មិនយល់ព្រម"
-
+    "no":"មិនយល់ព្រម",
+    "confirmLeavePage": "You are still in the process of collecting a new referral. Please confirm that you want to leave the current process and start a new referral?"
   },
   "safeMigration":{
     "text1":"អតិថិជនដែលអ្នកកំពុងនិយាយហាក់ដូចជាមានផែនការចំណាកស្រុកប្រកបដោយសុវត្ថិភាព។",

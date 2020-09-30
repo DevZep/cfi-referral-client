@@ -5,13 +5,13 @@ const dev = {
   },
   apiGateway: {
     REGION: 'ap-southeast-1',
-    URL: 'https://vsa6vo52r7.execute-api.ap-southeast-1.amazonaws.com/dev'
+    URL: 'https://z5tbdq2pzd.execute-api.ap-southeast-1.amazonaws.com/dev'
   },
   cognito: {
     REGION: 'ap-southeast-1',
-    USER_POOL_ID: 'ap-southeast-1_7eptmjT3b',
-    APP_CLIENT_ID: '3oapcb264srebt78f7u4qs7r59',
-    IDENTITY_POOL_ID: 'ap-southeast-1:0bc99b02-422d-464e-8a32-5d3843f5b210'
+    USER_POOL_ID: 'ap-southeast-1_9m0Anw25N',
+    APP_CLIENT_ID: 'p1es6pukgdk990i2r5bb3v2ka',
+    IDENTITY_POOL_ID: 'ap-southeast-1:5deb1162-7da6-4433-990c-fcccccf2f394'
   }
 }
 
