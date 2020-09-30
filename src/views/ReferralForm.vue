@@ -33,7 +33,6 @@
                     <v-label for="name">{{ $t('referralForm.date-of-birth') }}</v-label>
                     <v-text-field
                       v-model="clientbirth"
-
                       :hint="$t('referralForm.dbClient')"
                       v-on="on"
                     ></v-text-field>
@@ -56,18 +55,6 @@
 
               </v-col>
             </v-row>
-
-            <v-row align="center">
-              <v-col class="d-flex" cols="12" sm="6">
-                <v-select
-                  :items="items"
-                  label="Standard"
-                  dense
-                ></v-select>
-              </v-col>
-            </v-row>
-
-            <!--  -->
 
             <v-row>
                <v-col
