@@ -83,11 +83,11 @@ export default class Login extends Vue {
   }
 }
 </script>
-<style >
-input {
+<style scoped>
+/* input {
   border: 3px solid rgba(248, 251, 250, 0.561);
   padding: 10px;
-}
+} */
 .block {
   display: block;
   width: 60%;
@@ -102,12 +102,6 @@ input {
   float: right;
   margin-right: 100px;
   margin-top: 10px;
-}
-input {
-  border: 3px solid rgba(248, 251, 250, 0.561);
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 .center-title{
   margin-bottom: 20px;

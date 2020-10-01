@@ -55,7 +55,52 @@
 
               </v-col>
             </v-row>
+            <!--  -->
+                <!-- <v-col
+              class="d-flex"
+              cols="12"
+            >
+              <v-select
+                :items="items"
+                label="Standard"
+              ></v-select>
+            </v-col> -->
+            <!-- <v-row>
+              <v-col cols="12">
+                <v-menu
+                   v-model="clientgender"
+                  :close-on-content-click="false"
+                  transition="scale-transition"
+                  offset-y
+                  max-width="290px"
+                  min-width="290px"
+                >
+                  <template v-slot:activator="{ on }">
+                    <v-label for="name">{{ $t('referralForm.gender') }}</v-label>
+                    <v-text-field
+                      v-model="clientbirth"
+                      :items="genders"
+                      v-on="on"
+                    ></v-text-field>
+                  </template>
+                  <v-date-picker v-model="clientbirth" no-title @input="dobmenu = false"></v-date-picker>
+                </v-menu>
+              </v-col>
+            </v-row> -->
+             <!-- <v-col
+          class="d-flex"
+          cols="12"
 
+        >
+          <v-select
+            :items="items"
+            filled
+            label="Filled style"
+            dense
+          ></v-select>
+        </v-col> -->
+
+            <!--  -->
             <v-row>
                <v-col
                 cols="12"
@@ -199,53 +244,54 @@ export default class ReferralForm extends Vue {
       this.$t('referralForm.location6')
     ]
 
-    created () {
-      this.getCurrentPosition()
-    }
+     items = ['Foo', 'Bar', 'Fizz', 'Buzz']
+     created () {
+       this.getCurrentPosition()
+     }
 
-    async getCurrentPosition () {
-      const options = {
-        enableHighAccuracy: true,
-        timeout: 5000
-      }
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-          const { latitude, longitude } = position.coords
-          this.clientlat = latitude
-          this.clientlon = longitude
-        }, err => {
-          onError(err)
-        }, options)
-      }
-    }
+     async getCurrentPosition () {
+       const options = {
+         enableHighAccuracy: true,
+         timeout: 5000
+       }
+       if (navigator.geolocation) {
+         navigator.geolocation.getCurrentPosition(position => {
+           const { latitude, longitude } = position.coords
+           this.clientlat = latitude
+           this.clientlon = longitude
+         }, err => {
+           onError(err)
+         }, options)
+       }
+     }
 
-    beforeRouteLeave (to: any, from: any, next: any) {
-      if (!this.saved) {
-        this.showDialog()
-          .then(next)
-          .catch(() => next(false))
-      } else {
-        next()
-      }
-    }
+     beforeRouteLeave (to: any, from: any, next: any) {
+       if (!this.saved) {
+         this.showDialog()
+           .then(next)
+           .catch(() => next(false))
+       } else {
+         next()
+       }
+     }
 
-    showDialog () {
-      return (this as any).$dialog.confirm(this.$t('referralForm.confirmLeavePage'))
-    }
+     showDialog () {
+       return (this as any).$dialog.confirm(this.$t('referralForm.confirmLeavePage'))
+     }
 
-    handleFileChange (file: any) {
-      this.clientphoto = file
-    }
+     handleFileChange (file: any) {
+       this.clientphoto = file
+     }
 
-    async submit () {
-      if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
-        this.loading = true
-        const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, org } = this
-        this.saved = true
-        await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, org })
-        this.loading = false
-      }
-    }
+     async submit () {
+       if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
+         this.loading = true
+         const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, org } = this
+         this.saved = true
+         await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, org })
+         this.loading = false
+       }
+     }
 }
 </script>
 
@@ -269,8 +315,5 @@ export default class ReferralForm extends Vue {
 
   select:required:invalid {
     color: gray;
-  }
-  .v-input__control .v-select__slot .v-select__selections input {
-    border: none !important;
   }
 </style>

@@ -57,10 +57,6 @@ ul {
   border: 3px solid rgba(248, 251, 250, 0.561);
   padding: 10px;
 }
-input {
-  border: 3px solid rgba(248, 251, 250, 0.561);
-  padding: 10px;
-}
 .warning {
   color: rgba(248, 251, 250, 0.561)
 }

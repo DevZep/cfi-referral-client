@@ -117,13 +117,6 @@ input {
   margin-right: 100px;
   margin-top: -47px;
 }
-input {
-  border: 3px solid rgba(248, 251, 250, 0.561);
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-
-}
 .center-title{
   margin-bottom: 20px;
 }
