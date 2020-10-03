@@ -1,7 +1,6 @@
 <template>
   <v-app class="grey lighten-4">
     <b v-if="env !== 'PROD'" class='warning center-text'>WARNING: THE APP IS RUNNING IN <span style='color: red'>{{env}}</span> MODE. DO NOT USE REAL CLIENT REFERRAL DATA!</b>
-    <b>{{ dadou }}</b>
     <NavBar />
     <v-content>
       <router-view></router-view>
@@ -29,7 +28,6 @@ export default class App extends Vue {
   isAuthenticated!: boolean // from the mapGetters above
   currentSession!: () => void // from the mapActions above
   env = process.env.VUE_APP_STAGE ? process.env.VUE_APP_STAGE.toUpperCase() : 'DEV'
-  dadou = process.env.VUE_APP_DADOU
 
   created () {
     if (this.isAuthenticated) {
