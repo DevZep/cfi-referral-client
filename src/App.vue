@@ -29,7 +29,7 @@ export default class App extends Vue {
   isAuthenticated!: boolean // from the mapGetters above
   currentSession!: () => void // from the mapActions above
   env = process.env.VUE_APP_STAGE ? process.env.VUE_APP_STAGE.toUpperCase() : 'DEV'
-  dadou = process.env.DADOU
+  dadou = process.env.VUE_APP_DADOU
 
   created () {
     if (this.isAuthenticated) {
