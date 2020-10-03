@@ -44,8 +44,8 @@
             </v-container>
         </v-form>
       </div>
-
     </div>
+    <p>Build: {{buildSHA}}</p>
   </div>
 </template>
 
@@ -71,6 +71,7 @@ export default class Login extends Vue {
   email = ''
   password = ''
   loading= false
+  buildSHA = process.env.COMMIT_REF // env var from netlify build process
 
   async submitLogin () {
     if (this.email !== '' && this.password !== '') {
@@ -84,10 +85,6 @@ export default class Login extends Vue {
 }
 </script>
 <style scoped>
-/* input {
-  border: 3px solid rgba(248, 251, 250, 0.561);
-  padding: 10px;
-} */
 .block {
   display: block;
   width: 60%;
