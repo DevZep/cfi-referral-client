@@ -28,3 +28,5 @@ pnpm-debug.log*
 *.sw?
 
 todo.md
+
+.env
