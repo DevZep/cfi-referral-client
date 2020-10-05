@@ -79,8 +79,8 @@
                 <image-uploader
                   :debug="1"
                   :maxWidth="1024"
-                  :quality="0.7"
-                  :autoRotate=true
+                  :quality="0.8"
+                  :autoRotate=false
                   outputFormat="verbose"
                   :capture="false"
                   accept="image/*"
