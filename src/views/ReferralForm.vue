@@ -78,7 +78,7 @@
               <v-label for="photo">{{$t('referralForm.selectPhoto')}}</v-label>
                 <image-uploader
                   :debug="1"
-                  :maxWidth="512"
+                  :maxWidth="1024"
                   :quality="0.7"
                   :autoRotate=true
                   outputFormat="verbose"
