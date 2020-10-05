@@ -23,6 +23,7 @@
     "vue-class-component": "^7.2.3",
     "vue-clickaway": "^2.2.2",
     "vue-i18n": "^8.17.3",
+    "vue-image-upload-resize": "^2.3.0",
     "vue-property-decorator": "^8.4.2",
     "vue-router": "^3.2.0",
     "vuejs-dialog": "^1.4.2",

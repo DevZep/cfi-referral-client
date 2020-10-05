@@ -74,13 +74,20 @@
               <v-col
                 cols="12"
               >
-              <v-file-input
-                :label="$t('referralForm.photo')"
-                filled
-                accept="image/*"
-                prepend-icon="mdi-camera"
-                @change="handleFileChange"
-              ></v-file-input>
+              <v-icon>mdi-camera</v-icon>
+              <v-label for="photo">{{$t('referralForm.selectPhoto')}}</v-label>
+                <image-uploader
+                  :debug="1"
+                  :maxWidth="1024"
+                  :quality="0.8"
+                  :autoRotate=false
+                  outputFormat="verbose"
+                  :capture="false"
+                  accept="image/*"
+                  doNotResize="['gif', 'svg']"
+                  @input="setImage"
+                >
+                </image-uploader>
               </v-col>
             </v-row>
 
@@ -233,7 +240,7 @@ export default class ReferralForm extends Vue {
       return (this as any).$dialog.confirm(this.$t('referralForm.confirmLeavePage'))
     }
 
-    handleFileChange (file: any) {
+    setImage (file: any) {
       this.clientphoto = file
     }
 

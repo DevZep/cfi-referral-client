@@ -44,7 +44,6 @@
             </v-container>
         </v-form>
       </div>
-
     </div>
   </div>
 </template>

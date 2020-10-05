@@ -42,3 +42,5 @@ The following command will build the a prod environment version of the applicati
 ```
 VUE_APP_STAGE=prod npm run build
 ```
+
+If any of the AWS keys change in dev envirnoment you will need to update it in your `.env` file and also in [Netify environemnt variables](https://docs.netlify.com/configure-builds/environment-variables/) for all the environments where they changed.

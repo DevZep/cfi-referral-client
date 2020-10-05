@@ -4,3 +4,4 @@ declare module '*.vue' {
 }
 
 declare module 'vuejs-dialog';
+declare module 'vue-image-upload-resize';
