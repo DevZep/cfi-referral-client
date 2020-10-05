@@ -55,52 +55,7 @@
 
               </v-col>
             </v-row>
-            <!--  -->
-                <!-- <v-col
-              class="d-flex"
-              cols="12"
-            >
-              <v-select
-                :items="items"
-                label="Standard"
-              ></v-select>
-            </v-col> -->
-            <!-- <v-row>
-              <v-col cols="12">
-                <v-menu
-                   v-model="clientgender"
-                  :close-on-content-click="false"
-                  transition="scale-transition"
-                  offset-y
-                  max-width="290px"
-                  min-width="290px"
-                >
-                  <template v-slot:activator="{ on }">
-                    <v-label for="name">{{ $t('referralForm.gender') }}</v-label>
-                    <v-text-field
-                      v-model="clientbirth"
-                      :items="genders"
-                      v-on="on"
-                    ></v-text-field>
-                  </template>
-                  <v-date-picker v-model="clientbirth" no-title @input="dobmenu = false"></v-date-picker>
-                </v-menu>
-              </v-col>
-            </v-row> -->
-             <!-- <v-col
-          class="d-flex"
-          cols="12"
 
-        >
-          <v-select
-            :items="items"
-            filled
-            label="Filled style"
-            dense
-          ></v-select>
-        </v-col> -->
-
-            <!--  -->
             <v-row>
                <v-col
                 cols="12"
@@ -119,13 +74,20 @@
               <v-col
                 cols="12"
               >
-              <v-file-input
-                :label="$t('referralForm.photo')"
-                filled
-                accept="image/*"
-                prepend-icon="mdi-camera"
-                @change="handleFileChange"
-              ></v-file-input>
+              <v-icon>mdi-camera</v-icon>
+              <v-label for="photo">{{$t('referralForm.selectPhoto')}}</v-label>
+                <image-uploader
+                  :debug="1"
+                  :maxWidth="512"
+                  :quality="0.7"
+                  :autoRotate=true
+                  outputFormat="verbose"
+                  :capture="false"
+                  accept="image/*"
+                  doNotResize="['gif', 'svg']"
+                  @input="setImage"
+                >
+                </image-uploader>
               </v-col>
             </v-row>
 
@@ -279,7 +241,7 @@ export default class ReferralForm extends Vue {
        return (this as any).$dialog.confirm(this.$t('referralForm.confirmLeavePage'))
      }
 
-     handleFileChange (file: any) {
+     setImage (file: any) {
        this.clientphoto = file
      }
 
