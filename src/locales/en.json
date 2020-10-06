@@ -45,7 +45,9 @@
     "dbClient":"YYY/MM/DD format",
     "phoneMessage":"Enter the clients phone number in local format, example: 012999888",
 
-    "confirmLeavePage": "Form has not been saved! Please confirm that you want to leave this page?"
+    "confirmLeavePage": "Form has not been saved! Please confirm that you want to leave this page?",
+    "button": "Close",
+    "buttonContinue": "Continue"
 
   },
   "login": {
@@ -92,7 +94,9 @@
     "next":"Next",
     "yes":"Yes",
     "no":"No",
-    "confirmLeavePage": "You are still in the process of collecting a new referral. Please confirm that you want to leave the current process and start a new referral?"
+    "confirmLeavePage": "You are still in the process of collecting a new referral. Please confirm that you want to leave the current process and start a new referral?",
+    "button": "Close",
+    "buttonContinue": "Continue"
   },
   "safeMigration":{
     "text1":"The client who you are talking to appears to have safe migration plans.",

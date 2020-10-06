@@ -37,6 +37,7 @@
               <v-text-field
                       type="password"
                       v-model="passwordConfirm"
+                      :rules="confirmPasswordRules"
                       :hint="$t('signUp.verify-password')"
                       required
               ></v-text-field>
@@ -74,11 +75,17 @@ export default class SignUp extends Vue {
 
   data () {
     return {
+
       passwordRules: [
         (v: string) => (v && v.length >= 8) || i18n.t('signUp.passwordRules'),
         (v: string) => /(?=.*[A-Z])/.test(v) || i18n.t('signUp.passwordRules1'),
         (v: string) => /(?=.*\d)/.test(v) || i18n.t('signUp.passwordRules2'),
         (v: string) => /(?=.*[a-z])/.test(v) || i18n.t('signUp.passwordRules3')
+      ],
+      confirmPasswordRules: [
+        (value: any) => !!value || 'Type confirm password',
+        (value: string) =>
+          value === this.password || 'The password confirmation does not match.'
       ]
     }
   }

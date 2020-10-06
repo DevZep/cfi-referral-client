@@ -44,7 +44,9 @@
     "dbClient":"ឆ្នាំ/ខែ/ថ្ងៃ",
     "phoneMessage":"បញ្ចូលលេខទូរស័ព្ទរបស់អតិថិជនក្នុងតំបន់ ឧទាហរណ៍៖ ០១២៩៩៩៨៨៨",
 
-    "confirmLeavePage": "Form has not been saved! Please confirm that you want to leave this page?"
+    "confirmLeavePage": "ទម្រង់មិនត្រូវបានរក្សាទុក! សូមបញ្ជាក់ថាអ្នកចង់ចាកចេញពីទំព័រនេះ?",
+    "button": "បញ្ចប់",
+    "buttonContinue": "បន្ដ"
   },
   "login": {
     "sign-in": "ចេញ",
@@ -89,7 +91,9 @@
     "next":"បន្ទាប់",
     "yes":"យល់ព្រម",
     "no":"មិនយល់ព្រម",
-    "confirmLeavePage": "You are still in the process of collecting a new referral. Please confirm that you want to leave the current process and start a new referral?"
+    "confirmLeavePage": "អ្នកកំពុងស្ថិតក្នុងដំណើរការប្រមូលការបញ្ជូនថ្មី។ សូមបញ្ជាក់ថាអ្នកចង់ចាកចេញពីដំណើរការនេះហើយចាប់ផ្តើមការបញ្ជូនថ្មី។",
+    "button": "បញ្ចប់",
+    "buttonContinue": "បន្ដ"
   },
   "safeMigration":{
     "text1":"អតិថិជនដែលអ្នកកំពុងនិយាយហាក់ដូចជាមានផែនការចំណាកស្រុកប្រកបដោយសុវត្ថិភាព។",
