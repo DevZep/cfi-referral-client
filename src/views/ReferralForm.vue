@@ -238,7 +238,7 @@ export default class ReferralForm extends Vue {
      }
 
      showDialog () {
-       return (this as any).$dialog.confirm(this.$t('referralForm.confirmLeavePage'))
+       return (this as any).$dialog.confirm(this.$t('referralForm.confirmLeavePage'), { cancelText: this.$t('referralForm.button'), okText: this.$t('referralForm.buttonContinue') })
      }
 
      setImage (file: any) {
