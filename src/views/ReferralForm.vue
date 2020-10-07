@@ -74,13 +74,20 @@
               <v-col
                 cols="12"
               >
-              <v-file-input
-                :label="$t('referralForm.photo')"
-                filled
-                accept="image/*"
-                prepend-icon="mdi-camera"
-                @change="handleFileChange"
-              ></v-file-input>
+              <v-icon>mdi-camera</v-icon>
+              <v-label for="photo">{{$t('referralForm.selectPhoto')}}</v-label>
+                <image-uploader
+                  :debug="1"
+                  :maxWidth="1024"
+                  :quality="0.8"
+                  :autoRotate=false
+                  outputFormat="verbose"
+                  :capture="false"
+                  accept="image/*"
+                  doNotResize="['gif', 'svg']"
+                  @input="setImage"
+                >
+                </image-uploader>
               </v-col>
             </v-row>
 
@@ -183,69 +190,70 @@ export default class ReferralForm extends Vue {
     orgemails = orgemails
 
     genders = [
-      this.$t('referralForm.gender1'),
-      this.$t('referralForm.gender2'),
-      this.$t('referralForm.gender3'),
-      this.$t('referralForm.gender4'),
-      this.$t('referralForm.gender5')
+      this.$t('referralForm.male'),
+      this.$t('referralForm.female'),
+      this.$t('referralForm.other'),
+      this.$t('referralForm.unknown'),
+      this.$t('referralForm.prefer_not_to_say')
     ]
 
     locations = [
-      this.$t('referralForm.location1'),
-      this.$t('referralForm.location2'),
-      this.$t('referralForm.location3'),
-      this.$t('referralForm.location4'),
-      this.$t('referralForm.location5'),
-      this.$t('referralForm.location6')
+      this.$t('referralForm.home'),
+      this.$t('referralForm.school'),
+      this.$t('referralForm.work'),
+      this.$t('referralForm.family_member'),
+      this.$t('referralForm.friend'),
+      this.$t('referralForm.commune_village')
     ]
 
-    created () {
-      this.getCurrentPosition()
-    }
+     items = ['Foo', 'Bar', 'Fizz', 'Buzz']
+     created () {
+       this.getCurrentPosition()
+     }
 
-    async getCurrentPosition () {
-      const options = {
-        enableHighAccuracy: true,
-        timeout: 5000
-      }
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-          const { latitude, longitude } = position.coords
-          this.clientlat = latitude
-          this.clientlon = longitude
-        }, err => {
-          onError(err)
-        }, options)
-      }
-    }
+     async getCurrentPosition () {
+       const options = {
+         enableHighAccuracy: true,
+         timeout: 5000
+       }
+       if (navigator.geolocation) {
+         navigator.geolocation.getCurrentPosition(position => {
+           const { latitude, longitude } = position.coords
+           this.clientlat = latitude
+           this.clientlon = longitude
+         }, err => {
+           onError(err)
+         }, options)
+       }
+     }
 
-    beforeRouteLeave (to: any, from: any, next: any) {
-      if (!this.saved) {
-        this.showDialog()
-          .then(next)
-          .catch(() => next(false))
-      } else {
-        next()
-      }
-    }
+     beforeRouteLeave (to: any, from: any, next: any) {
+       if (!this.saved) {
+         this.showDialog()
+           .then(next)
+           .catch(() => next(false))
+       } else {
+         next()
+       }
+     }
 
-    showDialog () {
-      return (this as any).$dialog.confirm(this.$t('referralForm.confirmLeavePage'), { cancelText: this.$t('referralForm.button'), okText: this.$t('referralForm.buttonContinue') })
-    }
+     showDialog () {
+       return (this as any).$dialog.confirm(this.$t('referralForm.confirmLeavePage'))
+     }
 
-    setImage (file: any) {
-      this.clientphoto = file
-    }
+     setImage (file: any) {
+       this.clientphoto = file
+     }
 
-    async submit () {
-      if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
-        this.loading = true
-        const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, org } = this
-        this.saved = true
-        await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, org })
-        this.loading = false
-      }
-    }
+     async submit () {
+       if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
+         this.loading = true
+         const { clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, org } = this
+         this.saved = true
+         await this.submitReferral({ clientname, clientphone, clientphoto, clientnote, clientbirth, clientgender, clientlocation, clientlat, clientlon, org })
+         this.loading = false
+       }
+     }
 }
 </script>
 
