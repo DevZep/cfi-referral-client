@@ -17,7 +17,7 @@ const dev = [
     display: 'Darren Email',
     org: {
       email: 'darren@devzep.com',
-      oscarSubdomain: 'darren'
+      oscarSubdomain: ''
     }
   },
   {
@@ -62,45 +62,73 @@ const staging = [
 
 const prod = [
   {
-    display: 'Dev Email 1',
+    display: 'Darren (Test)',
     org: {
-      email: 'dev-cfi-referral-app@devzep.com',
+      email: 'darren@devzep.com',
       oscarSubdomain: 'demo'
     }
   },
   {
-    display: 'Dev Email 2',
-    org: {
-      email: 'dev-cfi-referral-app2@devzep.com',
-      oscarSubdomain: 'dc'
-    }
-  },
-  {
-    display: 'Darren Email',
+    display: 'Darren (Test 2 - no oscar)',
     org: {
       email: 'darren@devzep.com',
-      oscarSubdomain: 'darren'
+      oscarSubdomain: ''
     }
   },
   {
-    display: 'Damon Email',
+    display: 'Mith Samlanh',
     org: {
-      email: 'damon@devzep.com',
-      oscarSubdomain: 'damon'
+      email: 'pov@mithsamlanh.org',
+      oscarSubdomain: 'msl'
     }
   },
   {
-    display: 'Makara Email',
+    display: 'Peuan Peuan',
     org: {
-      email: 'makara@devzep.com',
-      oscarSubdomain: 'makara'
+      email: 'heng@friends-international.org',
+      oscarSubdomain: ''
     }
   },
   {
-    display: 'Seyha Email',
+    display: 'CFI',
     org: {
-      email: 'seyha@devzep.com',
-      oscarSubdomain: 'seyha'
+      email: 'migration@childrensfuture.org',
+      oscarSubdomain: 'cfi'
+    }
+  },
+  {
+    display: 'Komar Rikreay',
+    org: {
+      email: 'kmrcambodia@yahoo.com',
+      oscarSubdomain: 'kmr'
+    }
+  },
+  {
+    display: 'Kailyan Mith Poipet',
+    org: {
+      email: 'heng@friends-international.org',
+      oscarSubdomain: 'fsi'
+    }
+  },
+  {
+    display: 'Kailyan Mith Siem Reap',
+    org: {
+      email: 'socheata@friends-international.org',
+      oscarSubdomain: 'fsi'
+    }
+  },
+  {
+    display: 'Damnonk Toek',
+    org: {
+      email: 'migration@damnoktoek.org',
+      oscarSubdomain: ''
+    }
+  },
+  {
+    display: 'Krousar Thmey',
+    org: {
+      email: 'bunhentrenpoipet@gmail.com',
+      oscarSubdomain: ''
     }
   }
 ]
