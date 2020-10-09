@@ -62,20 +62,6 @@ const staging = [
 
 const prod = [
   {
-    display: 'Darren (Test)',
-    org: {
-      email: 'darren@devzep.com',
-      oscarSubdomain: 'demo'
-    }
-  },
-  {
-    display: 'Darren (Test 2 - no oscar)',
-    org: {
-      email: 'darren@devzep.com',
-      oscarSubdomain: ''
-    }
-  },
-  {
     display: 'Mith Samlanh',
     org: {
       email: 'pov@mithsamlanh.org',
