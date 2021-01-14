@@ -19,20 +19,6 @@ Vue.use(ImageUploader)
 Vue.component('Loading', Loading)
 Vue.config.productionTip = false
 
-// router guard for multilang support
-router.beforeEach((to, from, next) => {
-  let language = to.params.lang
-
-  // default to en if lang param not set
-  if (!language) {
-    language = 'en'
-  }
-
-  i18n.locale = language
-
-  next()
-})
-
 new Vue({
   router,
   store,
