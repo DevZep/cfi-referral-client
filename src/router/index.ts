@@ -84,4 +84,19 @@ const router = new VueRouter({
   routes
 })
 
+// router guard for multilang support
+router.beforeEach((to, from, next) => {
+  let language = to.params.lang
+  console.log('in router beforeEach:', to.params.lang)
+
+  // default to kh if lang param not set
+  if (!language) {
+    language = 'kh'
+  }
+
+  i18n.locale = language
+
+  next()
+})
+
 export default router
